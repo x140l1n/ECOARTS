@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Tamaño texto-->
+    <dimen name="tamanyoPequenoTexto">20sp</dimen>
+    <dimen name="tamanyoMedianoTexto">25sp</dimen>
+    <dimen name="tamanyoGrandeTexto">60sp</dimen>
+
+    <dimen name="marginPequeno">20dp</dimen>
+    <dimen name="marginMediano">25dp</dimen>
+    <dimen name="marginGrande">30dp</dimen>
+
+    <dimen name="paddingIzquierda">80sp</dimen>
+    <dimen name="paddingDerecha">80sp</dimen>
+    <dimen name="paddingArriba">30sp</dimen>
+    <dimen name="paddingAbajo">30sp</dimen>
+    <dimen name="marginArriba">30dp</dimen>
+
+    <dimen name="paddingPequeno">20dp</dimen>
+    <dimen name="paddingMediano">25dp</dimen>
+    <dimen name="paddingGrande">30dp</dimen>
+
+    <dimen name="radioPequeno">20dp</dimen>
+    <dimen name="radioMediano">40dp</dimen>
+    <dimen name="radioGrande">100dp</dimen>
+</resources>

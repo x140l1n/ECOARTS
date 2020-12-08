@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IdiomaActivity">
+    <ImageView
+        android:id="@+id/fondoGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo_principal"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnCastellano"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/castellano"
+            android:text="@string/castellano"
+            style="@style/BotonesBordesRedondeadosPrimarios"/>
+        <Button
+            android:id="@+id/btnCatala"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/catala"
+            android:text="@string/catala"
+            style="@style/BotonesBordesRedondeadosPrimarios"/>
+        <Button
+            android:id="@+id/btnEnglish"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/english"
+            android:text="@string/english"
+            style="@style/BotonesBordesRedondeadosPrimarios"/>
+    </LinearLayout>
+</RelativeLayout>

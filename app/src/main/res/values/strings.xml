@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">EcoArts</string>
+    <string name="castellano">Castellano</string>
+    <string name="catala">Català</string>
+    <string name="english">English</string>
+    <string name="jugar">Jugar</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="salir">Salir</string>
+    <string name="confirmar_salir">¿Seguro que quieres salir?</string>
+    <string name="logo_ecoarts">Logo EcoArts</string>
+    <string name="cambiar_idioma">Cambiar idioma</string>
+    <string name="contactar">Contactar</string>
+    <string name="creditos">Créditos</string>
+    <string name="version">Versión</string>
+    <string name="musica">Música:</string>
+    <string name="efectos">Efectos:</string>
+    <string name="nivel">Nivel:</string>
+    <string name="facil">Fácil</string>
+    <string name="dificil">Difícil</string>
+    <string name="selecPersonaje">Seleccionar personaje</string>
+    <string name="nombreJugador">Nombre jugador</string>
+    <string name="empezar">Empezar</string>
+</resources>

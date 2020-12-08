@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectPersonajeActivity">
+
+    <ImageView
+        android:id="@+id/fondoGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo_principal"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/btnVolver"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    style="@style/BotonAtras"
+                    tools:ignore="contentDescription"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selecPersonaje"
+                    style="@style/TextViewEncabezado"/>
+
+                <EditText
+                    android:id="@+id/editTextNombreJugador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nombreJugador"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    style="@style/EditTextRosado" />
+            </LinearLayout>
+
+            <GridView
+                android:id="@+id/gridViewPersonajes"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/marginPequeno"
+                android:layout_weight="6"
+                android:background="@drawable/bordes_redondos_rosados"
+                android:numColumns="2"
+                android:stretchMode="columnWidth"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="10dp"
+                android:gravity="center"
+                android:padding="@dimen/paddingPequeno" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/radioGroupNivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marginMediano"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/bordes_redondos_rosados">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nivel"
+                        android:layout_weight="1"
+                        style="@style/TextViewNormal"/>
+                    <RadioButton
+                        android:id="@+id/radioButtonFacil"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/facil"
+                        android:checked="true"
+                        style="@style/RadioButton"/>
+                    <RadioButton
+                        android:id="@+id/radioButtonDificil"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/dificil"
+                        style="@style/RadioButton"/>
+                </RadioGroup>
+                <Button
+                    android:id="@+id/btnEmpezar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empezar"
+                    style="@style/BotonesBordesRedondeadosPequeno"/>
+            </LinearLayout>
+        </LinearLayout>
+</RelativeLayout>

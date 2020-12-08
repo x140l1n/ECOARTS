@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6100EE</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!--Nuestros colores-->
+    <color name="colorVerde">#089E45</color>
+    <color name="colorTurquesa">#35957F</color>
+    <color name="colorPrimario">#89e450</color>
+    <color name="colorSecundario">#35957F</color>
+    <color name="colorGris">#CCCCCC</color>
+    <color name="colorRosado">#FFDBA9</color>
+</resources>
