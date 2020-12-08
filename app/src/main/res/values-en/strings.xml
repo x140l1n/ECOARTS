@@ -21,4 +21,9 @@
     <string name="selecPersonaje">Select character</string>
     <string name="nombreJugador">Player name</string>
     <string name="empezar">Start</string>
+    <string name="creditos_cuerpo">
+        Programmers:
+
+
+    </string>
 </resources>

@@ -88,29 +88,14 @@
         <item name="android:splitTrack" tools:ignore="NewApi">false</item>
     </style>
 
-    <style name="BotonAtras">
-        <item name="android:src">@drawable/volver</item>
-        <item name="android:scaleType">centerCrop</item>
-        <item name="android:layout_margin">20dp</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
-    <style name="BotonConfirmar">
-        <item name="android:src">@drawable/confirm</item>
+    <style name="ImageButtonSinFondo">
         <item name="android:scaleType">centerCrop</item>
         <item name="android:layout_margin">@dimen/marginPequeno</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="BotonInformacion">
-        <item name="android:src">@drawable/info</item>
-        <item name="android:scaleType">centerCrop</item>
-        <item name="android:layout_margin">20dp</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
     <style name="EditTextRosado">
-        <item name="android:background">@drawable/bordes_redondos_rosados</item>
+        <item name="android:background">@drawable/bordes_redondos_rosado</item>
         <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
         <item name="android:paddingLeft">@dimen/paddingDerecha</item>
         <item name="android:paddingRight">@dimen/paddingIzquierda</item>

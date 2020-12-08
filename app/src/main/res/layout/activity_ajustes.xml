@@ -21,7 +21,8 @@
             android:id="@+id/btnVolver"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            style="@style/BotonAtras"
+            android:src="@drawable/volver"
+            style="@style/ImageButtonSinFondo"
             tools:ignore="contentDescription"/>
 
         <TextView

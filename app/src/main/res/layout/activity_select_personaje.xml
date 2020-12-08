@@ -27,7 +27,8 @@
                     android:id="@+id/btnVolver"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    style="@style/BotonAtras"
+                    style="@style/ImageButtonSinFondo"
+                    android:src="@drawable/volver"
                     tools:ignore="contentDescription"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -51,7 +52,7 @@
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/marginPequeno"
                 android:layout_weight="6"
-                android:background="@drawable/bordes_redondos_rosados"
+                android:background="@drawable/bordes_redondos_rosado"
                 android:numColumns="2"
                 android:stretchMode="columnWidth"
                 android:horizontalSpacing="10dp"
@@ -72,7 +73,7 @@
                     android:layout_margin="@dimen/marginMediano"
                     android:orientation="horizontal"
                     android:gravity="center"
-                    android:background="@drawable/bordes_redondos_rosados">
+                    android:background="@drawable/bordes_redondos_rosado">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

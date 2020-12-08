@@ -7,7 +7,7 @@
 
     <dimen name="marginPequeno">20dp</dimen>
     <dimen name="marginMediano">25dp</dimen>
-    <dimen name="marginGrande">30dp</dimen>
+    <dimen name="marginGrande">60dp</dimen>
 
     <dimen name="paddingIzquierda">80sp</dimen>
     <dimen name="paddingDerecha">80sp</dimen>

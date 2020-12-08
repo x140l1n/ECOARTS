@@ -33,16 +33,18 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
         <ImageButton
+            android:id="@+id/btnInformacion"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info"
+            style="@style/ImageButtonSinFondo"
+            tools:ignore="contentDescription"/>
+        <ImageButton
             android:id="@+id/btnConfirmar"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            style="@style/BotonConfirmar"
-            tools:ignore="contentDescription"/>
-        <ImageButton
-            android:id="@+id/btnAtras"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            style="@style/BotonInformacion"
+            android:src="@drawable/confirm"
+            style="@style/ImageButtonSinFondo"
             tools:ignore="contentDescription"/>
     </LinearLayout>
 </LinearLayout>
