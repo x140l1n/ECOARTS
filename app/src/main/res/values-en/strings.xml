@@ -26,4 +26,6 @@
 
 
     </string>
+    <string name="infoPersonaje">CHARACTER INFORMATION</string>
+    <string name="Abandonar">Abandoning game</string>
 </resources>

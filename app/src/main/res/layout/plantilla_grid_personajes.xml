@@ -8,6 +8,7 @@
     android:background="@drawable/item_background_grid_personajes">
 
     <LinearLayout
+        android:id="@+id/layoutPersonaje"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"

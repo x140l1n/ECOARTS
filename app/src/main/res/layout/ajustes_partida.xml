@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="800dp"
+    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_secundario">
+
+    <ImageButton
+        style="@style/ImageButtonSinFondo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="end"
+        android:src="@drawable/cancelar" />
+
+    <LinearLayout
+        android:layout_width="750dp"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@drawable/group_box">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/musica"
+                android:textAlignment="viewEnd"
+                style="@style/TextViewNormal"/>
+            <SeekBar
+                android:id="@+id/seekBadrMusica"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                style="@style/seekBar"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/efectos"
+                android:textAlignment="viewEnd"
+                style="@style/TextViewNormal"/>
+            <SeekBar
+                android:id="@+id/seekBarEfectos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                style="@style/seekBar"/>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/salir"
+        android:text="@string/Abandonar"
+        style="@style/BotonesBordesRedondeadosPrimarios"/>
+
+
+</LinearLayout>

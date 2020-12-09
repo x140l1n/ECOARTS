@@ -25,4 +25,6 @@
 
 
     </string>
+    <string name="infoPersonaje">INFORMACIÓN PERSONAJE</string>
+    <string name="Abandonar">Abandonar partida</string>
 </resources>

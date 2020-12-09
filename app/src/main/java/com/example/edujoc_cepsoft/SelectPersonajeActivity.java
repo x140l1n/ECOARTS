@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -29,6 +30,7 @@ public class SelectPersonajeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_personaje);
 
@@ -77,7 +79,10 @@ public class SelectPersonajeActivity extends AppCompatActivity
         if (rutaFicheroJson != null)
         {
             BufferedReader br = null;
-
+            String[] files = this.fileList();
+            for(String item : files){
+                System.out.println("ficheros: " + item);
+            }
             try
             {
                 br = new BufferedReader(new FileReader(rutaFicheroJson));

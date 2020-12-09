@@ -7,14 +7,14 @@
     <string name="jugar">Jugar</string>
     <string name="ajustes">Ajustos</string>
     <string name="salir">Sortir</string>
-    <string name="confirmar_salir">¿Seguro que vols sortir?</string>
+    <string name="confirmar_salir">¿Segur que vols sortir?</string>
     <string name="logo_ecoarts">Logo EcoArts</string>
     <string name="cambiar_idioma">Canviar idioma</string>
     <string name="contactar">Contactar</string>
     <string name="creditos">Crèdits</string>
     <string name="version">Versió</string>
     <string name="musica">Música:</string>
-    <string name="efectos">Efectos:</string>
+    <string name="efectos">Efectes:</string>
     <string name="nivel">Nivell:</string>
     <string name="facil">Fàcil</string>
     <string name="dificil">Difícil</string>
@@ -26,4 +26,6 @@
 
 
     </string>
+    <string name="infoPersonaje">INFORMACIÓ PERSONATGE</string>
+    <string name="Abandonar">Abandonar partida</string>
 </resources>
