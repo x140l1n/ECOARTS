@@ -29,7 +29,8 @@
         <activity
             android:name=".MapaActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoAnimacionActivity"/>
+            android:theme="@style/NoAnimacionActivity"
+            android:exported="true"/>
         <activity
             android:name=".AjustesActivity"
             android:screenOrientation="portrait"
