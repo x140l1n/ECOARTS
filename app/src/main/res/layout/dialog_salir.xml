@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:background="@drawable/bordes_redondos_modal">
 
     <TextView
-        style="@style/TextViewEncabezado"
+        style="@style/TextViewModal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/confirmar_salir"
@@ -22,14 +22,18 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btnSalir"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/confirm2"
+            tools:ignore="contentDescription"
             style="@style/ImageButtonSinFondo"/>
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btnCancelar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/cancelar"
+            tools:ignore="contentDescription"
             style="@style/ImageButtonSinFondo"/>
     </LinearLayout>
 </LinearLayout>

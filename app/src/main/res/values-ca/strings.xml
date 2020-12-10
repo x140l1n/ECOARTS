@@ -26,6 +26,8 @@
 
 
     </string>
-    <string name="infoPersonaje">INFORMACIÓ PERSONATGE</string>
+    <string name="infoPersonaje">Informació personatge</string>
     <string name="Abandonar">Abandonar partida</string>
+    <string name="descripcion_activista">Descripció activista</string>
+    <string name="nombre_activista">Nom activista</string>
 </resources>

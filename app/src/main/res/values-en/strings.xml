@@ -17,7 +17,7 @@
     <string name="efectos">Effects:</string>
     <string name="nivel">Level:</string>
     <string name="facil">Easy</string>
-    <string name="dificil">Dificult</string>
+    <string name="dificil">Hard</string>
     <string name="selecPersonaje">Select character</string>
     <string name="nombreJugador">Player name</string>
     <string name="empezar">Start</string>
@@ -26,6 +26,8 @@
 
 
     </string>
-    <string name="infoPersonaje">CHARACTER INFORMATION</string>
-    <string name="Abandonar">Abandoning game</string>
+    <string name="infoPersonaje">Character information</string>
+    <string name="Abandonar">Abandon game</string>
+    <string name="descripcion_activista">Description activist</string>
+    <string name="nombre_activista">Name activist</string>
 </resources>

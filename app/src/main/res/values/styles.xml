@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
 
         <item name="android:radioButtonStyle">@style/RadioFuente</item>
         <item name="android:editTextStyle">@style/EditTextFuente</item>
@@ -61,7 +62,12 @@
         <item name="android:paddingRight">@dimen/paddingDerecha</item>
         <item name="android:paddingTop">@dimen/paddingArriba</item>
         <item name="android:paddingBottom">@dimen/paddingAbajo</item>
-        <item name="android:layout_margin">@dimen/marginMediano</item>
+        <item name="android:layout_margin">@dimen/marginPequeno</item>
+    </style>
+
+    <style name="TextViewModal">
+        <item name="android:textSize">@dimen/tamanyoMedianoGrandeTexto</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TextViewEncabezado">
@@ -89,9 +95,9 @@
     </style>
 
     <style name="ImageButtonSinFondo">
-        <item name="android:scaleType">centerCrop</item>
         <item name="android:layout_margin">@dimen/marginPequeno</item>
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <style name="EditTextRosado">

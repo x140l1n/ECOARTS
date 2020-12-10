@@ -8,6 +8,8 @@ public class Personaje
     private String rutaImagen;
     private String descripcion;
 
+    private boolean seleccionado = false;
+
     public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
     {
         this.id = id;
@@ -36,6 +38,14 @@ public class Personaje
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(boolean seleccionado) {
+        this.seleccionado = seleccionado;
     }
     //endregion
 }

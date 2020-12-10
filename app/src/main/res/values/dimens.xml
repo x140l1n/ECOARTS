@@ -3,9 +3,10 @@
     <!--Tamaño texto-->
     <dimen name="tamanyoPequenoTexto">20sp</dimen>
     <dimen name="tamanyoMedianoTexto">25sp</dimen>
+    <dimen name="tamanyoMedianoGrandeTexto">40sp</dimen>
     <dimen name="tamanyoGrandeTexto">60sp</dimen>
 
-    <dimen name="marginPequeno">20dp</dimen>
+    <dimen name="marginPequeno">15dp</dimen>
     <dimen name="marginMediano">25dp</dimen>
     <dimen name="marginGrande">60dp</dimen>
 

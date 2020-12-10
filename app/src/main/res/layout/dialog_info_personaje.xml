@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_modal">
+
+    <ImageButton
+        android:id="@+id/btnCancelar"
+        style="@style/ImageButtonSinFondo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="end"
+        android:src="@drawable/cancelar"
+        tools:ignore="contentDescription"/>
+    <TextView
+        style="@style/TextViewModal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/infoPersonaje"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtViewNombrePersonaje"
+        style="@style/EditTextRosado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/nombre_activista"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/txtViewDescPersonaje"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:maxHeight="400dp"
+        android:inputType="textMultiLine"
+        android:hint="@string/descripcion_activista"
+        android:scrollbars="vertical"
+        android:gravity="top"
+        android:autofillHints=""
+        android:importantForAutofill="no"
+        style="@style/EditTextRosado" />
+</LinearLayout>
