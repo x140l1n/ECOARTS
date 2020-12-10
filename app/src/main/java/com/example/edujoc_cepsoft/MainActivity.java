@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends MiActivityPersonalizado
 {
     @Override
     @SuppressWarnings("deprecation") //Eliminar la advertencia de usar métodos en desuso.

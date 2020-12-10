@@ -1,7 +1,5 @@
 package com.example.edujoc_cepsoft;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,7 +7,7 @@ import android.widget.ImageView;
 
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
-public class CreditosActivity extends AppCompatActivity
+public class CreditosActivity extends MiActivityPersonalizado
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -17,7 +15,7 @@ public class CreditosActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creditos);
 
-        GifHelper.loadGif(this, R.drawable.background_animation, (ImageView) findViewById(R.id.fondoGif));
+        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
 

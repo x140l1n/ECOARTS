@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="700dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/bordes_redondos_modal">
@@ -15,6 +15,7 @@
         android:layout_gravity="end"
         android:src="@drawable/cancelar"
         tools:ignore="contentDescription"/>
+
     <TextView
         style="@style/TextViewModal"
         android:layout_width="match_parent"
@@ -35,11 +36,11 @@
     <TextView
         android:id="@+id/txtViewDescPersonaje"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:maxHeight="400dp"
+        android:layout_height="wrap_content"
+        android:maxLines="8"
         android:inputType="textMultiLine"
-        android:hint="@string/descripcion_activista"
         android:scrollbars="vertical"
+        android:hint="@string/descripcion_activista"
         android:gravity="top"
         android:autofillHints=""
         android:importantForAutofill="no"

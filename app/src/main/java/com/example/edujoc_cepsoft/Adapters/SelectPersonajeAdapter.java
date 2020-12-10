@@ -1,15 +1,13 @@
 package com.example.edujoc_cepsoft.Adapters;
 
-import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -20,18 +18,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.edujoc_cepsoft.Data.Personaje;
+import com.example.edujoc_cepsoft.MiDialogPersonalizado;
 import com.example.edujoc_cepsoft.R;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.util.List;
 
 public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
 {
+    private Context context;
+
     public SelectPersonajeAdapter(@NonNull Context context, List<Personaje> personajes)
     {
         super(context, 0, personajes);
+
+        this.context = context;
+
     }
 
     @NonNull
@@ -65,11 +67,7 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
             @Override
             public void onClick(View v)
             {
-                final Dialog dialogInfo = new Dialog(getContext());
-                dialogInfo.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialogInfo.setCancelable(false);
-                dialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                dialogInfo.setContentView(R.layout.dialog_info_personaje);
+                final Dialog dialogInfo = new MiDialogPersonalizado(context, R.layout.dialog_info_personaje);
 
                 ImageButton btnCancelar = dialogInfo.findViewById(R.id.btnCancelar);
                 TextView txtViewNombrePersonaje = dialogInfo.findViewById(R.id.txtViewNombrePersonaje);
@@ -78,6 +76,7 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
                 txtViewNombrePersonaje.setText(getItem(position).getNombre());
                 txtViewDescPersonaje.setText(getItem(position).getDescripcion());
 
+                txtViewDescPersonaje.setMovementMethod(new ScrollingMovementMethod());
                 btnCancelar.setOnClickListener(new View.OnClickListener()
                 {
                     @Override

@@ -6,13 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 import com.example.edujoc_cepsoft.Helpers.LocaleHelper;
-import com.example.edujoc_cepsoft.Helpers.MediaPlayerHelper;
 
-public class IdiomaActivity extends AppCompatActivity
+public class IdiomaActivity extends MiActivityPersonalizado
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,7 +17,7 @@ public class IdiomaActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idioma);
 
-        GifHelper.loadGif(this, R.drawable.background_animation, (ImageView) findViewById(R.id.fondoGif));
+        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
         final Button btnEs = findViewById(R.id.btnCastellano);
         final Button btnCa = findViewById(R.id.btnCatala);
@@ -58,23 +55,5 @@ public class IdiomaActivity extends AppCompatActivity
                 finish();
             }
         });
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
     }
 }

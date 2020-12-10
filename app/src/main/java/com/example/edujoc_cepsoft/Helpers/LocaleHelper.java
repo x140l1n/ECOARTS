@@ -17,7 +17,7 @@ public class LocaleHelper
      * @param context El contexto del activity en que se cambia el idioma.
      * @param lang El idioma a que queremos cambiar.
      */
-    @SuppressWarnings("deprecation") //Supirmir la advertencia de usar métodos en desuso.
+    @SuppressWarnings("deprecation") //Quitar la advertencia de usar métodos en desuso.
     public static void setLocale(@NonNull Context context, String lang)
     {
         //Creamos un objeto de tipo Configuration pasando por parámetro la configuración que tiene el context.

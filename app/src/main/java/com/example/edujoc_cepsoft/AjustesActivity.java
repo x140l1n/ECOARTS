@@ -8,11 +8,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
-public class AjustesActivity extends AppCompatActivity
+public class AjustesActivity extends MiActivityPersonalizado
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,11 +18,11 @@ public class AjustesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
-        GifHelper.loadGif(this, R.drawable.background_animation, (ImageView) findViewById(R.id.fondoGif));
+        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
         //Cargar el número de la versión de la app.
         final TextView txtViewVersion = findViewById(R.id.txtViewVersion);
-        txtViewVersion.append(" " + BuildConfig.VERSION_NAME);
+        txtViewVersion.append(BuildConfig.VERSION_NAME);
 
         final Button btnCambiarIdioma = findViewById(R.id.btnCambiarIdioma);
         final Button btnContactar = findViewById(R.id.btnContactar);
