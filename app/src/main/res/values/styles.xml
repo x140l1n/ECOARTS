@@ -57,7 +57,7 @@
 
     <style name="BotonesBordesRedondeadosPequeno">
         <item name="android:background">@drawable/bordes_redondos_primario</item>
-        <item name="android:textSize">@dimen/tamanyoPequenoTexto</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
         <item name="android:paddingRight">@dimen/paddingDerecha</item>
         <item name="android:paddingTop">@dimen/paddingArriba</item>
@@ -77,6 +77,7 @@
 
     <style name="TextViewPequeno">
         <item name="android:textSize">@dimen/tamanyoPequenoTexto</item>
+        <item name="android:padding">@dimen/paddingPequeno</item>
         <item name="android:layout_margin">@dimen/marginPequeno</item>
     </style>
 

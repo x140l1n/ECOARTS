@@ -68,6 +68,4 @@
         android:drawableStart="@drawable/salir"
         android:text="@string/Abandonar"
         style="@style/BotonesBordesRedondeadosPrimarios"/>
-
-
 </LinearLayout>

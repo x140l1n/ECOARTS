@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/personajeNombre"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextViewNormal"
         android:background="@drawable/bordes_redondos_rosado"
-        android:paddingLeft="@dimen/paddingPequeno"
-        android:paddingRight="@dimen/paddingPequeno"
-        android:text="TRUMP"/>
+        android:layout_marginBottom="@dimen/marginPequeno"
+        android:text="TRUMP"
+        android:gravity="center"
+        android:padding="@dimen/paddingPequeno"/>
     <ImageView
         android:id="@+id/personajeMapa"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:scaleType="centerInside"
-        android:src="@drawable/trump_es"/>
+        android:src="@drawable/trump_es"
+        tools:ignore="contentDescription"/>
     <Button
-        android:id="@+id/btnBatalla"
-        style="@style/BotonesBordesRedondeadosPrimarios"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnJugar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/batalla"/>
-
-
+        android:layout_marginTop="@dimen/marginPequeno"
+        android:background="@drawable/bordes_redondos_primario"
+        android:padding="@dimen/paddingPequeno"
+        android:text="@string/jugar"/>
 </LinearLayout>
