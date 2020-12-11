@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_principal"
+    tools:context=".Batalla">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/marginPequeno"
+            android:layout_height="@dimen/marginGrande"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/marginMediano"
+            android:layout_marginLeft="@dimen/marginMediano"
+            android:padding="@dimen/paddingPequeno"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressTint="@color/colorPrimary"
+            android:background="@drawable/barra_progreso"
+            android:max="30000"
+            android:progress="0"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPregunta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextRosado"
+            android:textSize="@dimen/tamanyoMedianoTexto"
+            android:text="¿Cuantas bolsas de plástico se consumen en 1 minuto en todo el mundo?"
+            />
+        <Button
+            android:id="@+id/respuesta1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BotonesBordesRedondeadosSecundarios"
+            android:textColor="#ffffff"
+            android:text="10.000.000.000"
+            android:textSize="@dimen/tamanyoMedianoTexto"/>
+        <Button
+            android:id="@+id/respuesta2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BotonesBordesRedondeadosSecundarios"
+            android:textColor="#ffffff"
+            android:text="1.000.000"
+            android:textSize="@dimen/tamanyoMedianoTexto"/>
+        <Button
+            android:id="@+id/respuesta3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BotonesBordesRedondeadosSecundarios"
+            android:textColor="#ffffff"
+            android:text="25"
+            android:textSize="@dimen/tamanyoMedianoTexto"/>
+    </LinearLayout>
+
+
+</LinearLayout>

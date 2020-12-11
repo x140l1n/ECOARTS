@@ -3,9 +3,14 @@ package com.example.edujoc_cepsoft;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.example.edujoc_cepsoft.Data.Personaje;
 
 public class MapaActivity extends MiActivityPersonalizado
 {
@@ -15,17 +20,51 @@ public class MapaActivity extends MiActivityPersonalizado
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        ImageButton btnConfig = findViewById(R.id.btnConfig);
         //Personaje personaje = new Personaje(3, "Trump", "es", ".//personajes//img//trump_es_3.png","sdshdhsdjhsjd");
         //ImageView personajeMapa = findViewById(R.id.personajeMapa);
 
         //String rutaAbsolutaPersonaje = personaje.getRutaImagen();
         //Bitmap bitmapPersonaje = BitmapFactory.decodeFile(rutaAbsolutaPersonaje);
         //personajeMapa.setImageBitmap(bitmapPersonaje);
+        Button btnJugar = findViewById(R.id.btnJugar);
+        btnJugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
+
+
+
+
+        btnConfig.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                final Dialog dialogAjuste = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_ajuste_partida);
+                dialogAjuste.show();
+                ImageButton btnVolverPartida = dialogAjuste.findViewById(R.id.btnVolverPartida);
+                btnVolverPartida.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogAjuste.dismiss();
+                    }
+                });
+
+
+
+
+            }
+        });
+
+    }
+
+    private void animacion1(){
         final View personaje = findViewById(R.id.personaje);
-
         final Button btnJugar = personaje.findViewById(R.id.btnJugar);
-
         AnimatorSet as = new AnimatorSet();
 
         as.addListener(new Animator.AnimatorListener() {
@@ -61,4 +100,8 @@ public class MapaActivity extends MiActivityPersonalizado
         as.setDuration(1200);
         as.start();
     }
+
+
+
+
 }

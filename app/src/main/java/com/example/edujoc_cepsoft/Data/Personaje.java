@@ -9,14 +9,16 @@ public class Personaje
     private String descripcion;
 
     private boolean seleccionado = false;
+    private int vidas;
 
-    public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
+    public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion, int vidas)
     {
         this.id = id;
         this.nombre = nombre;
         this.idioma = idioma;
         this.rutaImagen = rutaImagen;
         this.descripcion = descripcion;
+        this.vidas = vidas;
     }
 
     //region Getters
@@ -42,6 +44,14 @@ public class Personaje
 
     public boolean isSeleccionado() {
         return seleccionado;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
 
     public void setSeleccionado(boolean seleccionado) {
