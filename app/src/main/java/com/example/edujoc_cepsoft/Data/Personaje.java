@@ -9,16 +9,20 @@ public class Personaje
     private String descripcion;
 
     private boolean seleccionado = false;
-    private int vidas;
+    private int vidas = 5; //Tienen como máximo 5 vidas.
 
-    public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion, int vidas)
+    public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
     {
         this.id = id;
         this.nombre = nombre;
         this.idioma = idioma;
         this.rutaImagen = rutaImagen;
         this.descripcion = descripcion;
-        this.vidas = vidas;
+    }
+
+    public void quitarVida(int i)
+    {
+        this.vidas -= i;
     }
 
     //region Getters

@@ -29,25 +29,14 @@
         <item name="android:textColor">#000000</item>
     </style>
 
-
     <style name="RadioFuente" parent="android:Widget.CompoundButton.RadioButton">
         <item name="android:fontFamily">@font/komika_hand</item>
         <item name="android:textColor">#000000</item>
     </style>
 
-    <style name="BotonesBordesRedondeadosSecundarios">
-        <item name="android:background">@drawable/bordes_redondos_secundario</item>
-        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
-        <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
-        <item name="android:paddingRight">@dimen/paddingDerecha</item>
-        <item name="android:paddingTop">@dimen/paddingArriba</item>
-        <item name="android:paddingBottom">@dimen/paddingAbajo</item>
-        <item name="android:layout_margin">@dimen/marginMediano</item>
-    </style>
-
     <style name="BotonesBordesRedondeadosPrimarios">
         <item name="android:background">@drawable/bordes_redondos_primario</item>
-        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoGrandeTexto</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
         <item name="android:paddingRight">@dimen/paddingDerecha</item>
         <item name="android:paddingTop">@dimen/paddingArriba</item>
@@ -55,7 +44,51 @@
         <item name="android:layout_margin">@dimen/marginMediano</item>
     </style>
 
-    <style name="BotonesBordesRedondeadosPequeno">
+    <style name="BotonesBordesRedondeadosSecundarios">
+        <item name="android:background">@drawable/bordes_redondos_secundario</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoGrandeTexto</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
+        <item name="android:paddingRight">@dimen/paddingDerecha</item>
+        <item name="android:paddingTop">@dimen/paddingArriba</item>
+        <item name="android:paddingBottom">@dimen/paddingAbajo</item>
+        <item name="android:layout_margin">@dimen/marginMediano</item>
+    </style>
+
+    <style name="BotonesBordesRedondeadosRespuesta">
+        <item name="android:background">@drawable/bordes_redondos_secundario</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
+        <item name="android:paddingRight">@dimen/paddingDerecha</item>
+        <item name="android:paddingTop">@dimen/paddingArriba</item>
+        <item name="android:paddingBottom">@dimen/paddingAbajo</item>
+        <item name="android:layout_margin">@dimen/marginPequeno</item>
+    </style>
+
+    <style name="BotonesBordesRedondeadosRespuestaIncorrecta">
+        <item name="android:background">@drawable/bordes_redondos_rojo</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
+        <item name="android:paddingRight">@dimen/paddingDerecha</item>
+        <item name="android:paddingTop">@dimen/paddingArriba</item>
+        <item name="android:paddingBottom">@dimen/paddingAbajo</item>
+        <item name="android:layout_margin">@dimen/marginPequeno</item>
+    </style>
+
+    <style name="BotonesBordesRedondeadosRespuestaCorrecta">
+        <item name="android:background">@drawable/bordes_redondos_primario</item>
+        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
+        <item name="android:paddingRight">@dimen/paddingDerecha</item>
+        <item name="android:paddingTop">@dimen/paddingArriba</item>
+        <item name="android:paddingBottom">@dimen/paddingAbajo</item>
+        <item name="android:layout_margin">@dimen/marginPequeno</item>
+    </style>
+
+    <style name="BotonesBordesRedondeadosMediano">
         <item name="android:background">@drawable/bordes_redondos_primario</item>
         <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
@@ -84,6 +117,7 @@
     <style name="TextViewNormal">
         <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
         <item name="android:layout_margin">@dimen/marginMediano</item>
+        <item name="android:padding">@dimen/paddingPequeno</item>
     </style>
 
     <style name="NoAnimacionActivity" parent="AppTheme">
@@ -118,10 +152,5 @@
         <item name="android:layout_margin">@dimen/marginMediano</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@drawable/radio_button</item>
-    </style>
-
-    <style name="SmallProgressBar" parent="android:Widget.ProgressBar">
-        <item name="android:minHeight">10dip</item>
-        <item name="android:maxHeight">35dip</item>
     </style>
 </resources>

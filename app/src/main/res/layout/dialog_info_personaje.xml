@@ -10,8 +10,8 @@
     <ImageButton
         android:id="@+id/btnCancelar"
         style="@style/ImageButtonSinFondo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="end"
         android:src="@drawable/cancelar"
         tools:ignore="contentDescription"/>

@@ -19,8 +19,8 @@
 
         <ImageButton
             android:id="@+id/btnVolver"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/ImageButtonSinFondo"
             android:src="@drawable/volver"
             tools:ignore="contentDescription"/>

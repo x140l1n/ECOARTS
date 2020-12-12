@@ -23,15 +23,15 @@
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/btnSalir"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/confirm2"
             tools:ignore="contentDescription"
             style="@style/ImageButtonSinFondo"/>
         <ImageButton
             android:id="@+id/btnCancelar"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/cancelar"
             tools:ignore="contentDescription"
             style="@style/ImageButtonSinFondo"/>

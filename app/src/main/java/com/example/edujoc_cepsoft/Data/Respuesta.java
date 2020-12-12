@@ -1,20 +1,23 @@
 package com.example.edujoc_cepsoft.Data;
 
-public class Respuesta {
-
+public class Respuesta
+{
     private String respuesta;
-    private boolean correcte;
+    private boolean correcta;
 
-    public Respuesta(String respuesta, boolean correcte) {
+    public Respuesta(String respuesta, boolean correcta)
+    {
         this.respuesta = respuesta;
-        this.correcte = correcte;
+        this.correcta = correcta;
     }
 
+    //region Getters
     public String getRespuesta() {
         return respuesta;
     }
 
-    public boolean isCorrecte() {
-        return correcte;
+    public boolean isCorrecta() {
+        return correcta;
     }
+    //endregion
 }

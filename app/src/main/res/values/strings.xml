@@ -11,7 +11,7 @@
     <string name="cambiar_idioma">Cambiar idioma</string>
     <string name="contactar">Contactar</string>
     <string name="creditos">Créditos</string>
-    <string name="version">Versión </string>
+    <string name="version">Versión</string>
     <string name="musica">Música:</string>
     <string name="efectos">Efectos:</string>
     <string name="nivel">Nivel:</string>
@@ -29,4 +29,5 @@
     <string name="Abandonar">Abandonar partida</string>
     <string name="descripcion_activista">Descripción activista</string>
     <string name="nombre_activista">Nombre activista</string>
+    <string name="tutorial">Tutorial</string>
 </resources>

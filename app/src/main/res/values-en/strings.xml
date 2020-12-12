@@ -12,7 +12,7 @@
     <string name="cambiar_idioma">Change language</string>
     <string name="contactar">Contact</string>
     <string name="creditos">Credits</string>
-    <string name="version">Version </string>
+    <string name="version">Version</string>
     <string name="musica">Music:</string>
     <string name="efectos">Effects:</string>
     <string name="nivel">Level:</string>
@@ -30,4 +30,5 @@
     <string name="Abandonar">Abandon game</string>
     <string name="descripcion_activista">Description activist</string>
     <string name="nombre_activista">Name activist</string>
+    <string name="tutorial">Tutorial</string>
 </resources>

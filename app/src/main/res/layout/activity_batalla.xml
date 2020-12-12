@@ -1,71 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_principal"
-    tools:context=".Batalla">
-
+    tools:context=".BatallaActivity">
+    <ImageView
+        android:id="@+id/fondoGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo_principal"
+        android:scaleType="fitXY"
+        tools:ignore="contentDescription"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/marginPequeno"
-            android:layout_height="@dimen/marginGrande"
-            android:layout_weight="1"
-            android:layout_marginRight="@dimen/marginMediano"
-            android:layout_marginLeft="@dimen/marginMediano"
-            android:padding="@dimen/paddingPequeno"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressTint="@color/colorPrimary"
-            android:background="@drawable/barra_progreso"
-            android:max="30000"
-            android:progress="0"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/marginPequeno"
+            android:orientation="vertical">
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="@dimen/marginPequeno"
+                android:progress="100"
+                android:progressDrawable="@drawable/progress_bar_verde" />
+            <TextView
+                android:id="@+id/textViewPregunta"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:maxLines="5"
+                android:layout_margin="0dp"
+                android:text="Quants litres de petroli son necessaris per fabricar 1000 ampolles de plàstic?"
+                style="@style/EditTextRosado"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/marginPequeno"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/corazonPersonaje1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonPersonaje2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonPersonaje3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
 
-        <TextView
-            android:id="@+id/tvPregunta"
+                    <ImageView
+                        android:id="@+id/corazonPersonaje4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription" />
+
+                    <ImageView
+                        android:id="@+id/corazonPersonaje5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/trump_es"
+                    tools:ignore="contentDescription"/>
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos_rosado"
+                    android:gravity="center"
+                    android:text="x140l1n"
+                    style="@style/TextViewNormal"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/marginPequeno"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/corazonEnemigo1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonEnemigo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonEnemigo3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonEnemigo4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                    <ImageView
+                        android:id="@+id/corazonEnemigo5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/corazon"
+                        tools:ignore="contentDescription"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/enemigo_agua"
+                    tools:ignore="contentDescription" />
+
+                <TextView
+                    style="@style/TextViewNormal"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos_rosado"
+                    android:gravity="center"
+                    android:text="Vaporeon" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EditTextRosado"
-            android:textSize="@dimen/tamanyoMedianoTexto"
-            android:text="¿Cuantas bolsas de plástico se consumen en 1 minuto en todo el mundo?"
-            />
-        <Button
-            android:id="@+id/respuesta1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/BotonesBordesRedondeadosSecundarios"
-            android:textColor="#ffffff"
-            android:text="10.000.000.000"
-            android:textSize="@dimen/tamanyoMedianoTexto"/>
-        <Button
-            android:id="@+id/respuesta2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/BotonesBordesRedondeadosSecundarios"
-            android:textColor="#ffffff"
-            android:text="1.000.000"
-            android:textSize="@dimen/tamanyoMedianoTexto"/>
-        <Button
-            android:id="@+id/respuesta3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/BotonesBordesRedondeadosSecundarios"
-            android:textColor="#ffffff"
-            android:text="25"
-            android:textSize="@dimen/tamanyoMedianoTexto"/>
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnRespuesta1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BotonesBordesRedondeadosRespuesta"
+                android:text="91"/>
+            <Button
+                android:id="@+id/btnRespuesta2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BotonesBordesRedondeadosRespuesta"
+                android:text="60"/>
+            <Button
+                android:id="@+id/btnRespuesta3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BotonesBordesRedondeadosRespuesta"
+                android:text="31"/>
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

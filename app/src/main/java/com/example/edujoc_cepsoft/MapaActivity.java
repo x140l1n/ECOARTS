@@ -4,40 +4,40 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import com.example.edujoc_cepsoft.Data.Personaje;
+import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
 public class MapaActivity extends MiActivityPersonalizado
 {
+    private Button btnJugar;
+    private ImageButton btnConfig;
+    private View personaje;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
-        ImageButton btnConfig = findViewById(R.id.btnConfig);
-        //Personaje personaje = new Personaje(3, "Trump", "es", ".//personajes//img//trump_es_3.png","sdshdhsdjhsjd");
-        //ImageView personajeMapa = findViewById(R.id.personajeMapa);
+        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        //String rutaAbsolutaPersonaje = personaje.getRutaImagen();
-        //Bitmap bitmapPersonaje = BitmapFactory.decodeFile(rutaAbsolutaPersonaje);
-        //personajeMapa.setImageBitmap(bitmapPersonaje);
-        Button btnJugar = findViewById(R.id.btnJugar);
-        btnJugar.setOnClickListener(new View.OnClickListener() {
+        personaje   = findViewById(R.id.personaje);
+        btnConfig   = findViewById(R.id.btnConfig);
+        btnJugar    = personaje.findViewById(R.id.btnJugar);
+
+        btnJugar.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 
             }
         });
-
-
-
-
 
         btnConfig.setOnClickListener(new View.OnClickListener()
         {
@@ -53,40 +53,37 @@ public class MapaActivity extends MiActivityPersonalizado
                         dialogAjuste.dismiss();
                     }
                 });
-
-
-
-
             }
         });
 
     }
 
-    private void animacion1(){
-        final View personaje = findViewById(R.id.personaje);
+    /**
+     * Realizar la primera animación, del primer mundo al segundo mundo.
+     */
+    private void animacion1()
+    {
         final Button btnJugar = personaje.findViewById(R.id.btnJugar);
-        AnimatorSet as = new AnimatorSet();
 
+        AnimatorSet as = new AnimatorSet();
         as.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(Animator animation) {
+            public void onAnimationStart(Animator animation)
+            {
                 btnJugar.setVisibility(View.INVISIBLE);
             }
 
             @Override
-            public void onAnimationEnd(Animator animation) {
+            public void onAnimationEnd(Animator animation)
+            {
                 btnJugar.setVisibility(View.VISIBLE);
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {
-                System.err.println("Cancel");
-            }
+            public void onAnimationCancel(Animator animation) {}
 
             @Override
-            public void onAnimationRepeat(Animator animation) {
-                System.err.println("Start");
-            }
+            public void onAnimationRepeat(Animator animation) {}
         });
 
         ObjectAnimator oa1 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_X, personaje.getX() + 350f);
@@ -100,8 +97,4 @@ public class MapaActivity extends MiActivityPersonalizado
         as.setDuration(1200);
         as.start();
     }
-
-
-
-
 }

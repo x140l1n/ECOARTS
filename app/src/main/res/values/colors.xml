@@ -12,4 +12,6 @@
     <color name="colorGris">#CCCCCC</color>
     <color name="colorRosado">#FFDBA9</color>
     <color name="colorCian">#00C9D7</color>
+    <color name="colorRojo">#F44336</color>
+    <color name="colorGrisOscuro">#3A3636</color>
 </resources>

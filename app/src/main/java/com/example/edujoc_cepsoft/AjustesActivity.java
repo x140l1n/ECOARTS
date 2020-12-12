@@ -22,7 +22,7 @@ public class AjustesActivity extends MiActivityPersonalizado
 
         //Cargar el número de la versión de la app.
         final TextView txtViewVersion = findViewById(R.id.txtViewVersion);
-        txtViewVersion.append(BuildConfig.VERSION_NAME);
+        txtViewVersion.append(" " + BuildConfig.VERSION_NAME);
 
         final Button btnCambiarIdioma = findViewById(R.id.btnCambiarIdioma);
         final Button btnContactar = findViewById(R.id.btnContactar);
