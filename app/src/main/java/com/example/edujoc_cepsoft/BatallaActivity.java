@@ -3,6 +3,8 @@ package com.example.edujoc_cepsoft;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -28,6 +30,9 @@ import java.util.Random;
 public class BatallaActivity extends MiActivityPersonalizado
 {
     private final long TIEMPO_MAXIMO = 30000; //Máximo 30 segundos.
+    public static final String NOMBRE_ENEMIGO = "nombreEnemigo";
+    public static final String NOMBRE_PERSONAJE = "nombrePersonaje";
+    public static final String NUMERO_BATALLA = "1";
     private ProgressBar barra_progreso;
     private ObjectAnimator barra_progreso_animacion;
 
@@ -47,17 +52,19 @@ public class BatallaActivity extends MiActivityPersonalizado
     private Personaje personaje;
 
     private boolean preguntaRespondida = false;
+    private int numeroBatalla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_batalla);
-
+        Intent intent = getIntent();
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        personaje           = new Personaje(1, "trump", "es", "test", "test");
-        enemigo             = new Enemigo(123123, "Devorático");
+        personaje           = (Personaje) intent.getSerializableExtra(NOMBRE_PERSONAJE);
+        enemigo             = (Enemigo) intent.getSerializableExtra(NOMBRE_ENEMIGO);
+        numeroBatalla       = intent.getIntExtra(NUMERO_BATALLA, -1);
 
         barra_progreso      = findViewById(R.id.progress_bar);
         textViewPregunta    = findViewById(R.id.textViewPregunta);
@@ -92,6 +99,20 @@ public class BatallaActivity extends MiActivityPersonalizado
                                 btnRespuesta1.setEnabled(true);
                             }
                         }, 2000);
+                    }else{
+                        if(personaje.getVidas() !=0){
+                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
+                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
+                            if(numeroBatalla<6){
+                                setResult(Activity.RESULT_OK, intent);
+                            }else{
+                                //mostrem Dialog Victoria
+                            }
+
+                        }else{
+                            //mostrem dialog final
+                        }
+
                     }
 
                     preguntaRespondida = false;
@@ -124,6 +145,19 @@ public class BatallaActivity extends MiActivityPersonalizado
                                 btnRespuesta2.setEnabled(true);
                             }
                         }, 2000);
+                    }else{
+                        if(personaje.getVidas() !=0){
+                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
+                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
+                            if(numeroBatalla<6){
+                                setResult(Activity.RESULT_OK, intent);
+                            }else{
+                                //mostrem Dialog Victoria
+                            }
+                        }else{
+                            //mostrem dialog final
+                        }
+
                     }
 
                     preguntaRespondida = false;
@@ -155,6 +189,19 @@ public class BatallaActivity extends MiActivityPersonalizado
                                 btnRespuesta3.setEnabled(true);
                             }
                         }, 2000);
+                    }else{
+                        if(personaje.getVidas() !=0){
+                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
+                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
+                            if(numeroBatalla<6){
+                                setResult(Activity.RESULT_OK, intent);
+                            }else{
+                                //mostrem Dialog Victoria
+                            }
+                        }else{
+                            //mostrem dialog final
+                        }
+
                     }
 
                     preguntaRespondida = false;

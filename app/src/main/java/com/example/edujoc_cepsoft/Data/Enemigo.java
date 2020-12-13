@@ -1,6 +1,8 @@
 package com.example.edujoc_cepsoft.Data;
 
-public class Enemigo
+import java.io.Serializable;
+
+public class Enemigo implements Serializable
 {
     private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
 

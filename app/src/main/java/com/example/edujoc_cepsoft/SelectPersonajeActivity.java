@@ -1,5 +1,6 @@
 package com.example.edujoc_cepsoft;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.edujoc_cepsoft.Adapters.SelectPersonajeAdapter;
@@ -37,7 +39,7 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
 
         GridView gridViewPersonajes = findViewById(R.id.gridViewPersonajes);
 
-        ArrayList<Personaje> personajes = cargarPersonajes();
+        final ArrayList<Personaje> personajes = cargarPersonajes();
 
         if (personajes != null) gridViewPersonajes.setAdapter(new SelectPersonajeAdapter(this, personajes));
         else System.err.println("No se ha podido cargar los personajes.");
@@ -45,6 +47,29 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
         final EditText editTextNombreJugador = findViewById(R.id.editTextNombreJugador);
         final Button btnEmpezar = findViewById(R.id.btnEmpezar);
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
+
+        btnEmpezar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                for(Personaje item : personajes){
+                    if(item.isSeleccionado()){
+                        Intent intent = new Intent(SelectPersonajeActivity.this, MapaActivity.class);
+                        intent.putExtra(MapaActivity.PERSONAJE, item);
+                        String nivel;
+                        RadioButton rbFacil = findViewById(R.id.radioButtonFacil);
+                        if(rbFacil.isChecked()){
+                            nivel = "facil";
+                        }else{
+                            nivel = "dificil";
+                        }
+                        intent.putExtra(MapaActivity.NIVEL, nivel);
+                        startActivity(intent);
+                    }
+                }
+
+            }
+        });
 
         //Cuando el edit text cambia el texto.
         editTextNombreJugador.addTextChangedListener(new TextWatcher()
