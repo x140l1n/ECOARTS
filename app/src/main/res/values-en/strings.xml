@@ -31,4 +31,10 @@
     <string name="descripcion_activista">Description activist</string>
     <string name="nombre_activista">Name activist</string>
     <string name="tutorial">Tutorial</string>
+    <string name="derrota">Game over</string>
+    <string name="derrota2">Don\'t give up, next time you will get it!</string>
+    <string name="volver_menu">Back to menu</string>
+    <string name="victoria">Victory!</string>
+    <string name="victoria2">Very good, keep it up!</string>
+    <string name="volver_mundo">Back to map</string>
 </resources>

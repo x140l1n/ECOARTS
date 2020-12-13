@@ -1,6 +1,7 @@
 package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,9 +53,9 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-                startActivity(intent);
+                Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("ecoartscep@gmail.com"));
+                email.setType("text/plain");
+                startActivity(Intent.createChooser(email, ""));
             }
         });
 

@@ -38,7 +38,6 @@
                 android:textAlignment="center"
                 android:maxLines="5"
                 android:layout_margin="0dp"
-                android:text="Quants litres de petroli son necessaris per fabricar 1000 ampolles de plàstic?"
                 style="@style/EditTextRosado"/>
         </LinearLayout>
         <LinearLayout
@@ -53,43 +52,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/vidasPersonaje"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_margin="@dimen/marginPequeno"
                     android:gravity="center">
-                    <ImageView
-                        android:id="@+id/corazonPersonaje1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonPersonaje2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonPersonaje3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
 
-                    <ImageView
-                        android:id="@+id/corazonPersonaje4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription" />
-
-                    <ImageView
-                        android:id="@+id/corazonPersonaje5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
                 </LinearLayout>
                 <ImageView
                     android:layout_width="350dp"
@@ -112,41 +81,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/vidasEnemigo"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_margin="@dimen/marginPequeno"
                     android:gravity="center">
-                    <ImageView
-                        android:id="@+id/corazonEnemigo1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonEnemigo2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonEnemigo3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonEnemigo4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
-                    <ImageView
-                        android:id="@+id/corazonEnemigo5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/corazon"
-                        tools:ignore="contentDescription"/>
+
                 </LinearLayout>
 
                 <ImageView
@@ -175,20 +116,17 @@
                 android:id="@+id/btnRespuesta1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"
-                android:text="91"/>
+                style="@style/BotonesBordesRedondeadosRespuesta"/>
             <Button
                 android:id="@+id/btnRespuesta2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"
-                android:text="60"/>
+                style="@style/BotonesBordesRedondeadosRespuesta"/>
             <Button
                 android:id="@+id/btnRespuesta3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"
-                android:text="31"/>
+                style="@style/BotonesBordesRedondeadosRespuesta"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

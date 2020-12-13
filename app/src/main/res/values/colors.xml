@@ -8,10 +8,10 @@
     <color name="colorVerde">#089E45</color>
     <color name="colorTurquesa">#35957F</color>
     <color name="colorPrimario">#89e450</color>
-    <color name="colorSecundario">#19967D</color>
+    <color name="colorSecundario">#4CAF50</color>
     <color name="colorGris">#CCCCCC</color>
     <color name="colorRosado">#FFDBA9</color>
     <color name="colorCian">#00C9D7</color>
-    <color name="colorRojo">#F44336</color>
+    <color name="colorRojo">#B32B21</color>
     <color name="colorGrisOscuro">#3A3636</color>
 </resources>

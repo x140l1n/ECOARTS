@@ -13,6 +13,7 @@ public class MainActivity extends MiActivityPersonalizado
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

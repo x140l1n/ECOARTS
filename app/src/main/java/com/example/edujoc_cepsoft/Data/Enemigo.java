@@ -2,9 +2,11 @@ package com.example.edujoc_cepsoft.Data;
 
 public class Enemigo
 {
+    private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
+
     private String nombre;
     private int imagen;
-    private int vidas = 5; //Tienen como máximo 5 vidas.
+    private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
 
     public Enemigo(int imagen, String nombre)
     {
@@ -44,6 +46,10 @@ public class Enemigo
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getVIDA_MAXIMA() {
+        return this.VIDA_MAXIMA;
     }
     //endregion
 }

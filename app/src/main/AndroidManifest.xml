@@ -44,7 +44,6 @@
             android:theme="@style/NoAnimacionActivity" />
         <activity
             android:name=".BatallaActivity"
-            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoAnimacionActivity" />
     </application>

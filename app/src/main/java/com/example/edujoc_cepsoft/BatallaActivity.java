@@ -4,10 +4,12 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -38,10 +40,13 @@ public class BatallaActivity extends MiActivityPersonalizado
     private ArrayList<Pregunta> preguntas;
     private Pregunta pregunta;
 
+    private LinearLayout vidasPersonaje;
+    private LinearLayout vidasEnemigo;
+
     private Enemigo enemigo;
     private Personaje personaje;
 
-    private boolean preguntaRespondida;
+    private boolean preguntaRespondida = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,19 +65,37 @@ public class BatallaActivity extends MiActivityPersonalizado
         btnRespuesta2       = findViewById(R.id.btnRespuesta2);
         btnRespuesta3       = findViewById(R.id.btnRespuesta3);
 
+        cargarVidas(personaje, enemigo);
+
         btnRespuesta1.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                barra_progreso_animacion.cancel();
+                if (btnRespuesta1.isEnabled())
+                {
+                    btnRespuesta1.setEnabled(false);
 
-                if (pregunta.getRespuestas().get(0).isCorrecta()) enemigo.quitarVida(1);
-                else personaje.quitarVida(1);
+                    preguntaRespondida = true;
 
-                mostrarCorrecta(pregunta);
+                    procesarRespuesta(pregunta.getRespuestas().get(0));
 
-                preguntaRespondida = true;
+                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    {
+                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                        new Handler().postDelayed(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                cargarPregunta();
+                                btnRespuesta1.setEnabled(true);
+                            }
+                        }, 2000);
+                    }
+
+                    preguntaRespondida = false;
+                }
             }
         });
 
@@ -81,14 +104,30 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                barra_progreso_animacion.cancel();
+                if (btnRespuesta2.isEnabled())
+                {
+                    btnRespuesta2.setEnabled(false);
 
-                if (pregunta.getRespuestas().get(0).isCorrecta()) enemigo.quitarVida(1);
-                else personaje.quitarVida(1);
+                    preguntaRespondida = true;
 
-                mostrarCorrecta(pregunta);
+                    procesarRespuesta(pregunta.getRespuestas().get(1));
 
-                preguntaRespondida = true;
+                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    {
+                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                        new Handler().postDelayed(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                cargarPregunta();
+                                btnRespuesta2.setEnabled(true);
+                            }
+                        }, 2000);
+                    }
+
+                    preguntaRespondida = false;
+                }
             }
         });
 
@@ -96,14 +135,30 @@ public class BatallaActivity extends MiActivityPersonalizado
         {
             @Override
             public void onClick(View v) {
-                barra_progreso_animacion.cancel();
+                if (btnRespuesta3.isEnabled())
+                {
+                    btnRespuesta3.setEnabled(false);
 
-                if (pregunta.getRespuestas().get(0).isCorrecta()) enemigo.quitarVida(1);
-                else personaje.quitarVida(1);
+                    preguntaRespondida = true;
 
-                mostrarCorrecta(pregunta);
+                    procesarRespuesta(pregunta.getRespuestas().get(2));
 
-                preguntaRespondida = true;
+                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    {
+                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                        new Handler().postDelayed(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                cargarPregunta();
+                                btnRespuesta3.setEnabled(true);
+                            }
+                        }, 2000);
+                    }
+
+                    preguntaRespondida = false;
+                }
             }
         });
 
@@ -122,49 +177,86 @@ public class BatallaActivity extends MiActivityPersonalizado
         Pregunta pregunta1 = new Pregunta(1, "Pregunta1", "es", "agua", respostes);
         Pregunta pregunta2 = new Pregunta(2, "Pregunta2", "es", "agua", respostes);
         Pregunta pregunta3 = new Pregunta(3, "Pregunta3", "es", "agua", respostes);
+        Pregunta pregunta4 = new Pregunta(4, "Pregunta4", "es", "agua", respostes);
+        Pregunta pregunta5 = new Pregunta(5, "Pregunta5", "es", "agua", respostes);
+        Pregunta pregunta6 = new Pregunta(6, "Pregunta6", "es", "agua", respostes);
+        Pregunta pregunta7 = new Pregunta(7, "Pregunta7", "es", "agua", respostes);
+        Pregunta pregunta8 = new Pregunta(8, "Pregunta8", "es", "agua", respostes);
+        Pregunta pregunta9 = new Pregunta(9, "Pregunta9", "es", "agua", respostes);
 
         preguntas.add(pregunta1);
         preguntas.add(pregunta2);
         preguntas.add(pregunta3);
+        preguntas.add(pregunta4);
+        preguntas.add(pregunta5);
+        preguntas.add(pregunta6);
+        preguntas.add(pregunta7);
+        preguntas.add(pregunta8);
+        preguntas.add(pregunta9);
 
         cargarPregunta();
     }
 
     private void cargarPregunta()
     {
-        /*
-        1.- random pregunta
-        2.- Carregar textView i Buton respostes
-        3.- iniciarCronometro()
-        4.- DELAY onPAUSE???
-        click a boto -> carregarPregunta()
-        */
-        do
+        Paris.style(btnRespuesta1).apply(R.style.BotonesBordesRedondeadosRespuesta);
+        Paris.style(btnRespuesta2).apply(R.style.BotonesBordesRedondeadosRespuesta);
+        Paris.style(btnRespuesta3).apply(R.style.BotonesBordesRedondeadosRespuesta);
+
+        if (preguntas.size() > 0)
         {
-            pregunta = seleccionarPreguntaAleatoria(preguntas);
+            do
+            {
+                pregunta = seleccionarPreguntaAleatoria();
+            }
+            while(pregunta.isMostrada()); //Escogemos una pregunta que no este mostrada.
+
+            pregunta.setMostrada(true); //Ponemos la pregunta mostrada en true.
+
+            textViewPregunta.setText(pregunta.getPregunta());
+            btnRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
+            btnRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
+            btnRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
+
+            iniciarContador();
         }
-        while(pregunta.isMostrada()); //Escogemos una pregunta que no este mostrada.
+    }
 
-        pregunta.setMostrada(true); //Ponemos la pregunta mostrada en true.
+    /**
+     * Comprobar si el usuario ha respondido correctamente.
+     * Pasamos null si no ha respondido ningúna pregunta, en esta caso cuenta como que ha respondido mal.
+     * Quita la vida del personaje o del enemigo y luego muestra la respuesta correcta y las incorrectas.
+     * @param respuesta La respuesta que ha seleccionado el jugador.
+     */
+    private void procesarRespuesta(Respuesta respuesta)
+    {
+        if (respuesta != null)
+        {
+            if (respuesta.isCorrecta()) quitarVida(null, enemigo);
+            else quitarVida(personaje, null);
+        }
+        else
+        {
+            quitarVida(personaje, null);
+        }
 
-        textViewPregunta.setText(pregunta.getPregunta());
-        btnRespuesta1.setText(pregunta.getRespuestas().get(0).getRespuesta());
-        btnRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
-        btnRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
+        barra_progreso_animacion.cancel();
 
-        iniciarContador();
+        mostrarCorrecta(pregunta);
     }
 
     /**
      * Seleccionamos una pregunta aleatoria.
-     * @param preguntas La lista de preguntas donde vamos a escoger una pregunta.
      * @return La pregunta escogida por el random.
      */
-    private Pregunta seleccionarPreguntaAleatoria(@NotNull ArrayList<Pregunta> preguntas)
+    private Pregunta seleccionarPreguntaAleatoria()
     {
-        return preguntas.get(new Random().nextInt(preguntas.size()));
+        return this.preguntas.get(new Random().nextInt(preguntas.size()));
     }
 
+    /**
+     * Iniciar la cuenta regresiva del progress bar.
+     */
     private void iniciarContador()
     {
         barra_progreso_animacion = ObjectAnimator.ofInt(barra_progreso, "progress", 100, 0);
@@ -173,27 +265,34 @@ public class BatallaActivity extends MiActivityPersonalizado
         {
             @Override
             public void onAnimationStart(Animator animation)
-            {
-
-            }
+            {}
 
             @Override
             public void onAnimationEnd(Animator animation)
             {
-                mostrarCorrecta(pregunta);
+                if (!preguntaRespondida)
+                {
+                    procesarRespuesta(null);
+
+                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cargarPregunta();
+                            }
+                        }, 2000);
+                    }
+                }
             }
 
             @Override
             public void onAnimationCancel(Animator animation)
-            {
-
-            }
+            {}
 
             @Override
             public void onAnimationRepeat(Animator animation)
-            {
-
-            }
+            {}
         });
         barra_progreso_animacion.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
@@ -209,6 +308,61 @@ public class BatallaActivity extends MiActivityPersonalizado
         barra_progreso_animacion.start();
     }
 
+    /**
+     * Cargar las vidas del personaje y del enemigo en el activity.
+     * @param personaje El personaje que va a batallar.
+     * @param enemigo El enemigo que va a batallar.
+     */
+    private void cargarVidas(Personaje personaje, Enemigo enemigo)
+    {
+        vidasPersonaje = findViewById(R.id.vidasPersonaje);
+        vidasEnemigo = findViewById(R.id.vidasEnemigo);
+
+        //Cargar vidas del personaje.
+        for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)
+        {
+            ImageView vida = new ImageView(this);
+            vida.setImageResource(R.drawable.corazon);
+            vidasPersonaje.addView(vida);
+        }
+
+        //Cargar vidas del enemigo.
+        for (int i = 0; i < enemigo.getVIDA_MAXIMA(); i++)
+        {
+            ImageView vida = new ImageView(this);
+            vida.setImageResource(R.drawable.corazon);
+
+            vidasEnemigo.addView(vida);
+        }
+    }
+
+    /**
+     * Quitaremos una vida al personaje o al enemigo.
+     * @param personaje El personaje que vamos a quitar vida, si no queremos quitar vida al personaje, pasamos null.
+     * @param enemigo El enemigo que vamos a quitar vida, si no queremos quitar vida al enemigo, pasamos null.
+     */
+    private void quitarVida(Personaje personaje, Enemigo enemigo)
+    {
+        if (personaje != null)
+        {
+            personaje.quitarVida(1);
+
+            ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVidas());
+            vida.setImageResource(R.drawable.corazon_vacio);
+        }
+        else if (enemigo != null)
+        {
+            enemigo.quitarVida(1);
+
+            ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVidas());
+            vida.setImageResource(R.drawable.corazon_vacio);
+        }
+    }
+
+    /**
+     * Cambiar el color de los botones de respuestas para indicar cuál es la correcta (verde claro) y las incorrectas (rojo).
+     * @param pregunta La pregunta actual.
+     */
     @SuppressWarnings("deprecation") //Eliminar la advertencia de usar métodos en desuso.
     private void mostrarCorrecta(@NotNull Pregunta pregunta)
     {

@@ -2,6 +2,8 @@ package com.example.edujoc_cepsoft.Data;
 
 public class Personaje
 {
+    private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
+
     private int id;
     private String nombre;
     private String idioma;
@@ -9,7 +11,7 @@ public class Personaje
     private String descripcion;
 
     private boolean seleccionado = false;
-    private int vidas = 5; //Tienen como máximo 5 vidas.
+    private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
 
     public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
     {
@@ -60,6 +62,10 @@ public class Personaje
 
     public void setSeleccionado(boolean seleccionado) {
         this.seleccionado = seleccionado;
+    }
+
+    public int getVIDA_MAXIMA() {
+        return this.VIDA_MAXIMA;
     }
     //endregion
 }

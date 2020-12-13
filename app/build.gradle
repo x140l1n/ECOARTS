@@ -37,6 +37,9 @@ dependencies {
     //Leer json
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    //Cambiar el style en java
-    implementation 'com.airbnb.android:paris:1.7.2'
+    //Cambiar styles de los views en java.
+    implementation ('com.airbnb.android:paris:1.7.2')
+    {
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
 }
