@@ -3,6 +3,7 @@ package com.example.edujoc_cepsoft;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 
 public class MainActivity extends MiActivityPersonalizado
 {

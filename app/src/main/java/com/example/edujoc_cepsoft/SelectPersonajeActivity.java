@@ -11,11 +11,13 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.edujoc_cepsoft.Adapters.SelectPersonajeAdapter;
 import com.example.edujoc_cepsoft.Data.Personaje;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
+import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -47,6 +49,7 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
         final EditText editTextNombreJugador = findViewById(R.id.editTextNombreJugador);
         final Button btnEmpezar = findViewById(R.id.btnEmpezar);
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
+        final RelativeLayout relativeLayoutSelectPersonaje = findViewById(R.id.relativeLayoutSelectPersonaje);
 
         btnEmpezar.setOnClickListener(new View.OnClickListener()
         {
@@ -93,6 +96,24 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
                         Toast.makeText(SelectPersonajeActivity.this, R.string.debes_escribir_nombre, Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+
+        editTextNombreJugador.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus)
+            {
+                SystemUIHelper.ocultarBarraNavegacion(SelectPersonajeActivity.this.getWindow());
+            }
+        });
+
+        relativeLayoutSelectPersonaje.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                editTextNombreJugador.clearFocus();
             }
         });
 

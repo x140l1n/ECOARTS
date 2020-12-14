@@ -40,6 +40,6 @@ dependencies {
     //Cambiar styles de los views en java.
     implementation ('com.airbnb.android:paris:1.7.2')
     {
-        exclude group: 'org.jetbrains', module: 'annotations'
+        exclude group: 'org.jetbrains', module: 'annotations' //Excluir esta librería porque ya está implementado.
     }
 }

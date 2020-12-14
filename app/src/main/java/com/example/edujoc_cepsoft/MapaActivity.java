@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import com.example.edujoc_cepsoft.Data.Enemigo;
 import com.example.edujoc_cepsoft.Data.Personaje;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class MapaActivity extends MiActivityPersonalizado
@@ -218,6 +220,7 @@ public class MapaActivity extends MiActivityPersonalizado
         as.start();
     }
 
+    @NotNull
     private ArrayList<Enemigo> cargarEnemigos()
     {
         ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
