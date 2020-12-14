@@ -6,30 +6,34 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import com.example.edujoc_cepsoft.Data.Enemigo;
 import com.example.edujoc_cepsoft.Data.Personaje;
-import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
 import java.util.ArrayList;
 
 public class MapaActivity extends MiActivityPersonalizado
 {
-    public static String PERSONAJE = "nombre";
-    public final static int RETORNO_BATALLA = 1;
-    public static String NIVEL = "nivel";
+    public static final String PERSONAJE = "personaje";
+    public static final String NOMBRE_JUGADOR = "nombre_jugador";
+    public static final String NIVEL = "nivel";
+
     private Button btnJugar;
     private ImageButton btnConfig;
-    private View personaje;
+    private View viewPersonaje;
     private String nivel;
-    private int batalla = 0;
-    private ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
+
+    private int numBatalla = 1;
+
+    private ArrayList<Enemigo> enemigos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,14 +41,23 @@ public class MapaActivity extends MiActivityPersonalizado
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
-        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
         Intent intent = getIntent();
-        final Personaje personajeIntent = (Personaje)intent.getSerializableExtra(PERSONAJE);
-        nivel = intent.getStringExtra(NIVEL);
-        personaje   = findViewById(R.id.personaje);
-        btnConfig   = findViewById(R.id.btnConfig);
-        btnJugar    = personaje.findViewById(R.id.btnJugar);
-        cargarEnemigos(enemigos);
+
+        final Personaje personaje = (Personaje)intent.getSerializableExtra(PERSONAJE);
+        String nombre = intent.getStringExtra(NOMBRE_JUGADOR);
+
+        nivel           = intent.getStringExtra(NIVEL);
+        viewPersonaje   = findViewById(R.id.personaje);
+        btnConfig       = findViewById(R.id.btnConfig);
+        btnJugar        = viewPersonaje.findViewById(R.id.btnJugar);
+
+        final TextView nombreJugador = viewPersonaje.findViewById(R.id.nombreJugador);
+        ImageView personajeMapa = viewPersonaje.findViewById(R.id.personajeMapa);
+
+        nombreJugador.setText(nombre);
+        personajeMapa.setImageBitmap(personaje.obtenerImagen(this));
+
+        enemigos = cargarEnemigos();
 
         btnJugar.setOnClickListener(new View.OnClickListener()
         {
@@ -52,14 +65,13 @@ public class MapaActivity extends MiActivityPersonalizado
             public void onClick(View v)
             {
                 Intent intent = new Intent(MapaActivity.this, BatallaActivity.class);
-                intent.putExtra(BatallaActivity.NOMBRE_ENEMIGO, enemigos.get(batalla));
-                intent.putExtra(BatallaActivity.NOMBRE_PERSONAJE, personajeIntent);
-                intent.putExtra(BatallaActivity.NUMERO_BATALLA, batalla);
-                if(batalla<6){
-                    startActivityForResult(intent, RETORNO_BATALLA);
-                }else{
-                    startActivity(intent);
-                }
+
+                intent.putExtra(BatallaActivity.ENEMIGO, enemigos.get(numBatalla - 1));
+                intent.putExtra(BatallaActivity.PERSONAJE, personaje);
+                intent.putExtra(BatallaActivity.NUMERO_BATALLA, numBatalla);
+                intent.putExtra(BatallaActivity.JUGADOR, nombreJugador.getText());
+
+                startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
             }
         });
 
@@ -70,86 +82,153 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 final Dialog dialogAjuste = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_ajuste_partida);
                 dialogAjuste.show();
-                ImageButton btnVolverPartida = dialogAjuste.findViewById(R.id.btnVolverPartida);
-                btnVolverPartida.setOnClickListener(new View.OnClickListener() {
+
+                Button btnAbandonarPartida = dialogAjuste.findViewById(R.id.btnAbandonarPartida);
+                ImageButton btnCancelar = dialogAjuste.findViewById(R.id.btnCancelar);
+
+                btnAbandonarPartida.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
+                        final Dialog dialogAbandonar = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_abandonar_partida);
+                        dialogAbandonar.show();
+
+                        ImageButton btnAbandonar = dialogAbandonar.findViewById(R.id.btnAbandonar);
+                        ImageButton btnCancelar = dialogAbandonar.findViewById(R.id.btnCancelar);
+
+                        btnAbandonar.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                startActivity(new Intent(MapaActivity.this, MenuActivity.class));
+                                finish();
+                            }
+                        });
+
+                        btnCancelar.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                dialogAbandonar.dismiss();
+                            }
+                        });
+                    }
+                });
+
+                btnCancelar.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
                         dialogAjuste.dismiss();
                     }
                 });
             }
         });
-
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case RETORNO_BATALLA:
-                Personaje personaje = (Personaje) data.getSerializableExtra(PERSONAJE);
-                if(nivel.equals("facil")){
-                    personaje.setVidas(5);
-                }
-                batalla++;
-                break;
+    public void onBackPressed()
+    {
+        //No hacer nada cuando el jugador hace click en el botón back.
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode)
+        {
+            case BatallaActivity.BATALLA_ACTIVITY:
+                if (resultCode == RESULT_OK)
+                {
+                    Personaje personaje = (Personaje) data.getSerializableExtra(PERSONAJE);
+
+                    if (nivel.equals("facil")) personaje.setVidas(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
+
+                    numBatalla++;
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            realizarAnimacion();
+                        }
+                    }, 1000);
+                }
+
+                break;
         }
     }
 
     /**
-     * Realizar la primera animación, del primer mundo al segundo mundo.
+     * Realizar la primera animación dependiendo en el número de la batalla actual.
      */
-    private void animacion1()
+    private void realizarAnimacion()
     {
-        final Button btnJugar = personaje.findViewById(R.id.btnJugar);
+        final Button btnJugar = viewPersonaje.findViewById(R.id.btnJugar);
 
         AnimatorSet as = new AnimatorSet();
-        as.addListener(new Animator.AnimatorListener() {
+        as.addListener(new Animator.AnimatorListener()
+        {
             @Override
             public void onAnimationStart(Animator animation)
             {
                 btnJugar.setVisibility(View.INVISIBLE);
+                btnJugar.setEnabled(false);
             }
 
             @Override
             public void onAnimationEnd(Animator animation)
             {
                 btnJugar.setVisibility(View.VISIBLE);
+                btnJugar.setEnabled(true);
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {}
+            public void onAnimationCancel(Animator animation)
+            {}
 
             @Override
-            public void onAnimationRepeat(Animator animation) {}
+            public void onAnimationRepeat(Animator animation)
+            {}
         });
 
-        ObjectAnimator oa1 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_X, personaje.getX() + 350f);
-        ObjectAnimator oa2 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_Y, personaje.getY() - 150f);
-        ObjectAnimator oa3 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_X, personaje.getX() + 540f);
-        ObjectAnimator oa4 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_Y, personaje.getY() - 320f);
-        ObjectAnimator oa5 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_X, personaje.getX() + 85f);
-        ObjectAnimator oa6 = ObjectAnimator.ofFloat(personaje, View.TRANSLATION_Y, personaje.getY() - 420f);
+        switch (numBatalla)
+        {
+            case 1: break; //La primera batalla no hacemos ningúna animación.
+            case 2:
+                ObjectAnimator oa1 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 350f);
+                ObjectAnimator oa2 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -150f);
+                ObjectAnimator oa3 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 530f);
 
-        as.playSequentially(oa1, oa2, oa3, oa4, oa5, oa6);
+                as.playSequentially(oa1, oa2, oa3);
+
+                break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+            case 6: break;
+        }
+
         as.setDuration(1200);
         as.start();
     }
 
-    private void cargarEnemigos(ArrayList<Enemigo> enemigos){
-        Enemigo enemigo1 = new Enemigo(R.drawable.enemigo_agua, "Vaporeon");
-        Enemigo enemigo2 = new Enemigo(R.drawable.enemigo_bosques, "MaquinaBosque");
-        Enemigo enemigo3 = new Enemigo(R.drawable.enemigo_energia, "Energia");
-        Enemigo enemigo4 = new Enemigo(R.drawable.enemigo_gas, "Gas");
-        Enemigo enemigo5 = new Enemigo(R.drawable.enemigo_plastico, "Plástico");
-        Enemigo enemigo6 = new Enemigo(R.drawable.enemigo_residuos, "Residuos");
+    private ArrayList<Enemigo> cargarEnemigos()
+    {
+        ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
 
-        enemigos.add(enemigo1);
-        enemigos.add(enemigo2);
-        enemigos.add(enemigo3);
-        enemigos.add(enemigo4);
-        enemigos.add(enemigo5);
-        enemigos.add(enemigo6);
+        enemigos.add(new Enemigo(R.drawable.enemigo_agua, "Vaporeon"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_bosques, "MaquinaBosque"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_energia, "Energia"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_gas, "Gas"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_plastico, "Plástico"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_residuos, "Residuos"));
+
+        return enemigos;
     }
 }

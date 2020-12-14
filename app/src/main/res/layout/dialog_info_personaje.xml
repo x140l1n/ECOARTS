@@ -30,15 +30,13 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:hint="@string/nombre_activista"
-        android:importantForAutofill="no"
-        android:inputType="text" />
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/txtViewDescPersonaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="8"
-        android:inputType="textMultiLine"
         android:scrollbars="vertical"
         android:hint="@string/descripcion_activista"
         android:gravity="top"

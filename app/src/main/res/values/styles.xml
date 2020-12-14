@@ -104,6 +104,10 @@
     <style name="TextViewModal">
         <item name="android:textSize">@dimen/tamanyoMedianoGrandeTexto</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/marginPequeno</item>
+        <item name="android:layout_marginLeft">@dimen/marginPequeno</item>
+        <item name="android:layout_marginRight">@dimen/marginPequeno</item>
+        <item name="android:layout_marginBottom">0dp</item>
     </style>
 
     <style name="TextViewEncabezado">
@@ -131,6 +135,7 @@
     <style name="seekBar">
         <item name="android:thumb">@drawable/sol_thumb</item>
         <item name="android:splitTrack" tools:ignore="NewApi">false</item>
+        <item name="android:layout_marginRight">@dimen/marginMediano</item>
     </style>
 
     <style name="ImageButtonSinFondo">

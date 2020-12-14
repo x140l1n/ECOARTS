@@ -27,27 +27,13 @@ public class Enemigo implements Serializable
         return imagen;
     }
 
-    public void setImagen(int imagen)
-    {
-        this.imagen = imagen;
-    }
-
     public int getVidas()
     {
         return vidas;
     }
 
-    public void setVidas(int vidas)
-    {
-        this.vidas = vidas;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getVIDA_MAXIMA() {

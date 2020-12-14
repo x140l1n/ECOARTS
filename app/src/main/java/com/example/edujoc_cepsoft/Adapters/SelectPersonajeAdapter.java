@@ -2,8 +2,6 @@ package com.example.edujoc_cepsoft.Adapters;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +19,6 @@ import com.example.edujoc_cepsoft.Data.Personaje;
 import com.example.edujoc_cepsoft.MiDialogPersonalizado;
 import com.example.edujoc_cepsoft.R;
 
-import java.io.File;
 import java.util.List;
 
 public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
@@ -93,14 +90,7 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
         if (getItem(position).isSeleccionado()) view.setBackgroundResource(R.drawable.item_background_grid_personajes_seleccionado);
         else view.setBackgroundResource(R.drawable.item_background_grid_personajes);
 
-        //Obtener la ruta de la imagen del objeto personaje, replazamos el ./ por la ruta files de la app y convertimos todo en minúsculas.
-        String rutaAbsolutaPersonaje = getItem(position).getRutaImagen().replace("./", getContext().getFilesDir() + File.separator).toLowerCase();
-
-        //Obtener la imagen de la ruta y crear una imagen Bitmap.
-        Bitmap bitmapPersonaje = BitmapFactory.decodeFile(rutaAbsolutaPersonaje);
-
-        //Insertar la imagen.
-        imagenPersonaje.setImageBitmap(bitmapPersonaje);
+        imagenPersonaje.setImageBitmap(getItem(position).obtenerImagen(getContext()));
 
         txtViewNombrePersonaje.setText(getItem(position).getNombre());
 

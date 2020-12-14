@@ -7,20 +7,18 @@
     android:gravity="center"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/personajeNombre"
+        android:id="@+id/nombreJugador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bordes_redondos_rosado"
         android:layout_marginBottom="@dimen/marginPequeno"
-        android:text="TRUMP"
+        android:background="@drawable/bordes_redondos_rosado"
         android:gravity="center"
-        android:padding="@dimen/paddingPequeno"/>
+        android:padding="@dimen/paddingPequeno" />
     <ImageView
         android:id="@+id/personajeMapa"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:scaleType="centerInside"
-        android:src="@drawable/trump_es"
         tools:ignore="contentDescription"/>
     <Button
         android:id="@+id/btnJugar"

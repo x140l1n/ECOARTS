@@ -37,4 +37,7 @@
     <string name="victoria">Victoria!</string>
     <string name="victoria2">Molt bé, segueix així!</string>
     <string name="volver_mundo">Tornar al mapa</string>
+    <string name="abandonar_partida">Segur que vols abandonar la partida?</string>
+    <string name="batalla">Batalla</string>
+    <string name="debes_escribir_nombre">Has d\'escriure un nom</string>
 </resources>

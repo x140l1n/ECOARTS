@@ -22,14 +22,29 @@
             android:gravity="center"
             android:layout_margin="@dimen/marginPequeno"
             android:orientation="vertical">
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="?android:attr/progressBarStyleHorizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="@dimen/marginPequeno"
-                android:progress="100"
-                android:progressDrawable="@drawable/progress_bar_verde" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="2"
+                    android:layout_marginBottom="@dimen/marginPequeno"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/progress_bar_verde"
+                    style="?android:attr/progressBarStyleHorizontal" />
+                <TextView
+                    android:id="@+id/batalla"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/batalla"
+                    android:layout_margin="0dp"
+                    style="@style/TextViewNormal"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/textViewPregunta"
                 android:layout_width="match_parent"
@@ -58,20 +73,19 @@
                     android:orientation="horizontal"
                     android:layout_margin="@dimen/marginPequeno"
                     android:gravity="center">
-
                 </LinearLayout>
                 <ImageView
+                    android:id="@+id/batallaImagenPersonaje"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/trump_es"
                     tools:ignore="contentDescription"/>
                 <TextView
+                    android:id="@+id/batallaNombreJugador"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bordes_redondos_rosado"
                     android:gravity="center"
-                    android:text="x140l1n"
                     style="@style/TextViewNormal"/>
             </LinearLayout>
             <LinearLayout
@@ -89,21 +103,19 @@
                     android:gravity="center">
 
                 </LinearLayout>
-
                 <ImageView
+                    android:id="@+id/batallaImagenEnemigo"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/enemigo_agua"
                     tools:ignore="contentDescription" />
-
                 <TextView
+                    android:id="@+id/batallaNombreEnemigo"
                     style="@style/TextViewNormal"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bordes_redondos_rosado"
-                    android:gravity="center"
-                    android:text="Vaporeon" />
+                    android:gravity="center"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

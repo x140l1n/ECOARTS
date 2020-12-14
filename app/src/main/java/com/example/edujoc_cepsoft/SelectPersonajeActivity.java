@@ -48,54 +48,51 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
         final Button btnEmpezar = findViewById(R.id.btnEmpezar);
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
 
-        btnEmpezar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                for(Personaje item : personajes){
-                    if(item.isSeleccionado()){
-                        Intent intent = new Intent(SelectPersonajeActivity.this, MapaActivity.class);
-                        intent.putExtra(MapaActivity.PERSONAJE, item);
-                        String nivel;
-                        RadioButton rbFacil = findViewById(R.id.radioButtonFacil);
-                        if(rbFacil.isChecked()){
-                            nivel = "facil";
-                        }else{
-                            nivel = "dificil";
-                        }
-                        intent.putExtra(MapaActivity.NIVEL, nivel);
-                        startActivity(intent);
-                    }
-                }
-
-            }
-        });
-
-        //Cuando el edit text cambia el texto.
-        editTextNombreJugador.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-                //Si está vació el texto, es decir, count == 0, deshabilitamos el botón empezar, al contrario, habilitamos.
-                if (count == 0) btnEmpezar.setEnabled(false);
-                else btnEmpezar.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-
         btnEmpezar.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                //Probar...
-                Toast.makeText(SelectPersonajeActivity.this, "Comenzar el juego", Toast.LENGTH_SHORT).show();
+                if (personajes.size() > 0 && !editTextNombreJugador.getText().toString().trim().isEmpty())
+                {
+                    Personaje personajeSeleccionado;
+                    int index = 0;
+
+                    do
+                    {
+                        personajeSeleccionado = personajes.get(index);
+
+                        index++;
+                    }
+                    while(!personajeSeleccionado.isSeleccionado());
+
+                    Intent intent = new Intent(SelectPersonajeActivity.this, MapaActivity.class);
+                    intent.putExtra(MapaActivity.PERSONAJE, personajeSeleccionado);
+                    String nivel;
+
+                    RadioButton rbFacil = findViewById(R.id.radioButtonFacil);
+
+                    if(rbFacil.isChecked())
+                    {
+                        nivel = "facil";
+                    }
+                    else
+                    {
+                        nivel = "dificil";
+                    }
+
+                    intent.putExtra(MapaActivity.NIVEL, nivel);
+                    intent.putExtra(MapaActivity.NOMBRE_JUGADOR, editTextNombreJugador.getText().toString().trim());
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    if (editTextNombreJugador.getText().toString().trim().isEmpty())
+                    {
+                        Toast.makeText(SelectPersonajeActivity.this, R.string.debes_escribir_nombre, Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 

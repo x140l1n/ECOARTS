@@ -7,7 +7,7 @@
     <string name="jugar">Play</string>
     <string name="ajustes">Settings</string>
     <string name="salir">Exit</string>
-    <string name="confirmar_salir">¿Are you sure you want to exit?</string>
+    <string name="confirmar_salir">Are you sure you want to exit?</string>
     <string name="logo_ecoarts">Logo EcoArts</string>
     <string name="cambiar_idioma">Change language</string>
     <string name="contactar">Contact</string>
@@ -37,4 +37,7 @@
     <string name="victoria">Victory!</string>
     <string name="victoria2">Very good, keep it up!</string>
     <string name="volver_mundo">Back to map</string>
+    <string name="abandonar_partida">Are you sure you want to leave the game?</string>
+    <string name="batalla">Battle</string>
+    <string name="debes_escribir_nombre">You must write a name</string>
 </resources>

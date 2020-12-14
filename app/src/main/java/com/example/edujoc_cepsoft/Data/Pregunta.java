@@ -9,6 +9,7 @@ public class Pregunta
     private String idioma;
     private String tema;
     private List<Respuesta> respuestas;
+
     private boolean mostrada = false;
 
     public Pregunta(int id, String pregunta, String idioma, String tema, List<Respuesta> respuestas)
@@ -28,7 +29,6 @@ public class Pregunta
     public String getPregunta() {
         return pregunta;
     }
-
 
     public String getIdioma() {
         return idioma;

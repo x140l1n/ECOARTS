@@ -53,8 +53,11 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("ecoartscep@gmail.com"));
-                email.setType("text/plain");
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.setType("plain/text");
+                email.putExtra(Intent.EXTRA_EMAIL, new String[] { "ecoartscep@gmail.com" });
+                email.putExtra(Intent.EXTRA_SUBJECT, "");
+                email.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(Intent.createChooser(email, ""));
             }
         });

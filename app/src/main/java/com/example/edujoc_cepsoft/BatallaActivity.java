@@ -3,13 +3,17 @@ package com.example.edujoc_cepsoft;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -29,41 +33,54 @@ import java.util.Random;
 
 public class BatallaActivity extends MiActivityPersonalizado
 {
+    public final static int BATALLA_ACTIVITY = 1;
+
     private final long TIEMPO_MAXIMO = 30000; //Máximo 30 segundos.
-    public static final String NOMBRE_ENEMIGO = "nombreEnemigo";
-    public static final String NOMBRE_PERSONAJE = "nombrePersonaje";
-    public static final String NUMERO_BATALLA = "1";
+
+    private final int DELAY_SIGUIENTE_PREGUNTA = 2000; //2 segundos de espera entre preguntas.
+
+    public static final String ENEMIGO = "enemigo";
+    public static final String PERSONAJE = "personaje";
+    public static final String JUGADOR = "jugador";
+    public static final String NUMERO_BATALLA = "batalla";
+
     private ProgressBar barra_progreso;
     private ObjectAnimator barra_progreso_animacion;
 
-    private Button btnRespuesta1;
-    private Button btnRespuesta2;
-    private Button btnRespuesta3;
+    private Button btnRespuesta1, btnRespuesta2, btnRespuesta3;
 
     private TextView textViewPregunta;
 
     private ArrayList<Pregunta> preguntas;
     private Pregunta pregunta;
 
-    private LinearLayout vidasPersonaje;
-    private LinearLayout vidasEnemigo;
+    private LinearLayout vidasPersonaje, vidasEnemigo;
 
     private Enemigo enemigo;
     private Personaje personaje;
 
     private boolean preguntaRespondida = false;
+
+    private String jugador;
+
     private int numeroBatalla;
+
+    private ImageView batallaImagenPersonaje, batallaImagenEnemigo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_batalla);
-        Intent intent = getIntent();
+
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        personaje           = (Personaje) intent.getSerializableExtra(NOMBRE_PERSONAJE);
-        enemigo             = (Enemigo) intent.getSerializableExtra(NOMBRE_ENEMIGO);
+        Intent intent = getIntent();
+
+        personaje           = (Personaje) intent.getSerializableExtra(PERSONAJE);
+        jugador             = intent.getStringExtra(JUGADOR);
+        enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
         numeroBatalla       = intent.getIntExtra(NUMERO_BATALLA, -1);
 
         barra_progreso      = findViewById(R.id.progress_bar);
@@ -72,6 +89,22 @@ public class BatallaActivity extends MiActivityPersonalizado
         btnRespuesta2       = findViewById(R.id.btnRespuesta2);
         btnRespuesta3       = findViewById(R.id.btnRespuesta3);
 
+        TextView batalla = findViewById(R.id.batalla);
+
+        TextView batallaNombreJugador = findViewById(R.id.batallaNombreJugador);
+        TextView batallaNombreEnemigo = findViewById(R.id.batallaNombreEnemigo);
+
+        batallaImagenPersonaje = findViewById(R.id.batallaImagenPersonaje);
+        batallaImagenEnemigo = findViewById(R.id.batallaImagenEnemigo);
+
+        batalla.append(" " + numeroBatalla);
+
+        batallaNombreJugador.setText(jugador);
+        batallaNombreEnemigo.setText(enemigo.getNombre());
+
+        batallaImagenPersonaje.setImageBitmap(personaje.obtenerImagen(this));
+        batallaImagenEnemigo.setImageResource(enemigo.getImagen());
+
         cargarVidas(personaje, enemigo);
 
         btnRespuesta1.setOnClickListener(new View.OnClickListener()
@@ -79,41 +112,25 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                if (btnRespuesta1.isEnabled())
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
                     btnRespuesta1.setEnabled(false);
+                    btnRespuesta2.setEnabled(false);
+                    btnRespuesta3.setEnabled(false);
 
                     preguntaRespondida = true;
 
                     procesarRespuesta(pregunta.getRespuestas().get(0));
 
-                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                    new Handler().postDelayed(new Runnable()
                     {
-                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                        new Handler().postDelayed(new Runnable()
+                        @Override
+                        public void run()
                         {
-                            @Override
-                            public void run()
-                            {
-                                cargarPregunta();
-                                btnRespuesta1.setEnabled(true);
-                            }
-                        }, 2000);
-                    }else{
-                        if(personaje.getVidas() !=0){
-                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
-                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
-                            if(numeroBatalla<6){
-                                setResult(Activity.RESULT_OK, intent);
-                            }else{
-                                //mostrem Dialog Victoria
-                            }
-
-                        }else{
-                            //mostrem dialog final
+                            procesarResultado();
                         }
-
-                    }
+                    }, DELAY_SIGUIENTE_PREGUNTA);
 
                     preguntaRespondida = false;
                 }
@@ -125,40 +142,26 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                if (btnRespuesta2.isEnabled())
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
+                    btnRespuesta1.setEnabled(false);
                     btnRespuesta2.setEnabled(false);
+                    btnRespuesta3.setEnabled(false);
 
                     preguntaRespondida = true;
 
                     procesarRespuesta(pregunta.getRespuestas().get(1));
 
-                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                    new Handler().postDelayed(new Runnable()
                     {
-                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                        new Handler().postDelayed(new Runnable()
+                        @Override
+                        public void run()
                         {
-                            @Override
-                            public void run()
-                            {
-                                cargarPregunta();
-                                btnRespuesta2.setEnabled(true);
-                            }
-                        }, 2000);
-                    }else{
-                        if(personaje.getVidas() !=0){
-                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
-                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
-                            if(numeroBatalla<6){
-                                setResult(Activity.RESULT_OK, intent);
-                            }else{
-                                //mostrem Dialog Victoria
-                            }
-                        }else{
-                            //mostrem dialog final
+                            procesarResultado();
                         }
+                    }, DELAY_SIGUIENTE_PREGUNTA);
 
-                    }
 
                     preguntaRespondida = false;
                 }
@@ -168,41 +171,27 @@ public class BatallaActivity extends MiActivityPersonalizado
         btnRespuesta3.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
-                if (btnRespuesta3.isEnabled())
+            public void onClick(View v)
+            {
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
+                    btnRespuesta1.setEnabled(false);
+                    btnRespuesta2.setEnabled(false);
                     btnRespuesta3.setEnabled(false);
 
                     preguntaRespondida = true;
 
                     procesarRespuesta(pregunta.getRespuestas().get(2));
 
-                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
+                    new Handler().postDelayed(new Runnable()
                     {
-                        //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                        new Handler().postDelayed(new Runnable()
+                        @Override
+                        public void run()
                         {
-                            @Override
-                            public void run()
-                            {
-                                cargarPregunta();
-                                btnRespuesta3.setEnabled(true);
-                            }
-                        }, 2000);
-                    }else{
-                        if(personaje.getVidas() !=0){
-                            Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
-                            intent.putExtra(NOMBRE_PERSONAJE, personaje);
-                            if(numeroBatalla<6){
-                                setResult(Activity.RESULT_OK, intent);
-                            }else{
-                                //mostrem Dialog Victoria
-                            }
-                        }else{
-                            //mostrem dialog final
+                            procesarResultado();
                         }
-
-                    }
+                    }, DELAY_SIGUIENTE_PREGUNTA);
 
                     preguntaRespondida = false;
                 }
@@ -242,6 +231,12 @@ public class BatallaActivity extends MiActivityPersonalizado
         preguntas.add(pregunta9);
 
         cargarPregunta();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        //No hacer nada cuando el jugador hace click en el botón back.
     }
 
     private void cargarPregunta()
@@ -323,12 +318,14 @@ public class BatallaActivity extends MiActivityPersonalizado
 
                     if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
                     {
-                        new Handler().postDelayed(new Runnable() {
+                        new Handler().postDelayed(new Runnable()
+                        {
                             @Override
-                            public void run() {
-                                cargarPregunta();
+                            public void run()
+                            {
+                                procesarResultado();
                             }
-                        }, 2000);
+                        }, DELAY_SIGUIENTE_PREGUNTA);
                     }
                 }
             }
@@ -341,6 +338,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             public void onAnimationRepeat(Animator animation)
             {}
         });
+
         barra_progreso_animacion.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
             @Override
@@ -360,7 +358,7 @@ public class BatallaActivity extends MiActivityPersonalizado
      * @param personaje El personaje que va a batallar.
      * @param enemigo El enemigo que va a batallar.
      */
-    private void cargarVidas(Personaje personaje, Enemigo enemigo)
+    private void cargarVidas(@NotNull Personaje personaje, Enemigo enemigo)
     {
         vidasPersonaje = findViewById(R.id.vidasPersonaje);
         vidasEnemigo = findViewById(R.id.vidasEnemigo);
@@ -378,13 +376,12 @@ public class BatallaActivity extends MiActivityPersonalizado
         {
             ImageView vida = new ImageView(this);
             vida.setImageResource(R.drawable.corazon);
-
             vidasEnemigo.addView(vida);
         }
     }
 
     /**
-     * Quitaremos una vida al personaje o al enemigo.
+     * Quitaremos una vida al personaje o al enemigo, y producirá un efecto de parpadeo a la imagen del personaje o enemigo.
      * @param personaje El personaje que vamos a quitar vida, si no queremos quitar vida al personaje, pasamos null.
      * @param enemigo El enemigo que vamos a quitar vida, si no queremos quitar vida al enemigo, pasamos null.
      */
@@ -396,6 +393,8 @@ public class BatallaActivity extends MiActivityPersonalizado
 
             ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVidas());
             vida.setImageResource(R.drawable.corazon_vacio);
+
+            effectoBlink(batallaImagenPersonaje);
         }
         else if (enemigo != null)
         {
@@ -403,6 +402,8 @@ public class BatallaActivity extends MiActivityPersonalizado
 
             ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVidas());
             vida.setImageResource(R.drawable.corazon_vacio);
+
+            effectoBlink(batallaImagenEnemigo);
         }
     }
 
@@ -428,5 +429,74 @@ public class BatallaActivity extends MiActivityPersonalizado
                 Paris.style(btn).apply(R.style.BotonesBordesRedondeadosRespuestaIncorrecta);
             }
         }
+    }
+
+    /**
+     * Procesar el resultado de la partida. Si gana el jugador vuelve al mapa, si no gana vuelve al menú.
+     * Si nadie ha perdido toda la vida, seguimos con las preguntas.
+     */
+    private void procesarResultado()
+    {
+        if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+        {
+            cargarPregunta();
+            btnRespuesta1.setEnabled(true);
+            btnRespuesta2.setEnabled(true);
+            btnRespuesta3.setEnabled(true);
+        }
+        else
+        {
+            if (personaje.getVidas() == 0)
+            {
+                final Dialog dialogDerrota = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_derrota);
+
+                Button btnVolverMenu = dialogDerrota.findViewById(R.id.btnVolverMenu);
+
+                btnVolverMenu.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
+                        dialogDerrota.dismiss();
+                        finish();
+                    }
+                });
+
+                dialogDerrota.show();
+            }
+            else
+            {
+                final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
+
+                Button btnVolverMapa = dialogVictoria.findViewById(R.id.btnVolverMapa);
+
+                btnVolverMapa.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
+                        intent.putExtra(PERSONAJE, personaje);
+                        setResult(RESULT_OK, intent);
+                        dialogVictoria.dismiss();
+                        finish();
+                    }
+                });
+
+                dialogVictoria.show();
+            }
+        }
+    }
+
+    /**
+     * Crear un efecto de parpadeo a una view.
+     */
+    private void effectoBlink(View view)
+    {
+        ObjectAnimator parpadeo = ObjectAnimator.ofInt(view, "visibility", View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
+        parpadeo.setDuration(1500);
+        parpadeo.setInterpolator(new LinearInterpolator());
+        parpadeo.start();
     }
 }

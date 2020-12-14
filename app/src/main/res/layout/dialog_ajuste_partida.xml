@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/bordes_redondos_modal_verde">
     <ImageButton
-        android:id="@+id/btnVolverPartida"
+        android:id="@+id/btnCancelar"
         style="@style/ImageButtonSinFondo"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,12 +15,13 @@
         android:src="@drawable/cancelar"
         tools:ignore="contentDescription" />
     <LinearLayout
-        android:layout_width="750dp"
-        android:layout_height="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center"
-        android:padding="20dp"
+        android:padding="@dimen/paddingPequeno"
+        android:layout_margin="@dimen/marginPequeno"
         android:background="@drawable/group_box">
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/musica"
                 android:textAlignment="viewEnd"
                 style="@style/TextViewNormal"/>
@@ -38,7 +39,7 @@
                 android:id="@+id/seekBadrMusica"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 style="@style/seekBar"/>
         </LinearLayout>
         <LinearLayout
@@ -49,7 +50,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="@string/efectos"
                 android:textAlignment="viewEnd"
                 style="@style/TextViewNormal"/>
@@ -57,12 +58,12 @@
                 android:id="@+id/seekBarEfectos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 style="@style/seekBar"/>
         </LinearLayout>
     </LinearLayout>
     <Button
-        android:id="@+id/btnSalir"
+        android:id="@+id/btnAbandonarPartida"
         android:layout_width="600dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

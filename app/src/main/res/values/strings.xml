@@ -14,7 +14,7 @@
     <string name="version">Versión</string>
     <string name="musica">Música:</string>
     <string name="efectos">Efectos:</string>
-    <string name="nivel">Nivel:</string>
+    <string name="nivel">Nivell:</string>
     <string name="facil">Fácil</string>
     <string name="dificil">Difícil</string>
     <string name="selecPersonaje">Seleccionar personaje</string>
@@ -36,4 +36,7 @@
     <string name="victoria">¡Victoria!</string>
     <string name="victoria2">¡Muy bien, sigue así!</string>
     <string name="volver_mundo">Volver al mapa</string>
+    <string name="abandonar_partida">¿Seguro que quieres abandonar la partida?</string>
+    <string name="batalla">Batalla</string>
+    <string name="debes_escribir_nombre">Debes de escribir un nombre</string>
 </resources>

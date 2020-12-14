@@ -58,7 +58,7 @@
                 android:horizontalSpacing="10dp"
                 android:verticalSpacing="10dp"
                 android:gravity="center"
-                android:padding="@dimen/paddingPequeno" />
+                android:padding="@dimen/paddingMediano" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,11 +75,11 @@
                     android:gravity="center"
                     android:background="@drawable/bordes_redondos_rosado">
                     <TextView
+                        style="@style/TextViewNormal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/nivel"
-                        android:layout_weight="1"
-                        style="@style/TextViewNormal"/>
+                        android:layout_weight="2"
+                        android:text="@string/nivel" />
                     <RadioButton
                         android:id="@+id/radioButtonFacil"
                         android:layout_width="0dp"
@@ -101,7 +101,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/empezar"
-                    android:enabled="false"
                     style="@style/BotonesBordesRedondeadosMediano"/>
             </LinearLayout>
         </LinearLayout>
