@@ -1,6 +1,8 @@
 package com.example.edujoc_cepsoft.Data;
 
-public class Respuesta
+import java.io.Serializable;
+
+public class Respuesta implements Serializable
 {
     private String respuesta;
     private boolean correcta;

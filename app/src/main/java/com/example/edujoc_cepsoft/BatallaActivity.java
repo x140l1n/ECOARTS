@@ -43,6 +43,7 @@ public class BatallaActivity extends MiActivityPersonalizado
     public static final String PERSONAJE = "personaje";
     public static final String JUGADOR = "jugador";
     public static final String NUMERO_BATALLA = "batalla";
+    public static final String PREGUNTAS = "preguntas";
 
     private ProgressBar barra_progreso;
     private ObjectAnimator barra_progreso_animacion;
@@ -82,6 +83,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         jugador             = intent.getStringExtra(JUGADOR);
         enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
         numeroBatalla       = intent.getIntExtra(NUMERO_BATALLA, -1);
+        preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
 
         barra_progreso      = findViewById(R.id.progress_bar);
         textViewPregunta    = findViewById(R.id.textViewPregunta);
@@ -198,39 +200,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
         });
 
-        ArrayList<Respuesta> respostes = new ArrayList<>();
-
-        Respuesta respuesta1 = new Respuesta("resposta1", true);
-        Respuesta respuesta2 = new Respuesta("resposta2", false);
-        Respuesta respuesta3 = new Respuesta("resposta3", false);
-
-        respostes.add(respuesta1);
-        respostes.add(respuesta2);
-        respostes.add(respuesta3);
-
-        preguntas = new ArrayList<>();
-
-        Pregunta pregunta1 = new Pregunta(1, "Pregunta1", "es", "agua", respostes);
-        Pregunta pregunta2 = new Pregunta(2, "Pregunta2", "es", "agua", respostes);
-        Pregunta pregunta3 = new Pregunta(3, "Pregunta3", "es", "agua", respostes);
-        Pregunta pregunta4 = new Pregunta(4, "Pregunta4", "es", "agua", respostes);
-        Pregunta pregunta5 = new Pregunta(5, "Pregunta5", "es", "agua", respostes);
-        Pregunta pregunta6 = new Pregunta(6, "Pregunta6", "es", "agua", respostes);
-        Pregunta pregunta7 = new Pregunta(7, "Pregunta7", "es", "agua", respostes);
-        Pregunta pregunta8 = new Pregunta(8, "Pregunta8", "es", "agua", respostes);
-        Pregunta pregunta9 = new Pregunta(9, "Pregunta9", "es", "agua", respostes);
-
-        preguntas.add(pregunta1);
-        preguntas.add(pregunta2);
-        preguntas.add(pregunta3);
-        preguntas.add(pregunta4);
-        preguntas.add(pregunta5);
-        preguntas.add(pregunta6);
-        preguntas.add(pregunta7);
-        preguntas.add(pregunta8);
-        preguntas.add(pregunta9);
-
-        cargarPregunta();
+       cargarPregunta();
     }
 
     @Override
@@ -363,15 +333,27 @@ public class BatallaActivity extends MiActivityPersonalizado
         vidasPersonaje = findViewById(R.id.vidasPersonaje);
         vidasEnemigo = findViewById(R.id.vidasEnemigo);
 
-        //Cargar vidas del personaje.
+        //Cargar vida actual del personaje.
         for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)
         {
-            ImageView vida = new ImageView(this);
-            vida.setImageResource(R.drawable.corazon);
-            vidasPersonaje.addView(vida);
+            if (personaje.getVIDA_MAXIMA() > personaje.getVidas())
+            {
+                ImageView vida = new ImageView(this);
+
+                if (i < personaje.getVidas()) vida.setImageResource(R.drawable.corazon);
+                else vida.setImageResource(R.drawable.corazon_vacio);
+
+                vidasPersonaje.addView(vida);
+            }
+            else
+            {
+                ImageView vida = new ImageView(this);
+                vida.setImageResource(R.drawable.corazon);
+                vidasPersonaje.addView(vida);
+            }
         }
 
-        //Cargar vidas del enemigo.
+        //Cargar vida actual del enemigo.
         for (int i = 0; i < enemigo.getVIDA_MAXIMA(); i++)
         {
             ImageView vida = new ImageView(this);
@@ -465,6 +447,25 @@ public class BatallaActivity extends MiActivityPersonalizado
 
                 dialogDerrota.show();
             }
+            else if(personaje.getVidas() > 0 && numeroBatalla == 6)
+            {
+                final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
+
+                Button btnVolverMenu = dialogVictoriaFinal.findViewById(R.id.btnVolverMenuDos);
+
+                btnVolverMenu.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
+                        dialogVictoriaFinal.dismiss();
+                        finish();
+                    }
+                });
+
+                dialogVictoriaFinal.show();
+            }
             else
             {
                 final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
@@ -478,6 +479,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                     {
                         Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
                         intent.putExtra(PERSONAJE, personaje);
+                        intent.putExtra(PREGUNTAS, preguntas);
                         setResult(RESULT_OK, intent);
                         dialogVictoria.dismiss();
                         finish();

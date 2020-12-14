@@ -75,14 +75,8 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
 
                     RadioButton rbFacil = findViewById(R.id.radioButtonFacil);
 
-                    if(rbFacil.isChecked())
-                    {
-                        nivel = "facil";
-                    }
-                    else
-                    {
-                        nivel = "dificil";
-                    }
+                    if(rbFacil.isChecked()) nivel = "facil";
+                    else  nivel = "dificil";
 
                     intent.putExtra(MapaActivity.NIVEL, nivel);
                     intent.putExtra(MapaActivity.NOMBRE_JUGADOR, editTextNombreJugador.getText().toString().trim());

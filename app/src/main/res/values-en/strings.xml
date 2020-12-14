@@ -22,9 +22,11 @@
     <string name="nombreJugador">Player name</string>
     <string name="empezar">Start</string>
     <string name="creditos_cuerpo">
-        Programmers:
-
-
+        Programmers:\n\n Xiaolin Jin Lin\n
+        Devin Schlippe\n
+        Oriol Miralles\n\n\n
+        With the collaboration of the group of professors from Centre d\'Estudis Politècnics from Barcelona.\n\n
+        First version achieved at december 2020 in the class of DAM2A group 1.
     </string>
     <string name="infoPersonaje">Character information</string>
     <string name="Abandonar">Abandon game</string>
@@ -40,4 +42,7 @@
     <string name="abandonar_partida">Are you sure you want to leave the game?</string>
     <string name="batalla">Battle</string>
     <string name="debes_escribir_nombre">You must write a name</string>
+    <string name="victoria3">YOU SAVED THE WORLD!
+        Thanks to your actions and sageness the world keeps being a nice place to live for all species.
+        CONGRATULATIONS!</string>
 </resources>

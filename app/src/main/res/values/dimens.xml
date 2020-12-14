@@ -2,6 +2,7 @@
 <resources>
     <!--Tamaño texto-->
     <dimen name="tamanyoPequenoTexto">14sp</dimen>
+    <dimen name="tamanyoPequenoMedianoTexto">20sp</dimen>
     <dimen name="tamanyoMedianoTexto">25sp</dimen>
     <dimen name="tamanyoMedianoGrandeTexto">40sp</dimen>
     <dimen name="tamanyoGrandeTexto">60sp</dimen>

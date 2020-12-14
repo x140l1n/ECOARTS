@@ -58,7 +58,7 @@
     <style name="BotonesBordesRedondeadosRespuesta">
         <item name="android:background">@drawable/bordes_redondos_secundario</item>
         <item name="android:fontFamily">@font/komika_hand</item>
-        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textSize">@dimen/tamanyoPequenoMedianoTexto</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
         <item name="android:paddingRight">@dimen/paddingDerecha</item>
@@ -69,7 +69,7 @@
 
     <style name="BotonesBordesRedondeadosRespuestaIncorrecta">
         <item name="android:background">@drawable/bordes_redondos_rojo</item>
-        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textSize">@dimen/tamanyoPequenoMedianoTexto</item>
         <item name="android:fontFamily">@font/komika_hand</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>
@@ -81,7 +81,7 @@
 
     <style name="BotonesBordesRedondeadosRespuestaCorrecta">
         <item name="android:background">@drawable/bordes_redondos_primario</item>
-        <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
+        <item name="android:textSize">@dimen/tamanyoPequenoMedianoTexto</item>
         <item name="android:fontFamily">@font/komika_hand</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:paddingLeft">@dimen/paddingIzquierda</item>

@@ -1,8 +1,9 @@
 package com.example.edujoc_cepsoft.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Pregunta
+public class Pregunta implements Serializable
 {
     private int id;
     private String pregunta;

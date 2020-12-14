@@ -22,9 +22,11 @@
     <string name="nombreJugador">Nom jugador</string>
     <string name="empezar">Començar</string>
     <string name="creditos_cuerpo">
-        Programadors:
-
-
+        Programadors:\n\n Xiaolin Jin Lin\n
+        Devin Schlippe\n
+        Oriol Miralles\n\n\n
+        Amb la col·laboració de l\'equip de professors del Centre d\'Estudis Politècnics de Barcelona.\n\n
+        Primera versió realitzada al desembre de 2020 al curs DAM2A grup 1.
     </string>
     <string name="infoPersonaje">Informació personatge</string>
     <string name="Abandonar">Abandonar partida</string>
@@ -40,4 +42,8 @@
     <string name="abandonar_partida">Segur que vols abandonar la partida?</string>
     <string name="batalla">Batalla</string>
     <string name="debes_escribir_nombre">Has d\'escriure un nom</string>
+    <string name="victoria3">HAS SALVAT AL MÓN!
+        Amb els teus actes y saviesa el món segueix sent un espai agradable per a totes les espècies.
+        FELICITATS!
+        </string>
 </resources>
