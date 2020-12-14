@@ -13,6 +13,9 @@ public class Pregunta implements Serializable
 
     private boolean mostrada = false;
 
+    public Pregunta ()
+    {}
+
     public Pregunta(int id, String pregunta, String idioma, String tema, List<Respuesta> respuestas)
     {
         this.id = id;

@@ -32,7 +32,6 @@
                     android:layout_height="60dp"
                     android:layout_weight="2"
                     android:layout_marginBottom="@dimen/marginPequeno"
-                    android:progress="100"
                     android:progressDrawable="@drawable/progress_bar_verde"
                     style="?android:attr/progressBarStyleHorizontal" />
                 <TextView

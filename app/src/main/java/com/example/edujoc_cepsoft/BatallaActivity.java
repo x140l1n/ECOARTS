@@ -1,19 +1,14 @@
 package com.example.edujoc_cepsoft;
 
-import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -46,7 +41,7 @@ public class BatallaActivity extends MiActivityPersonalizado
     public static final String PREGUNTAS = "preguntas";
 
     private ProgressBar barra_progreso;
-    private ObjectAnimator barra_progreso_animacion;
+    private CountDownTimer contador;
 
     private Button btnRespuesta1, btnRespuesta2, btnRespuesta3;
 
@@ -68,7 +63,6 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     private ImageView batallaImagenPersonaje, batallaImagenEnemigo;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -84,6 +78,29 @@ public class BatallaActivity extends MiActivityPersonalizado
         enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
         numeroBatalla       = intent.getIntExtra(NUMERO_BATALLA, -1);
         preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
+
+        //region TESTS
+        /*
+        personaje = new Personaje(1, "TEST", "es", ".//personajes//img//trump_es_3.png", "asdasd");
+        enemigo = new Enemigo(R.drawable.enemigo_agua, "Vaporeon");
+        jugador = "TEST";
+        numeroBatalla = 1;
+        preguntas = new ArrayList<>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(new Respuesta("1", true));
+        respuestas.add(new Respuesta("2", false));
+        respuestas.add(new Respuesta("3", false));
+        preguntas.add(new Pregunta(1, "PREGUNTA1", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(2, "PREGUNTA2", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(3, "PREGUNTA3", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(4, "PREGUNTA4", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(5, "PREGUNTA5", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(6, "PREGUNTA6", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(7, "PREGUNTA7", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(8, "PREGUNTA8", "es", "agua", respuestas));
+        preguntas.add(new Pregunta(9, "PREGUNTA9", "es", "agua", respuestas));
+         */
+        //endregion
 
         barra_progreso      = findViewById(R.id.progress_bar);
         textViewPregunta    = findViewById(R.id.textViewPregunta);
@@ -164,7 +181,6 @@ public class BatallaActivity extends MiActivityPersonalizado
                         }
                     }, DELAY_SIGUIENTE_PREGUNTA);
 
-
                     preguntaRespondida = false;
                 }
             }
@@ -200,7 +216,8 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
         });
 
-       cargarPregunta();
+        iniciarContador();
+        cargarPregunta();
     }
 
     @Override
@@ -230,7 +247,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             btnRespuesta2.setText(pregunta.getRespuestas().get(1).getRespuesta());
             btnRespuesta3.setText(pregunta.getRespuestas().get(2).getRespuesta());
 
-            iniciarContador();
+            contador.start();
         }
     }
 
@@ -252,7 +269,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             quitarVida(personaje, null);
         }
 
-        barra_progreso_animacion.cancel();
+        contador.cancel();
 
         mostrarCorrecta(pregunta);
     }
@@ -271,16 +288,19 @@ public class BatallaActivity extends MiActivityPersonalizado
      */
     private void iniciarContador()
     {
-        barra_progreso_animacion = ObjectAnimator.ofInt(barra_progreso, "progress", 100, 0);
-        barra_progreso_animacion.setInterpolator(new LinearInterpolator());
-        barra_progreso_animacion.addListener(new Animator.AnimatorListener()
+        contador = new CountDownTimer(TIEMPO_MAXIMO, 1000)
         {
             @Override
-            public void onAnimationStart(Animator animation)
-            {}
+            public void onTick(long millisUntilFinished)
+            {
+                barra_progreso.setProgress((int) (millisUntilFinished / 1000) + 1);
+
+                if (barra_progreso.getProgress() <= 10) barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_rojo));
+                else barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_verde));
+            }
 
             @Override
-            public void onAnimationEnd(Animator animation)
+            public void onFinish()
             {
                 if (!preguntaRespondida)
                 {
@@ -299,28 +319,9 @@ public class BatallaActivity extends MiActivityPersonalizado
                     }
                 }
             }
+        };
 
-            @Override
-            public void onAnimationCancel(Animator animation)
-            {}
-
-            @Override
-            public void onAnimationRepeat(Animator animation)
-            {}
-        });
-
-        barra_progreso_animacion.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-        {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation)
-            {
-                if (barra_progreso.getProgress() <= 30) barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_rojo));
-                else barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_verde));
-            }
-        });
-
-        barra_progreso_animacion.setDuration(TIEMPO_MAXIMO);
-        barra_progreso_animacion.start();
+        barra_progreso.setMax((int) (TIEMPO_MAXIMO / 1000));
     }
 
     /**

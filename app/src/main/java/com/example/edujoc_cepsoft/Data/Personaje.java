@@ -20,6 +20,18 @@ public class Personaje implements Serializable
     private boolean seleccionado = false;
     private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
 
+    public Personaje ()
+    {}
+
+    public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
+    {
+        this.id = id;
+        this.nombre = nombre;
+        this.idioma = idioma;
+        this.rutaImagen = rutaImagen;
+        this.descripcion = descripcion;
+    }
+
     public void quitarVida(int i)
     {
         this.vidas -= i;
