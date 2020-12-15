@@ -282,7 +282,7 @@ public class MapaActivity extends MiActivityPersonalizado
         ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
 
         enemigos.add(new Enemigo(R.drawable.enemigo_agua, "Vaporeon"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_bosques, "MaquinaBosque"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_bosques, "Maquina Bosque"));
         enemigos.add(new Enemigo(R.drawable.enemigo_energia, "Energia"));
         enemigos.add(new Enemigo(R.drawable.enemigo_gas, "Gas"));
         enemigos.add(new Enemigo(R.drawable.enemigo_plastico, "Plástico"));

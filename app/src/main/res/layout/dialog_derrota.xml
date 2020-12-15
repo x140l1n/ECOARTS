@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="@dimen/paddingGrande"
-    android:background="@drawable/bordes_redondos_modal_rojo">
+    android:background="@drawable/bordes_redondos_rojo">
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"

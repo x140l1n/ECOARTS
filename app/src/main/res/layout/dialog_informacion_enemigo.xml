@@ -1,0 +1,49 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/paddingGrande"
+    android:background="@drawable/bordes_redondos_verde_oscuro">
+    <ImageButton
+        android:id="@+id/btnCancelar"
+        style="@style/ImageButtonSinFondo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="end"
+        android:src="@drawable/cancelar"
+        tools:ignore="contentDescription"/>
+    <ImageView
+        android:id="@+id/imagenEnemigo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/enemigo_energia"
+        android:layout_margin="@dimen/marginPequeno"
+        android:scaleType="centerInside"
+        tools:ignore="contentDescription"/>
+    <TextView
+        android:id="@+id/textViewNombreEnemigo"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="vaporeon"
+        style="@style/TextViewEncabezado" />
+    <TextView
+        android:id="@+id/textViewNumeroBatalla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/batalla"
+        android:textColor="@android:color/white"
+        style="@style/TextViewNormal" />
+    <Button
+        android:id="@+id/btnComenzarBatalla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/batalla"
+        android:text="@string/comenzar_batalla"
+        style="@style/BotonesBordesRedondeadosPrimarios"/>
+</LinearLayout>

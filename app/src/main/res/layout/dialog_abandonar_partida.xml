@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/bordes_redondos_modal_verde">
+    android:background="@drawable/bordes_redondos_secundario">
     <TextView
         style="@style/TextViewModal"
         android:layout_width="match_parent"
