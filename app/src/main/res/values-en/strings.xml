@@ -46,4 +46,10 @@
         Thanks to your actions and sageness the world keeps being a nice place to live for all species.
         CONGRATULATIONS!</string>
     <string name="comenzar_batalla">Start battle</string>
+    <string name="introduccuion_tutorial">
+       Welcome to ECOARTS\nwhere we will put your knowledge about the environment to the test.\n\nAre you ready to enter a world full of monsters that wants to destroy the earth?\n\nIf you are brave you will say yes!\nGood luck, the world needs you.
+    </string>
+    <string name="tutorial_1" />
+    <string name="tutorial_2" />
+    <string name="tutorial_3" />
 </resources>

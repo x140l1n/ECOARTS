@@ -21,6 +21,6 @@ public class GifHelper
      */
     public static void loadGif(@NotNull Context context, int drawableGif, ImageView imgViewFondo)
     {
-        Glide.with(context.getApplicationContext()).load(drawableGif).placeholder(R.drawable.fondo_principal).dontAnimate().into(imgViewFondo);
+        Glide.with(context).load(drawableGif).placeholder(R.drawable.fondo_principal).dontAnimate().into(imgViewFondo);
     }
 }

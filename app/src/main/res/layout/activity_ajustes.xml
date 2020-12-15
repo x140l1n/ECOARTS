@@ -26,66 +26,63 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:text="@string/ajustes"
             style="@style/TextViewEncabezado"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:padding="@dimen/paddingPequeno"
                 android:layout_margin="@dimen/marginPequeno"
-                android:background="@drawable/group_box">
+                android:background="@drawable/group_box"
+                android:baselineAligned="false">
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_weight="1"
                     android:gravity="center">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
                         android:text="@string/musica"
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
-                    <SeekBar
-                        android:id="@+id/seekBadrMusica"
-                        android:layout_width="0dp"
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        style="@style/seekBar"/>
+                        android:thumb="@drawable/sol_thumb"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_weight="1"
                     android:gravity="center">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
                         android:text="@string/efectos"
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
-                    <SeekBar
-                        android:id="@+id/seekBarEfectos"
-                        android:layout_width="0dp"
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        style="@style/seekBar"/>
+                        android:thumb="@drawable/sol_thumb"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
                 <Button

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_rosado">
+    <ImageButton
+        android:id="@+id/btnCancelar"
+        style="@style/ImageButtonSinFondo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="end"
+        android:src="@drawable/cancelar"
+        tools:ignore="contentDescription" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginMediano"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/imagenTutorial"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_weight="1"
+            android:padding="@dimen/paddingPequeno"
+            android:scaleType="centerInside"
+            tools:ignore="contentDescription"/>
+        <TextView
+            android:id="@+id/textViewTutorial"
+            style="@style/TextViewNormal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/tamanyoPequenoMedianoTexto" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageButton
+            android:id="@+id/btnAnterior"
+            style="@style/ImageButtonSinFondo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:src="@drawable/volver"
+            tools:ignore="contentDescription" />
+        <ImageButton
+            android:id="@+id/btnSiguiente"
+            style="@style/ImageButtonSinFondo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:src="@drawable/siguiente"
+            tools:ignore="contentDescription" />
+    </LinearLayout>
+</LinearLayout>

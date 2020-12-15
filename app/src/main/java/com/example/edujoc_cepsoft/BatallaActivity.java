@@ -59,7 +59,7 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     private String jugador;
 
-    private int numeroBatalla;
+    private int numBatalla;
 
     private ImageView batallaImagenPersonaje, batallaImagenEnemigo;
 
@@ -76,7 +76,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         personaje           = (Personaje) intent.getSerializableExtra(PERSONAJE);
         jugador             = intent.getStringExtra(JUGADOR);
         enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
-        numeroBatalla       = intent.getIntExtra(NUMERO_BATALLA, -1);
+        numBatalla = intent.getIntExtra(NUMERO_BATALLA, -1);
         preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
 
         //region TESTS
@@ -116,7 +116,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         batallaImagenPersonaje = findViewById(R.id.batallaImagenPersonaje);
         batallaImagenEnemigo = findViewById(R.id.batallaImagenEnemigo);
 
-        batalla.append(" " + numeroBatalla);
+        batalla.append(" " + (numBatalla < 6 ? numBatalla : "final"));
 
         batallaNombreJugador.setText(jugador);
         batallaNombreEnemigo.setText(enemigo.getNombre());
@@ -448,7 +448,7 @@ public class BatallaActivity extends MiActivityPersonalizado
 
                 dialogDerrota.show();
             }
-            else if(personaje.getVidas() > 0 && numeroBatalla == 6)
+            else if(personaje.getVidas() > 0 && numBatalla == 6)
             {
                 final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
 

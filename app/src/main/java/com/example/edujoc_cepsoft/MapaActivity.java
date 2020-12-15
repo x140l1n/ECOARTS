@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -50,6 +51,8 @@ public class MapaActivity extends MiActivityPersonalizado
 
     private Personaje personaje;
 
+    private LinearLayout vidasPersonaje;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -61,11 +64,12 @@ public class MapaActivity extends MiActivityPersonalizado
         personaje = (Personaje)intent.getSerializableExtra(PERSONAJE);
         String nombre = intent.getStringExtra(NOMBRE_JUGADOR);
 
-        nivel           = intent.getStringExtra(NIVEL);
-        viewPersonaje   = findViewById(R.id.personaje);
-        btnConfig       = findViewById(R.id.btnConfig);
-        btnJugar        = viewPersonaje.findViewById(R.id.btnJugar);
-        TextView nivelMapa = findViewById(R.id.nivelMapa);
+        nivel               = intent.getStringExtra(NIVEL);
+        viewPersonaje       = findViewById(R.id.personaje);
+        btnConfig           = findViewById(R.id.btnConfig);
+        vidasPersonaje      = findViewById(R.id.vidasPersonaje);
+        btnJugar            = viewPersonaje.findViewById(R.id.btnJugar);
+        TextView nivelMapa  = findViewById(R.id.nivelMapa);
 
         if (nivel.equals("facil")) nivelMapa.append(" " + getString(R.string.facil));
         else nivelMapa.append(" " + getString(R.string.dificil));
@@ -84,26 +88,52 @@ public class MapaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(MapaActivity.this, BatallaActivity.class);
 
-                Bundle b = new Bundle();
-                b.putSerializable(BatallaActivity.PREGUNTAS, preguntas);
+                final Dialog dialogInfoEnemigo = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_info_enemigo);
+                Button btnComenzarBatalla = dialogInfoEnemigo.findViewById(R.id.btnComenzarBatalla);
+                ImageButton btnCancelar = dialogInfoEnemigo.findViewById(R.id.btnCancelar);
 
-                intent.putExtras(b);
-                intent.putExtra(BatallaActivity.ENEMIGO, enemigos.get(numBatalla - 1));
-                intent.putExtra(BatallaActivity.PERSONAJE, personaje);
-                intent.putExtra(BatallaActivity.NUMERO_BATALLA, numBatalla);
-                intent.putExtra(BatallaActivity.JUGADOR, nombreJugador.getText());
+                ImageView imagenEnemigo = dialogInfoEnemigo.findViewById(R.id.imagenEnemigo);
+                TextView textViewNombreEnemigo = dialogInfoEnemigo.findViewById(R.id.textViewNombreEnemigo);
+                TextView textViewNumBatalla = dialogInfoEnemigo.findViewById(R.id.textViewNumBatalla);
 
-                if(numBatalla < 6)
+                imagenEnemigo.setImageResource(enemigos.get(numBatalla - 1).getImagen());
+                textViewNombreEnemigo.setText(enemigos.get(numBatalla - 1).getNombre());
+                textViewNumBatalla.append(" " + (numBatalla < 6 ? numBatalla : "final"));
+
+                btnComenzarBatalla.setOnClickListener(new View.OnClickListener()
                 {
-                    startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
-                }
-                else
-                {
-                    startActivity(intent);
-                }
+                    @Override
+                    public void onClick(View v)
+                    {
+                        Intent intent = new Intent(MapaActivity.this, BatallaActivity.class);
 
+                        Bundle b = new Bundle();
+                        b.putSerializable(BatallaActivity.PREGUNTAS, preguntas);
+
+                        intent.putExtras(b);
+                        intent.putExtra(BatallaActivity.ENEMIGO, enemigos.get(numBatalla - 1));
+                        intent.putExtra(BatallaActivity.PERSONAJE, personaje);
+                        intent.putExtra(BatallaActivity.NUMERO_BATALLA, numBatalla);
+                        intent.putExtra(BatallaActivity.JUGADOR, nombreJugador.getText());
+
+                        dialogInfoEnemigo.dismiss();
+
+                        if(numBatalla < 6) startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
+                        else startActivity(intent);
+                    }
+                });
+
+                btnCancelar.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        dialogInfoEnemigo.dismiss();
+                    }
+                });
+
+                dialogInfoEnemigo.show();
             }
         });
 
@@ -160,6 +190,8 @@ public class MapaActivity extends MiActivityPersonalizado
                 });
             }
         });
+
+        cargarVidas(personaje);
     }
 
     @Override
@@ -185,6 +217,8 @@ public class MapaActivity extends MiActivityPersonalizado
                     if (nivel.equals("facil")) personaje.setVidas(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
 
                     this.personaje = personaje;
+
+                    if (this.personaje.getVIDA_MAXIMA() != this.personaje.getVidas()) quitarVida(this.personaje);
 
                     numBatalla++;
 
@@ -215,6 +249,8 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 btnJugar.setVisibility(View.INVISIBLE);
                 btnJugar.setEnabled(false);
+
+                System.out.println(viewPersonaje.getX() + " | " + viewPersonaje.getY());
             }
 
             @Override
@@ -222,6 +258,8 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 btnJugar.setVisibility(View.VISIBLE);
                 btnJugar.setEnabled(true);
+
+                System.out.println(viewPersonaje.getX() + " | " + viewPersonaje.getY());
             }
 
             @Override
@@ -237,36 +275,38 @@ public class MapaActivity extends MiActivityPersonalizado
         {
             case 1: break; //La primera batalla no hacemos ningúna animación.
             case 2:
+
                 ObjectAnimator oa1 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 350f);
                 ObjectAnimator oa2 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -150f);
                 ObjectAnimator oa3 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 530f);
 
                 as.playSequentially(oa1, oa2, oa3);
+
                 break;
             case 3:
-                ObjectAnimator oa4 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -150f);
-                ObjectAnimator oa5 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, -450f);
-                ObjectAnimator oa6 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -200f);
+                ObjectAnimator oa4 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -300f);
+                ObjectAnimator oa5 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 100f);
+                ObjectAnimator oa6 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -450f);
 
                 as.playSequentially(oa4, oa5, oa6);
                 break;
             case 4:
-                ObjectAnimator oa7 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 450f);
-                ObjectAnimator oa8 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -450f);
+                ObjectAnimator oa7 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 530f);
+                ObjectAnimator oa8 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -850f);
 
                 as.playSequentially(oa7, oa8);
                 break;
 
             case 5:
-                ObjectAnimator oa9 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, -200f);
-                ObjectAnimator oa10 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -50f);
-                ObjectAnimator oa11 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, -450f);
+                ObjectAnimator oa9 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 270f);
+                ObjectAnimator oa10 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -900f);
+                ObjectAnimator oa11 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 0f);
 
                 as.playSequentially(oa9, oa10, oa11);
                 break;
             case 6:
-                ObjectAnimator oa12 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -150f);
-                ObjectAnimator oa13 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 150f);
+                ObjectAnimator oa12 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_Y, -1100f);
+                ObjectAnimator oa13 = ObjectAnimator.ofFloat(viewPersonaje, View.TRANSLATION_X, 270f);
 
                 as.playSequentially(oa12, oa13);
                 break;
@@ -339,5 +379,38 @@ public class MapaActivity extends MiActivityPersonalizado
         }
 
         return preguntas;
+    }
+
+    /**
+     * Cargar las vidas del personaje en el activity.
+     * @param personaje El personaje que va a batallar.
+     */
+    private void cargarVidas(@NotNull Personaje personaje)
+    {
+        vidasPersonaje = findViewById(R.id.vidasPersonaje);
+
+        //Cargar vida actual del personaje.
+        for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)
+        {
+            ImageView vida = new ImageView(this);
+            vida.setImageResource(R.drawable.corazon);
+            vidasPersonaje.addView(vida);
+        }
+    }
+
+    /**
+     * Ponemos las vidas que le quedan al personaje.
+     * @param personaje El personaje que vamos a quitar vida, si no queremos quitar vida al personaje, pasamos null.
+     */
+    private void quitarVida(Personaje personaje)
+    {
+        if (personaje != null)
+        {
+            for (int i = personaje.getVIDA_MAXIMA() - 1; i > personaje.getVidas() - 1; i--)
+            {
+                ImageView vida = (ImageView) vidasPersonaje.getChildAt(i);
+                vida.setImageResource(R.drawable.corazon_vacio);
+            }
+        }
     }
 }

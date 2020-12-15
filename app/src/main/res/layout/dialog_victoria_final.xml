@@ -10,9 +10,9 @@
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/tierra_feliz"
+        android:src="@drawable/tierra_corona"
         android:layout_margin="@dimen/marginPequeno"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         tools:ignore="contentDescription"/>
     <TextView
         style="@style/TextViewEncabezado"

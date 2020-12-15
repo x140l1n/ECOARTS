@@ -45,4 +45,30 @@
         Con tus actos y sabiduría el mundo sigue siendo un espacio agradable para vivir para todas las espécies.
         ¡FELICIDADES!</string>
     <string name="comenzar_batalla">Comenzar batalla</string>
+    <string name="introduccuion_tutorial">
+        Bienvenidos a ECOARTS\n
+        donde te pondremos a prueba tus conocimientos sobre el medio ambiente.\n\n
+        ¿Estás preparado para adentrarse en un mundo lleno de monstruos que quiere acabar con la tierra?\n\n
+        ¡Si eres valiente dirás que si!\n
+        Ánimos, el mundo te necesita.
+    </string>
+    <string name="tutorial_1">
+        Primero debes de escribir un nombre y luego elegir un personaje.\n\n
+        Puedes ver la información de cada personaje pulsando el icono azul,
+        para seleccionar pulse el icono verde.\n\n
+        Por último escoja un nivel:\n\n
+        - Fácil => recuperarás vidas en cada mundo.\n
+        - Difícil => no podrás recuperar vidas.\n
+    </string>
+    <string name="tutorial_2">
+        En total hay 6 mundos y en cada mundo hay un monstruo diferente.\n\n
+        ¡Si te quedas sin vidas no podrás seguir avanzando, así que ten mucho cuidado con los monstruos! ;)\n\n
+    </string>
+    <string name="tutorial_3">
+        Tendrás como máximo 30 segundos para responder cada pregunta.\n\n
+        Si respondes mal pierdes una vida, y si se te agota el tiempo sin responder también,\n\n
+        así que ten mucho cuidado . . . ;)\n\n
+        Si te quedas sin vida pierdes.\n\n
+        Lee las preguntas con atención y responde con cabeza.\n\n
+    </string>
 </resources>

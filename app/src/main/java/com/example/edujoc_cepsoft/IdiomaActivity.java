@@ -1,13 +1,17 @@
 package com.example.edujoc_cepsoft;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 import com.example.edujoc_cepsoft.Helpers.LocaleHelper;
+import com.example.edujoc_cepsoft.Helpers.MediaPlayerHelper;
 
 public class IdiomaActivity extends MiActivityPersonalizado
 {
@@ -55,5 +59,17 @@ public class IdiomaActivity extends MiActivityPersonalizado
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
     }
 }

@@ -66,6 +66,7 @@ public class MenuActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        dialogSalir.dismiss();
                         finishAffinity();
                     }
                 });

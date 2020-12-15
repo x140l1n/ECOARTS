@@ -19,7 +19,6 @@
         android:id="@+id/imagenEnemigo"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/enemigo_energia"
         android:layout_margin="@dimen/marginPequeno"
         android:scaleType="centerInside"
         tools:ignore="contentDescription"/>
@@ -28,10 +27,9 @@
         android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="vaporeon"
         style="@style/TextViewEncabezado" />
     <TextView
-        android:id="@+id/textViewNumeroBatalla"
+        android:id="@+id/textViewNumBatalla"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
