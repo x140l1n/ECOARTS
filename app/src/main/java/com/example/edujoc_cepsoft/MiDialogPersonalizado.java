@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
@@ -44,5 +45,13 @@ public class MiDialogPersonalizado extends Dialog
 
         //Hacer que el diálogo vuelva a tener el foco.
         this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+
+        //Hacer que el dialogo tenga la máxima anchura posible.
+        WindowManager.LayoutParams windowParams = new WindowManager.LayoutParams();
+        windowParams.copyFrom(this.getWindow().getAttributes()); //Obtenemos los atributos actuales de la ventana de diálogo y copiamos al nuevo LayaoutParams.
+        windowParams.width = (int) (this.getContext().getResources().getDisplayMetrics().widthPixels * 0.90); //El 90% de la anchura del activity.
+        windowParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        this.getWindow().setAttributes(windowParams);
     }
 }
