@@ -76,7 +76,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         personaje           = (Personaje) intent.getSerializableExtra(PERSONAJE);
         jugador             = intent.getStringExtra(JUGADOR);
         enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
-        numBatalla = intent.getIntExtra(NUMERO_BATALLA, -1);
+        numBatalla          = intent.getIntExtra(NUMERO_BATALLA, -1);
         preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
 
         //region TESTS

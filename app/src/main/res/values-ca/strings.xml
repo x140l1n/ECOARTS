@@ -48,12 +48,28 @@
         </string>
     <string name="comenzar_batalla">Començar batalla</string>
     <string name="introduccuion_tutorial">
-        Benvinguts a ECOARTS\non et posarem a prova els teus coneixements sobre el medi ambient.\n\nEstàs preparat per endinsar-se en un món ple de monstres que vol acabar amb la terra?\n\nSi ets valent diràs que si!\nÀnims, el món et necessita.
-    </string>
+        Benvinguts a ECOARTS\n
+        on posarem a prova els teus coneixements sobre el medi ambient.\n\n
+        Estàs preparat per endinsar-te al món ple de monstres que volen acabar amb la Terra?\n\n
+        Si ets valenta diràs que sí!\n
+        Ànims, el món et necessita. </string>
     <string name="tutorial_1">
+        Primer has d\'escriure un nom i després seleccionar un personatge.\n\n
+        Pots veure la informació de cada personatge prement l\'icona blava,
+        per seleccionar-lo prémer l\'icona verda.\n\n
+        Per últim escull un nivell:\n\n
+        - Fàcil => recuperaràs vides en cada món.\n
+        - Difícil => no podràs recuperar vides.\n
     </string>
     <string name="tutorial_2">
+        En total hi ha 6 mons i en cada món hi ha un monstre diferent.\n\n
+        Si et quedes sense vides no podràs seguir avançant! ;)
     </string>
     <string name="tutorial_3">
+        Tindràs com a màxim 30 segons per a respondre cada pregunta.\n\n
+        Si respons malament perds una vida, i si se t\'acaba el temps i no has respost, també,\n
+        així qye ves amb molt de compte . . . ;)\n\n
+        Si et quedes sense vida perds.\n\n
+        Llegeix les preguntes amb atenció i respon amb cap.\n\n
     </string>
 </resources>
