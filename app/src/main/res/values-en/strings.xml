@@ -47,9 +47,28 @@
         CONGRATULATIONS!</string>
     <string name="comenzar_batalla">Start battle</string>
     <string name="introduccuion_tutorial">
-       Welcome to ECOARTS\nwhere we will put your knowledge about the environment to the test.\n\nAre you ready to enter a world full of monsters that wants to destroy the earth?\n\nIf you are brave you will say yes!\nGood luck, the world needs you.
+        Welcome to EcoArts\n
+        where we will test your knowledge about the environment.\n\n
+        Are you ready to enter into a world full of monsters that want to end with our planet?\n\n
+        If you are brave enough your answer will be YES!\n
+        Courage, the world needs you!
     </string>
-    <string name="tutorial_1" />
-    <string name="tutorial_2" />
-    <string name="tutorial_3" />
+    <string name="tutorial_1">
+        First you have to write your name and select a character you want to play with.\n\n
+        You can check the information of each character by pressing the blue icon and if you want to select it, just press the green icon!\n\n
+        Finally choose a dificulty:\n\n
+        - Easy => Your hearts will recover after each battle.\n
+        - Difficult => You won't be able to recover hearts between battles, so be careful!\n
+    </string>
+    <string name="tutorial_2">
+        In total there are 6 worlds and in each one there\'s a different monster.\n\n
+        If you run out of hearts you won\'t be able to continue.
+    </string>
+    <string name="tutorial_3">
+        You will have a maximum of 30 seconds to answer each question.\n\n
+        If you choose a wrong answer you will loose a heart and if you run out of time,\n
+        you will lose a heart as well, so be careful . . . ;)\n\n
+        If you run out of hearts you lose.\n\n
+        Read the questions carefully and answer wisely.\n\n
+    </string>
 </resources>

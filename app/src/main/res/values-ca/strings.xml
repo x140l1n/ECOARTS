@@ -50,7 +50,10 @@
     <string name="introduccuion_tutorial">
         Benvinguts a ECOARTS\non et posarem a prova els teus coneixements sobre el medi ambient.\n\nEstàs preparat per endinsar-se en un món ple de monstres que vol acabar amb la terra?\n\nSi ets valent diràs que si!\nÀnims, el món et necessita.
     </string>
-    <string name="tutorial_1" />
-    <string name="tutorial_2" />
-    <string name="tutorial_3" />
+    <string name="tutorial_1">
+    </string>
+    <string name="tutorial_2">
+    </string>
+    <string name="tutorial_3">
+    </string>
 </resources>
