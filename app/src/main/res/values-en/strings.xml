@@ -58,7 +58,7 @@
         You can check the information of each character by pressing the blue icon and if you want to select it, just press the green icon!\n\n
         Finally choose a dificulty:\n\n
         - Easy => Your hearts will recover after each battle.\n
-        - Difficult => You won't be able to recover hearts between battles, so be careful!\n
+        - Difficult => You won\'t be able to recover hearts between battles, so be careful!\n
     </string>
     <string name="tutorial_2">
         In total there are 6 worlds and in each one there\'s a different monster.\n\n
