@@ -15,4 +15,8 @@
     <color name="colorRojo">#B32B21</color>
     <color name="colorGrisOscuro">#3A3636</color>
     <color name="colorVerdeOscuro">#3D7516</color>
+    <color name="colorAzul">#3F51B5</color>
+    <color name="colorAmarillo">#CDDC39</color>
+    <color name="colorMorado">#6D5794</color>
+    <color name="colorPistacho">#93C572</color>
 </resources>

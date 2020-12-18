@@ -56,6 +56,8 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
+
                 if (personajes.size() > 0 && !editTextNombreJugador.getText().toString().trim().isEmpty())
                 {
                     Personaje personajeSeleccionado;
@@ -116,6 +118,8 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
+
                 finish();
             }
         });

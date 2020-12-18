@@ -24,6 +24,8 @@ public class CreditosActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(CreditosActivity.this, R.raw.boton_click);
+
                 finish();
             }
         });

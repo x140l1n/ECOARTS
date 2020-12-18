@@ -44,7 +44,7 @@
     <string name="debes_escribir_nombre">You must write a name</string>
     <string name="victoria3">YOU SAVED THE WORLD!
         Thanks to your actions and sageness the world keeps being a nice place to live for all species.
-        CONGRATULATIONS!</string>
+    </string>
     <string name="comenzar_batalla">Start battle</string>
     <string name="introduccuion_tutorial">
         Welcome to EcoArts\n
@@ -71,4 +71,5 @@
         If you run out of hearts you lose.\n\n
         Read the questions carefully and answer wisely.\n\n
     </string>
+    <string name="enhorabuena">Congratulations</string>
 </resources>

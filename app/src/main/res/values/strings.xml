@@ -43,7 +43,7 @@
     <string name="debes_escribir_nombre">Debes de escribir un nombre</string>
     <string name="victoria3">¡HAS SALVADO AL MUNDO!
         Con tus actos y sabiduría el mundo sigue siendo un espacio agradable para vivir para todas las espécies.
-        ¡FELICIDADES!</string>
+    </string>
     <string name="comenzar_batalla">Comenzar batalla</string>
     <string name="introduccuion_tutorial">
         Bienvenidos a ECOARTS\n
@@ -71,4 +71,5 @@
         Si te quedas sin vida pierdes.\n\n
         Lee las preguntas con atención y responde con cabeza.\n\n
     </string>
+    <string name="enhorabuena">¡Enhorabuena</string>
 </resources>

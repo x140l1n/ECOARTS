@@ -57,6 +57,7 @@
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMusica"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/sol_thumb"/>
@@ -74,6 +75,7 @@
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchEfecto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/sol_thumb"/>

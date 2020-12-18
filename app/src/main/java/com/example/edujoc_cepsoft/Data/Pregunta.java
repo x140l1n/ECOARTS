@@ -13,8 +13,7 @@ public class Pregunta implements Serializable
 
     private boolean mostrada = false;
 
-    public Pregunta ()
-    {}
+    public Pregunta() {}
 
     public Pregunta(int id, String pregunta, String idioma, String tema, List<Respuesta> respuestas)
     {
@@ -32,14 +31,6 @@ public class Pregunta implements Serializable
 
     public String getPregunta() {
         return pregunta;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public String getTema() {
-        return tema;
     }
 
     public List<Respuesta> getRespuestas() {

@@ -5,16 +5,21 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.edujoc_cepsoft.Data.Enemigo;
 import com.example.edujoc_cepsoft.Data.Personaje;
@@ -40,7 +45,7 @@ public class MapaActivity extends MiActivityPersonalizado
     public static final String NIVEL = "nivel";
 
     private Button btnJugar;
-    private ImageButton btnConfig;
+    private ImageButton btnAjustes;
     private View viewPersonaje;
     private String nivel;
 
@@ -59,6 +64,9 @@ public class MapaActivity extends MiActivityPersonalizado
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        id_musica = R.raw.mapa;
+        musicaFondo = null;
+
         Intent intent = getIntent();
 
         personaje = (Personaje)intent.getSerializableExtra(PERSONAJE);
@@ -66,7 +74,7 @@ public class MapaActivity extends MiActivityPersonalizado
 
         nivel               = intent.getStringExtra(NIVEL);
         viewPersonaje       = findViewById(R.id.personaje);
-        btnConfig           = findViewById(R.id.btnConfig);
+        btnAjustes          = findViewById(R.id.btnAjustes);
         vidasPersonaje      = findViewById(R.id.vidasPersonaje);
         btnJugar            = viewPersonaje.findViewById(R.id.btnJugar);
         TextView nivelMapa  = findViewById(R.id.nivelMapa);
@@ -88,17 +96,26 @@ public class MapaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+               reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                 final Dialog dialogInfoEnemigo = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_info_enemigo);
                 Button btnComenzarBatalla = dialogInfoEnemigo.findViewById(R.id.btnComenzarBatalla);
                 ImageButton btnCancelar = dialogInfoEnemigo.findViewById(R.id.btnCancelar);
 
+                final Enemigo enemigo = enemigos.get(numBatalla - 1);
+
+                LinearLayout fondoDialog = dialogInfoEnemigo.findViewById(R.id.fondoDialog);
                 ImageView imagenEnemigo = dialogInfoEnemigo.findViewById(R.id.imagenEnemigo);
                 TextView textViewNombreEnemigo = dialogInfoEnemigo.findViewById(R.id.textViewNombreEnemigo);
                 TextView textViewNumBatalla = dialogInfoEnemigo.findViewById(R.id.textViewNumBatalla);
 
-                imagenEnemigo.setImageResource(enemigos.get(numBatalla - 1).getImagen());
-                textViewNombreEnemigo.setText(enemigos.get(numBatalla - 1).getNombre());
+                Drawable background = fondoDialog.getBackground();
+
+                GradientDrawable shapeDrawable = (GradientDrawable) background;
+                shapeDrawable.setColor(ContextCompat.getColor(dialogInfoEnemigo.getContext(), enemigo.getColorFondo()));
+
+                imagenEnemigo.setImageResource(enemigo.getImagen());
+                textViewNombreEnemigo.setText(enemigo.getNombre());
                 textViewNumBatalla.append(" " + (numBatalla < 6 ? numBatalla : "final"));
 
                 btnComenzarBatalla.setOnClickListener(new View.OnClickListener()
@@ -106,13 +123,15 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                         Intent intent = new Intent(MapaActivity.this, BatallaActivity.class);
 
                         Bundle b = new Bundle();
                         b.putSerializable(BatallaActivity.PREGUNTAS, preguntas);
 
                         intent.putExtras(b);
-                        intent.putExtra(BatallaActivity.ENEMIGO, enemigos.get(numBatalla - 1));
+                        intent.putExtra(BatallaActivity.ENEMIGO, enemigo);
                         intent.putExtra(BatallaActivity.PERSONAJE, personaje);
                         intent.putExtra(BatallaActivity.NUMERO_BATALLA, numBatalla);
                         intent.putExtra(BatallaActivity.JUGADOR, nombreJugador.getText());
@@ -129,6 +148,8 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                         dialogInfoEnemigo.dismiss();
                     }
                 });
@@ -137,24 +158,51 @@ public class MapaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnConfig.setOnClickListener(new View.OnClickListener()
+        btnAjustes.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                 final Dialog dialogAjuste = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_ajuste_partida);
                 dialogAjuste.show();
 
                 Button btnAbandonarPartida = dialogAjuste.findViewById(R.id.btnAbandonarPartida);
                 ImageButton btnCancelar = dialogAjuste.findViewById(R.id.btnCancelar);
+                SwitchCompat switchEfecto = dialogAjuste.findViewById(R.id.switchEfecto);
+                SwitchCompat switchMusica = dialogAjuste.findViewById(R.id.switchMusica);
+
+                switchEfecto.setChecked(reproducirEfecto);
+
+                switchEfecto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+                {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                    {
+                        reproducirEfecto = isChecked;
+                    }
+                });
+
+                switchMusica.setChecked(reproducirMusica);
+
+                switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+                {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                    {
+                        reproducirMusica = isChecked;
+                    }
+                });
 
                 btnAbandonarPartida.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                         final Dialog dialogAbandonar = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_abandonar_partida);
-                        dialogAbandonar.show();
 
                         ImageButton btnAbandonar = dialogAbandonar.findViewById(R.id.btnAbandonar);
                         ImageButton btnCancelar = dialogAbandonar.findViewById(R.id.btnCancelar);
@@ -164,7 +212,11 @@ public class MapaActivity extends MiActivityPersonalizado
                             @Override
                             public void onClick(View v)
                             {
+                                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                                 startActivity(new Intent(MapaActivity.this, MenuActivity.class));
+                                dialogAbandonar.dismiss();
+
                                 finish();
                             }
                         });
@@ -174,9 +226,13 @@ public class MapaActivity extends MiActivityPersonalizado
                             @Override
                             public void onClick(View v)
                             {
+                                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                                 dialogAbandonar.dismiss();
                             }
                         });
+
+                        dialogAbandonar.show();
                     }
                 });
 
@@ -185,6 +241,8 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
                         dialogAjuste.dismiss();
                     }
                 });
@@ -214,13 +272,15 @@ public class MapaActivity extends MiActivityPersonalizado
 
                     preguntas = (ArrayList) data.getSerializableExtra(BatallaActivity.PREGUNTAS);
 
-                    if (nivel.equals("facil")) personaje.setVidas(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
+                    if (nivel.equals("facil")) personaje.setVida(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
 
                     this.personaje = personaje;
 
-                    if (this.personaje.getVIDA_MAXIMA() != this.personaje.getVidas()) quitarVida(this.personaje);
+                    if (this.personaje.getVIDA_MAXIMA() != this.personaje.getVida()) quitarVida(this.personaje);
 
                     numBatalla++;
+
+                    btnJugar.setEnabled(false);
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -248,9 +308,6 @@ public class MapaActivity extends MiActivityPersonalizado
             public void onAnimationStart(Animator animation)
             {
                 btnJugar.setVisibility(View.INVISIBLE);
-                btnJugar.setEnabled(false);
-
-                System.out.println(viewPersonaje.getX() + " | " + viewPersonaje.getY());
             }
 
             @Override
@@ -258,8 +315,6 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 btnJugar.setVisibility(View.VISIBLE);
                 btnJugar.setEnabled(true);
-
-                System.out.println(viewPersonaje.getX() + " | " + viewPersonaje.getY());
             }
 
             @Override
@@ -321,12 +376,12 @@ public class MapaActivity extends MiActivityPersonalizado
     {
         ArrayList<Enemigo> enemigos = new ArrayList<Enemigo>();
 
-        enemigos.add(new Enemigo(R.drawable.enemigo_agua, "Vaporeon"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_bosques, "Maquina Bosque"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_energia, "Energia"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_gas, "Gas"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_plastico, "Plástico"));
-        enemigos.add(new Enemigo(R.drawable.enemigo_residuos, "Residuos"));
+        enemigos.add(new Enemigo(R.drawable.enemigo_agua, "Gyarados", R.color.colorAzul, 3));
+        enemigos.add(new Enemigo(R.drawable.enemigo_bosque, "Shiftry", R.color.colorVerdeOscuro, 3));
+        enemigos.add(new Enemigo(R.drawable.enemigo_energia, "Zapdos", R.color.colorAmarillo, 3));
+        enemigos.add(new Enemigo(R.drawable.enemigo_gas, "Weezing", R.color.colorMorado,3));
+        enemigos.add(new Enemigo(R.drawable.enemigo_plastico, "Unown", R.color.colorGrisOscuro,3));
+        enemigos.add(new Enemigo(R.drawable.enemigo_residuo, "Garbodor", R.color.colorPistacho,5));
 
         return enemigos;
     }
@@ -406,7 +461,7 @@ public class MapaActivity extends MiActivityPersonalizado
     {
         if (personaje != null)
         {
-            for (int i = personaje.getVIDA_MAXIMA() - 1; i > personaje.getVidas() - 1; i--)
+            for (int i = personaje.getVIDA_MAXIMA() - 1; i > personaje.getVida() - 1; i--)
             {
                 ImageView vida = (ImageView) vidasPersonaje.getChildAt(i);
                 vida.setImageResource(R.drawable.corazon_vacio);

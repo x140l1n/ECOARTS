@@ -20,6 +20,9 @@ public class MenuActivity extends MiActivityPersonalizado
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
+        id_musica = R.raw.menu;
+        musicaFondo = null;
+
         final Button btnJugar = findViewById(R.id.btnJugar);
         final Button btnAjustes = findViewById(R.id.btnAjustes);
         final Button btnSalir = findViewById(R.id.btnSalir);
@@ -29,6 +32,8 @@ public class MenuActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(MenuActivity.this, R.raw.boton_click);
+
                 startActivity(new Intent(MenuActivity.this, SelectPersonajeActivity.class));
             }
         });
@@ -38,6 +43,8 @@ public class MenuActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(MenuActivity.this, R.raw.boton_click);
+
                 startActivity(new Intent(MenuActivity.this, AjustesActivity.class));
             }
         });
@@ -47,6 +54,8 @@ public class MenuActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(MenuActivity.this, R.raw.boton_click);
+
                 final Dialog dialogSalir = new MiDialogPersonalizado(MenuActivity.this, R.layout.dialog_salir);
 
                 ImageButton btnSalir = dialogSalir.findViewById(R.id.btnSalir);
@@ -57,6 +66,8 @@ public class MenuActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MenuActivity.this, R.raw.boton_click);
+
                         dialogSalir.dismiss();
                     }
                 });
@@ -66,7 +77,14 @@ public class MenuActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(MenuActivity.this, R.raw.boton_click);
+
                         dialogSalir.dismiss();
+
+                        id_musica = 0;
+                        musicaFondo.stop();
+                        musicaFondo = null;
+
                         finishAffinity();
                     }
                 });

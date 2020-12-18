@@ -7,9 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.edujoc_cepsoft.Data.PaginaTutorial;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
@@ -33,17 +36,43 @@ public class AjustesActivity extends MiActivityPersonalizado
         final TextView txtViewVersion = findViewById(R.id.txtViewVersion);
         txtViewVersion.append(" " + BuildConfig.VERSION_NAME);
 
-        final Button btnTutorial = findViewById(R.id.btnTutorial);
-        final Button btnCambiarIdioma = findViewById(R.id.btnCambiarIdioma);
-        final Button btnContactar = findViewById(R.id.btnContactar);
-        final Button btnCreditos = findViewById(R.id.btnCreditos);
-        final ImageButton btnVolver = findViewById(R.id.btnVolver);
+        Button btnTutorial = findViewById(R.id.btnTutorial);
+        Button btnCambiarIdioma = findViewById(R.id.btnCambiarIdioma);
+        Button btnContactar = findViewById(R.id.btnContactar);
+        Button btnCreditos = findViewById(R.id.btnCreditos);
+        ImageButton btnVolver = findViewById(R.id.btnVolver);
+        SwitchCompat switchEfecto = findViewById(R.id.switchEfecto);
+        SwitchCompat switchMusica = findViewById(R.id.switchMusica);
+
+        switchEfecto.setChecked(reproducirEfecto);
+
+        switchEfecto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                reproducirEfecto = isChecked;
+            }
+        });
+
+        switchMusica.setChecked(reproducirMusica);
+
+        switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                reproducirMusica = isChecked;
+            }
+        });
 
         btnVolver.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                 finish();
             }
         });
@@ -53,6 +82,8 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                 final Dialog dialog = new MiDialogPersonalizado(AjustesActivity.this, R.layout.dialog_tutorial);
 
                 final List<PaginaTutorial> paginas = new ArrayList<>();
@@ -79,6 +110,8 @@ public class AjustesActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                         dialog.dismiss();
                     }
                 });
@@ -88,6 +121,8 @@ public class AjustesActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                         //Comprobamos la anterior página no sea menor que 0.
                         if (pagina_tutorial - 1 >= 0)
                         {
@@ -106,6 +141,8 @@ public class AjustesActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                         //Comprobamos la siguiente página no sea mayor que el número de paginas.
                         if (pagina_tutorial + 1 < paginas.size())
                         {
@@ -128,6 +165,8 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                 startActivity(new Intent(AjustesActivity.this, IdiomaActivity.class));
             }
         });
@@ -137,6 +176,8 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setType("plain/text");
                 email.putExtra(Intent.EXTRA_EMAIL, new String[] { "ecoartscep@gmail.com" });
@@ -151,6 +192,8 @@ public class AjustesActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
                 startActivity(new Intent(AjustesActivity.this, CreditosActivity.class));
             }
         });

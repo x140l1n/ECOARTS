@@ -1,5 +1,6 @@
 package com.example.edujoc_cepsoft.Data;
 
+import android.app.Person;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,10 +19,9 @@ public class Personaje implements Serializable
     private String descripcion;
 
     private boolean seleccionado = false;
-    private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
+    private int vida = VIDA_MAXIMA; //La vida actual que tiene.
 
-    public Personaje ()
-    {}
+    public Personaje() {}
 
     public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
     {
@@ -34,7 +34,7 @@ public class Personaje implements Serializable
 
     public void quitarVida(int i)
     {
-        this.vidas -= i;
+        this.vida -= i;
     }
 
     //region Getters
@@ -58,12 +58,12 @@ public class Personaje implements Serializable
         return seleccionado;
     }
 
-    public int getVidas() {
-        return vidas;
+    public int getVida() {
+        return vida;
     }
 
-    public void setVidas(int vidas) {
-        this.vidas = vidas;
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
     public void setSeleccionado(boolean seleccionado) {

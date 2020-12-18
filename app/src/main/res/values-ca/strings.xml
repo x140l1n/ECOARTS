@@ -44,8 +44,7 @@
     <string name="debes_escribir_nombre">Has d\'escriure un nom</string>
     <string name="victoria3">HAS SALVAT AL MÓN!
         Amb els teus actes y saviesa el món segueix sent un espai agradable per a totes les espècies.
-        FELICITATS!
-        </string>
+    </string>
     <string name="comenzar_batalla">Començar batalla</string>
     <string name="introduccuion_tutorial">
          Benvinguts a ECOARTS\n
@@ -72,4 +71,5 @@
         Si et quedes sense vida perds.\n\n
         Llegeix les preguntes amb atenció i respon amb cap.\n\n
     </string>
+    <string name="enhorabuena">Enhorabona</string>
 </resources>

@@ -71,6 +71,9 @@ public class BatallaActivity extends MiActivityPersonalizado
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
+        id_musica = R.raw.batalla;
+        musicaFondo = null;
+
         Intent intent = getIntent();
 
         personaje           = (Personaje) intent.getSerializableExtra(PERSONAJE);
@@ -131,6 +134,8 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
                     btnRespuesta1.setEnabled(false);
@@ -161,6 +166,8 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
                     btnRespuesta1.setEnabled(false);
@@ -191,6 +198,8 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
                     btnRespuesta1.setEnabled(false);
@@ -306,7 +315,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                 {
                     procesarRespuesta(null);
 
-                    if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+                    if (personaje.getVida() != 0 && enemigo.getVida() != 0)
                     {
                         new Handler().postDelayed(new Runnable()
                         {
@@ -337,11 +346,11 @@ public class BatallaActivity extends MiActivityPersonalizado
         //Cargar vida actual del personaje.
         for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)
         {
-            if (personaje.getVIDA_MAXIMA() > personaje.getVidas())
+            if (personaje.getVIDA_MAXIMA() > personaje.getVida())
             {
                 ImageView vida = new ImageView(this);
 
-                if (i < personaje.getVidas()) vida.setImageResource(R.drawable.corazon);
+                if (i < personaje.getVida()) vida.setImageResource(R.drawable.corazon);
                 else vida.setImageResource(R.drawable.corazon_vacio);
 
                 vidasPersonaje.addView(vida);
@@ -355,7 +364,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         }
 
         //Cargar vida actual del enemigo.
-        for (int i = 0; i < enemigo.getVIDA_MAXIMA(); i++)
+        for (int i = 0; i < enemigo.getVida_maxima(); i++)
         {
             ImageView vida = new ImageView(this);
             vida.setImageResource(R.drawable.corazon);
@@ -374,7 +383,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         {
             personaje.quitarVida(1);
 
-            ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVidas());
+            ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVida());
             vida.setImageResource(R.drawable.corazon_vacio);
 
             effectoBlink(batallaImagenPersonaje);
@@ -383,7 +392,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         {
             enemigo.quitarVida(1);
 
-            ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVidas());
+            ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVida());
             vida.setImageResource(R.drawable.corazon_vacio);
 
             effectoBlink(batallaImagenEnemigo);
@@ -420,7 +429,7 @@ public class BatallaActivity extends MiActivityPersonalizado
      */
     private void procesarResultado()
     {
-        if (personaje.getVidas() != 0 && enemigo.getVidas() != 0)
+        if (personaje.getVida() != 0 && enemigo.getVida() != 0)
         {
             cargarPregunta();
             btnRespuesta1.setEnabled(true);
@@ -429,9 +438,13 @@ public class BatallaActivity extends MiActivityPersonalizado
         }
         else
         {
-            if (personaje.getVidas() == 0)
+            musicaFondo.stop();
+
+            if (personaje.getVida() == 0)
             {
                 final Dialog dialogDerrota = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_derrota);
+
+                reproducirEfecto(BatallaActivity.this, R.raw.derrota);
 
                 Button btnVolverMenu = dialogDerrota.findViewById(R.id.btnVolverMenu);
 
@@ -440,27 +453,40 @@ public class BatallaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogDerrota.dismiss();
+
                         finish();
                     }
                 });
 
                 dialogDerrota.show();
             }
-            else if(personaje.getVidas() > 0 && numBatalla == 6)
+            else if(personaje.getVida() > 0 && numBatalla == 6)
             {
                 final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
 
+                reproducirEfecto(BatallaActivity.this, R.raw.victoria);
+
                 Button btnVolverMenu = dialogVictoriaFinal.findViewById(R.id.btnVolverMenuDos);
+                ImageView imagenPersonaje = dialogVictoriaFinal.findViewById(R.id.imagenPersonaje);
+                TextView textViewEnhorabuena = dialogVictoriaFinal.findViewById(R.id.textViewEnhorabuena);
+
+                imagenPersonaje.setImageBitmap(personaje.obtenerImagen(BatallaActivity.this));
+                textViewEnhorabuena.append(" " + jugador + "!");
 
                 btnVolverMenu.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogVictoriaFinal.dismiss();
+
                         finish();
                     }
                 });
@@ -471,6 +497,8 @@ public class BatallaActivity extends MiActivityPersonalizado
             {
                 final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
 
+                reproducirEfecto(BatallaActivity.this, R.raw.victoria);
+
                 Button btnVolverMapa = dialogVictoria.findViewById(R.id.btnVolverMapa);
 
                 btnVolverMapa.setOnClickListener(new View.OnClickListener()
@@ -478,11 +506,17 @@ public class BatallaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
+                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
                         Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
                         intent.putExtra(PERSONAJE, personaje);
                         intent.putExtra(PREGUNTAS, preguntas);
                         setResult(RESULT_OK, intent);
                         dialogVictoria.dismiss();
+
+                        id_musica = R.raw.mapa;
+                        musicaFondo = null;
+
                         finish();
                     }
                 });
