@@ -82,29 +82,6 @@ public class BatallaActivity extends MiActivityPersonalizado
         numBatalla          = intent.getIntExtra(NUMERO_BATALLA, -1);
         preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
 
-        //region TESTS
-        /*
-        personaje = new Personaje(1, "TEST", "es", ".//personajes//img//trump_es_3.png", "asdasd");
-        enemigo = new Enemigo(R.drawable.enemigo_agua, "Vaporeon");
-        jugador = "TEST";
-        numeroBatalla = 1;
-        preguntas = new ArrayList<>();
-        ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(new Respuesta("1", true));
-        respuestas.add(new Respuesta("2", false));
-        respuestas.add(new Respuesta("3", false));
-        preguntas.add(new Pregunta(1, "PREGUNTA1", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(2, "PREGUNTA2", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(3, "PREGUNTA3", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(4, "PREGUNTA4", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(5, "PREGUNTA5", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(6, "PREGUNTA6", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(7, "PREGUNTA7", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(8, "PREGUNTA8", "es", "agua", respuestas));
-        preguntas.add(new Pregunta(9, "PREGUNTA9", "es", "agua", respuestas));
-         */
-        //endregion
-
         barra_progreso      = findViewById(R.id.progress_bar);
         textViewPregunta    = findViewById(R.id.textViewPregunta);
         btnRespuesta1       = findViewById(R.id.btnRespuesta1);
@@ -311,6 +288,10 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onFinish()
             {
+                btnRespuesta1.setEnabled(false);
+                btnRespuesta2.setEnabled(false);
+                btnRespuesta3.setEnabled(false);
+
                 if (!preguntaRespondida)
                 {
                     procesarRespuesta(null);
@@ -429,12 +410,13 @@ public class BatallaActivity extends MiActivityPersonalizado
      */
     private void procesarResultado()
     {
+        btnRespuesta1.setEnabled(false);
+        btnRespuesta2.setEnabled(false);
+        btnRespuesta3.setEnabled(false);
+
         if (personaje.getVida() != 0 && enemigo.getVida() != 0)
         {
             cargarPregunta();
-            btnRespuesta1.setEnabled(true);
-            btnRespuesta2.setEnabled(true);
-            btnRespuesta3.setEnabled(true);
         }
         else
         {
@@ -524,6 +506,10 @@ public class BatallaActivity extends MiActivityPersonalizado
                 dialogVictoria.show();
             }
         }
+
+        btnRespuesta1.setEnabled(true);
+        btnRespuesta2.setEnabled(true);
+        btnRespuesta3.setEnabled(true);
     }
 
     /**

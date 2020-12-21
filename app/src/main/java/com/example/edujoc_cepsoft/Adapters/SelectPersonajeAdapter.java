@@ -30,7 +30,6 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
         super(context, 0, personajes);
 
         this.context = context;
-
     }
 
     @NonNull

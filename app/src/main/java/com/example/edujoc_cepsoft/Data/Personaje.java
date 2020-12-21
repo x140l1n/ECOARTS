@@ -5,12 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.Serializable;
 
 public class Personaje implements Serializable
 {
-    private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
+    private int VIDA_MAXIMA = 5; //La vida máxima que puede tener, se podrá cambiar durante el transcurso del juego.
 
     private int id;
     private String nombre;
@@ -80,7 +82,7 @@ public class Personaje implements Serializable
      * @param context El activity de donde llama a este método.
      * @return La imagen del personaje.
      */
-    public Bitmap obtenerImagen(Context context)
+    public Bitmap obtenerImagen(@NotNull Context context)
     {
         //Obtener la ruta de la imagen del objeto personaje, replazamos el ./ por la ruta files de la app y convertimos todo en minúsculas.
         String rutaAbsolutaPersonaje = this.getRutaImagen().replace("./", context.getFilesDir() + File.separator).toLowerCase();
