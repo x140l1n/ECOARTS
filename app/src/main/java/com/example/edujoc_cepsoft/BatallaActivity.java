@@ -19,6 +19,7 @@ import com.example.edujoc_cepsoft.Data.Enemigo;
 import com.example.edujoc_cepsoft.Data.Personaje;
 import com.example.edujoc_cepsoft.Data.Pregunta;
 import com.example.edujoc_cepsoft.Data.Respuesta;
+import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
 import org.jetbrains.annotations.NotNull;
@@ -111,7 +112,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
@@ -143,7 +144,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
@@ -175,7 +176,7 @@ public class BatallaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                 if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
                 {
@@ -420,13 +421,13 @@ public class BatallaActivity extends MiActivityPersonalizado
         }
         else
         {
-            musicaFondo.stop();
+            if (musicaFondo != null) musicaFondo.stop();
 
             if (personaje.getVida() == 0)
             {
-                final Dialog dialogDerrota = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_derrota);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.derrota);
 
-                reproducirEfecto(BatallaActivity.this, R.raw.derrota);
+                final Dialog dialogDerrota = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_derrota);
 
                 Button btnVolverMenu = dialogDerrota.findViewById(R.id.btnVolverMenu);
 
@@ -435,7 +436,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogDerrota.dismiss();
@@ -448,9 +449,9 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
             else if(personaje.getVida() > 0 && numBatalla == 6)
             {
-                final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.victoria);
 
-                reproducirEfecto(BatallaActivity.this, R.raw.victoria);
+                final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
 
                 Button btnVolverMenu = dialogVictoriaFinal.findViewById(R.id.btnVolverMenuDos);
                 ImageView imagenPersonaje = dialogVictoriaFinal.findViewById(R.id.imagenPersonaje);
@@ -464,7 +465,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogVictoriaFinal.dismiss();
@@ -477,9 +478,9 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
             else
             {
-                final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
+                EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.victoria);
 
-                reproducirEfecto(BatallaActivity.this, R.raw.victoria);
+                final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
 
                 Button btnVolverMapa = dialogVictoria.findViewById(R.id.btnVolverMapa);
 
@@ -488,7 +489,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
                         intent.putExtra(PERSONAJE, personaje);

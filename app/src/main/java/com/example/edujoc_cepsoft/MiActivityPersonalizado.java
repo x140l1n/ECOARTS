@@ -1,8 +1,10 @@
 package com.example.edujoc_cepsoft;
 
-import android.content.Context;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
@@ -12,12 +14,11 @@ import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
  */
 public class MiActivityPersonalizado extends AppCompatActivity
 {
-    protected static int id_musica = 0;
-    protected MediaPlayer musicaFondo = null;
     private static int posicion = 0;
 
+    protected static int id_musica = 0;
+    protected MediaPlayer musicaFondo = null;
     protected static boolean reproducirMusica = true;
-    protected static boolean reproducirEfecto = true;
 
     /**
      * Cuando el activity pasa al primer plano.
@@ -50,7 +51,9 @@ public class MiActivityPersonalizado extends AppCompatActivity
         super.onWindowFocusChanged(hasFocus);
     }
 
-
+    /**
+     * Cuando el activity se reinicia.
+     */
     @Override
     protected void onRestart()
     {
@@ -63,6 +66,9 @@ public class MiActivityPersonalizado extends AppCompatActivity
         super.onRestart();
     }
 
+    /**
+     * Cuando el activity se para.
+     */
     @Override
     protected void onStop()
     {
@@ -75,6 +81,9 @@ public class MiActivityPersonalizado extends AppCompatActivity
         super.onStop();
     }
 
+    /**
+     * Cuando el activity se pausa.
+     */
     @Override
     protected void onPause()
     {
@@ -85,15 +94,5 @@ public class MiActivityPersonalizado extends AppCompatActivity
         }
 
         super.onPause();
-    }
-
-    protected void reproducirEfecto(Context context, int id_efecto)
-    {
-        if (reproducirEfecto)
-        {
-            MediaPlayer efecto = MediaPlayer.create(context, id_efecto);
-            efecto.setVolume(1f, 1f);
-            efecto.start();
-        }
     }
 }

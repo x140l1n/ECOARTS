@@ -1,8 +1,10 @@
 package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.edujoc_cepsoft.Adapters.SelectPersonajeAdapter;
 import com.example.edujoc_cepsoft.Data.Personaje;
+import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
 import com.google.gson.Gson;
@@ -54,7 +57,7 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
 
                 if (personajes.size() > 0 && !editTextNombreJugador.getText().toString().trim().isEmpty())
                 {
@@ -93,21 +96,22 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             }
         });
 
-        editTextNombreJugador.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus)
-            {
-                SystemUIHelper.ocultarBarraNavegacion(SelectPersonajeActivity.this.getWindow());
-            }
-        });
-
+        //Para ocultar la barra de navegación y el teclado cuando haces click en el layout.
         relativeLayoutSelectPersonaje.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                editTextNombreJugador.clearFocus();
+                if (getCurrentFocus() != null && editTextNombreJugador.hasFocus())
+                {
+                    //Ocultar el teclado.
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+                    SystemUIHelper.ocultarBarraNavegacion(SelectPersonajeActivity.this.getWindow());
+
+                    editTextNombreJugador.clearFocus();
+                }
             }
         });
 
@@ -116,7 +120,7 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
 
                 finish();
             }

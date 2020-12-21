@@ -36,13 +36,30 @@
                 android:drawableStart="@drawable/jugar"
                 android:text="@string/jugar"
                 style="@style/BotonesBordesRedondeadosPrimarios"/>
-            <Button
-                android:id="@+id/btnAjustes"
+            <LinearLayout
                 android:layout_width="600dp"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ajustes"
-                android:text="@string/ajustes"
-                style="@style/BotonesBordesRedondeadosSecundarios"/>
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btnAjustes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ajustes"
+                    android:text="@string/ajustes"
+                    style="@style/BotonesBordesRedondeadosSecundarios"
+                    android:layout_marginLeft="0dp"/>
+                <Button
+                    android:id="@+id/btnTutorial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/tutorial"
+                    android:text="@string/tutorial"
+                    style="@style/BotonesBordesRedondeadosSecundarios"
+                    android:layout_marginRight="0dp"/>
+            </LinearLayout>
             <Button
                 android:id="@+id/btnSalir"
                 android:layout_width="600dp"

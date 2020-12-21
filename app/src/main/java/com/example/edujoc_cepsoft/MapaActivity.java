@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.example.edujoc_cepsoft.Data.Personaje;
 import org.jetbrains.annotations.NotNull;
 
 import com.example.edujoc_cepsoft.Data.Pregunta;
+import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -96,7 +98,7 @@ public class MapaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-               reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                 final Dialog dialogInfoEnemigo = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_info_enemigo);
                 Button btnComenzarBatalla = dialogInfoEnemigo.findViewById(R.id.btnComenzarBatalla);
@@ -123,7 +125,7 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                         Intent intent = new Intent(MapaActivity.this, BatallaActivity.class);
 
@@ -148,7 +150,7 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                         dialogInfoEnemigo.dismiss();
                     }
@@ -163,24 +165,23 @@ public class MapaActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
-                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                 final Dialog dialogAjuste = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_ajuste_partida);
-                dialogAjuste.show();
 
                 Button btnAbandonarPartida = dialogAjuste.findViewById(R.id.btnAbandonarPartida);
                 ImageButton btnCancelar = dialogAjuste.findViewById(R.id.btnCancelar);
                 SwitchCompat switchEfecto = dialogAjuste.findViewById(R.id.switchEfecto);
                 SwitchCompat switchMusica = dialogAjuste.findViewById(R.id.switchMusica);
 
-                switchEfecto.setChecked(reproducirEfecto);
+                switchEfecto.setChecked(EffectSoundHelper.reproducirEfecto);
 
                 switchEfecto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                 {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
                     {
-                        reproducirEfecto = isChecked;
+                        EffectSoundHelper.reproducirEfecto = isChecked;
                     }
                 });
 
@@ -192,6 +193,19 @@ public class MapaActivity extends MiActivityPersonalizado
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
                     {
                         reproducirMusica = isChecked;
+
+                        if (!reproducirMusica) musicaFondo.setVolume(0f, 0f);
+                        else
+                        {
+                            if (musicaFondo != null) musicaFondo.setVolume(0.5f, 0.5f);
+                            else
+                            {
+                                musicaFondo = MediaPlayer.create(MapaActivity.this, id_musica);
+                                musicaFondo.setVolume(0.5f, 0.5f);
+                                musicaFondo.setLooping(true);
+                                musicaFondo.start();
+                            }
+                        }
                     }
                 });
 
@@ -200,7 +214,7 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                         final Dialog dialogAbandonar = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_abandonar_partida);
 
@@ -212,9 +226,11 @@ public class MapaActivity extends MiActivityPersonalizado
                             @Override
                             public void onClick(View v)
                             {
-                                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                                EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                                 startActivity(new Intent(MapaActivity.this, MenuActivity.class));
+
+                                dialogAjuste.dismiss();
                                 dialogAbandonar.dismiss();
 
                                 finish();
@@ -226,7 +242,7 @@ public class MapaActivity extends MiActivityPersonalizado
                             @Override
                             public void onClick(View v)
                             {
-                                reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                                EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                                 dialogAbandonar.dismiss();
                             }
@@ -241,11 +257,13 @@ public class MapaActivity extends MiActivityPersonalizado
                     @Override
                     public void onClick(View v)
                     {
-                        reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+                        EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
 
                         dialogAjuste.dismiss();
                     }
                 });
+
+                dialogAjuste.show();
             }
         });
 

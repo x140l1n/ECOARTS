@@ -52,7 +52,10 @@
         <item name="android:paddingRight">@dimen/paddingDerecha</item>
         <item name="android:paddingTop">@dimen/paddingArriba</item>
         <item name="android:paddingBottom">@dimen/paddingAbajo</item>
-        <item name="android:layout_margin">@dimen/marginMediano</item>
+        <item name="android:layout_marginLeft">@dimen/marginMediano</item>
+        <item name="android:layout_marginRight">@dimen/marginMediano</item>
+        <item name="android:layout_marginBottom">@dimen/marginMediano</item>
+        <item name="android:layout_marginTop">@dimen/marginMediano</item>
     </style>
 
     <style name="BotonesBordesRedondeadosRespuesta">
