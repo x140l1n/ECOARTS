@@ -12,40 +12,45 @@
         android:scaleType="fitCenter"
         android:src="@drawable/mapa_detalls"
         tools:ignore="ContentDescription" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/marginMediano"
             android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/marginMediano"
             android:layout_toStartOf="@id/btnConfig"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/nivelMapa"
+                style="@style/TextViewNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nivel"
-                style="@style/TextViewNormal"
-                android:layout_margin="0dp"/>
+                android:layout_margin="0dp"
+                android:text="@string/nivel" />
+
             <LinearLayout
                 android:id="@+id/vidasPersonaje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
+
         <ImageButton
             android:id="@+id/btnConfig"
+            style="@style/ImageButtonSinFondo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ajustes"
             android:layout_alignParentEnd="true"
-            style="@style/ImageButtonSinFondo"
+            android:src="@drawable/ajustes"
             tools:ignore="contentDescription" />
     </RelativeLayout>
+
     <include
         android:id="@+id/personaje"
         layout="@layout/personaje_mapa"
