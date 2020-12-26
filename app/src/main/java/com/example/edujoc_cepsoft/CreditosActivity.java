@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
 public class CreditosActivity extends MiActivityPersonalizado
@@ -24,6 +25,8 @@ public class CreditosActivity extends MiActivityPersonalizado
             @Override
             public void onClick(View v)
             {
+                EffectSoundHelper.reproducirEfecto(CreditosActivity.this, R.raw.boton_click);
+
                 finish();
             }
         });

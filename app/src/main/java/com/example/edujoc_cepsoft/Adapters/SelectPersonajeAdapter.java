@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.edujoc_cepsoft.Data.Personaje;
+import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.MiDialogPersonalizado;
 import com.example.edujoc_cepsoft.R;
 
@@ -30,7 +31,6 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
         super(context, 0, personajes);
 
         this.context = context;
-
     }
 
     @NonNull
@@ -50,12 +50,15 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
             @Override
             public void onClick(View v)
             {
+                EffectSoundHelper.reproducirEfecto(getContext(), R.raw.boton_click);
+
                 deseleccionarTodo();
 
                 view.setBackgroundResource(R.drawable.item_background_grid_personajes_seleccionado);
 
                 getItem(position).setSeleccionado(true);
 
+                //Actualizar la grid view.
                 ((GridView) parent).invalidateViews();
             }
         });
@@ -64,6 +67,8 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
             @Override
             public void onClick(View v)
             {
+                EffectSoundHelper.reproducirEfecto(getContext(), R.raw.boton_click);
+
                 final Dialog dialogInfo = new MiDialogPersonalizado(context, R.layout.dialog_info_personaje);
 
                 ImageButton btnCancelar = dialogInfo.findViewById(R.id.btnCancelar);
@@ -73,12 +78,16 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
                 txtViewNombrePersonaje.setText(getItem(position).getNombre());
                 txtViewDescPersonaje.setText(getItem(position).getDescripcion());
 
+                //Esto es para poner el scroll bar.
                 txtViewDescPersonaje.setMovementMethod(new ScrollingMovementMethod());
+
                 btnCancelar.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
                     {
+                        EffectSoundHelper.reproducirEfecto(getContext(), R.raw.boton_click);
+
                         dialogInfo.dismiss();
                     }
                 });

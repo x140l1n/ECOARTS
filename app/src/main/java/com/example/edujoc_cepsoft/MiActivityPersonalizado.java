@@ -1,22 +1,42 @@
 package com.example.edujoc_cepsoft;
 
+import android.content.res.Configuration;
+import android.media.MediaPlayer;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
 
 /**
- * Clase Activity personalizada. Creamos la clase para que en todas las Activities que se extienda de esta clase se oculte la barra de navegación.
+ * Clase Activity personalizada. Creamos la clase para que en todas las Activities que se extienda de esta clase se oculte la barra de navegación y reproducir efectos de sonido y música.
  */
 public class MiActivityPersonalizado extends AppCompatActivity
 {
+    private static int posicion = 0;
+
+    protected static int id_musica = 0;
+    protected MediaPlayer musicaFondo = null;
+    protected static boolean reproducirMusica = true;
+
     /**
      * Cuando el activity pasa al primer plano.
      */
     @Override
     protected void onResume()
     {
-        super.onResume();
         SystemUIHelper.ocultarBarraNavegacion(this.getWindow());
+
+        if (id_musica != 0 && musicaFondo == null && reproducirMusica)
+        {
+            musicaFondo = MediaPlayer.create(this, id_musica);
+            musicaFondo.setVolume(0.5f, 0.5f);
+            musicaFondo.setLooping(true);
+            musicaFondo.start();
+        }
+
+        super.onResume();
     }
 
     /**
@@ -26,7 +46,53 @@ public class MiActivityPersonalizado extends AppCompatActivity
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
     {
-        super.onWindowFocusChanged(hasFocus);
         SystemUIHelper.ocultarBarraNavegacion(this.getWindow());
+
+        super.onWindowFocusChanged(hasFocus);
+    }
+
+    /**
+     * Cuando el activity se reinicia.
+     */
+    @Override
+    protected void onRestart()
+    {
+        if (musicaFondo != null && reproducirMusica)
+        {
+            musicaFondo.seekTo(posicion);
+            musicaFondo.start();
+        }
+
+        super.onRestart();
+    }
+
+    /**
+     * Cuando el activity se para.
+     */
+    @Override
+    protected void onStop()
+    {
+        if (musicaFondo != null)
+        {
+            musicaFondo.stop();
+            posicion = musicaFondo.getCurrentPosition();
+        }
+
+        super.onStop();
+    }
+
+    /**
+     * Cuando el activity se pausa.
+     */
+    @Override
+    protected void onPause()
+    {
+        if (musicaFondo != null && musicaFondo.isPlaying())
+        {
+            musicaFondo.release();
+            musicaFondo = null;
+        }
+
+        super.onPause();
     }
 }

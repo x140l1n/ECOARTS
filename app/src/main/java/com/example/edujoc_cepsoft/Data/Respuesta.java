@@ -7,6 +7,8 @@ public class Respuesta implements Serializable
     private String respuesta;
     private boolean correcta;
 
+    public Respuesta() {}
+
     public Respuesta(String respuesta, boolean correcta)
     {
         this.respuesta = respuesta;

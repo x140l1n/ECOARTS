@@ -44,6 +44,7 @@
                     android:inputType="text"
                     android:importantForAutofill="no"
                     android:autofillHints=""
+                    android:maxLength="30"
                     style="@style/EditTextRosado" />
             </LinearLayout>
 

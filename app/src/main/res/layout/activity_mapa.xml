@@ -22,8 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+
             android:layout_margin="@dimen/marginMediano"
             android:layout_toStartOf="@id/btnConfig"
+
             android:orientation="vertical">
 
             <TextView
@@ -42,8 +44,12 @@
         </LinearLayout>
 
         <ImageButton
+<<<<<<< HEAD
             android:id="@+id/btnConfig"
             style="@style/ImageButtonSinFondo"
+=======
+            android:id="@+id/btnAjustes"
+>>>>>>> 2a8291ff2b078d96f8437d76811be00743af549b
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"

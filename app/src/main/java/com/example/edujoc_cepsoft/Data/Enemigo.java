@@ -4,21 +4,24 @@ import java.io.Serializable;
 
 public class Enemigo implements Serializable
 {
-    private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
-
+    private int vida_maxima; //La vida máxima que puede tener.
     private String nombre;
     private int imagen;
-    private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
+    private int vida; //La vida actual que tiene.
+    private int colorFondo;
 
-    public Enemigo(int imagen, String nombre)
+    public Enemigo(int imagen, String nombre, int colorFondo, int vida_maxima)
     {
         this.imagen = imagen;
         this.nombre = nombre;
+        this.colorFondo = colorFondo;
+        this.vida_maxima = vida_maxima;
+        this.vida = vida_maxima;
     }
 
     public void quitarVida(int i)
     {
-        this.vidas -= i;
+        this.vida -= i;
     }
 
     //region Getters & Setters
@@ -27,17 +30,21 @@ public class Enemigo implements Serializable
         return imagen;
     }
 
-    public int getVidas()
+    public int getVida()
     {
-        return vidas;
+        return vida;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public int getVIDA_MAXIMA() {
-        return this.VIDA_MAXIMA;
+    public int getVida_maxima() {
+        return this.vida_maxima;
+    }
+
+    public int getColorFondo() {
+        return colorFondo;
     }
     //endregion
 }

@@ -57,6 +57,7 @@
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMusica"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/sol_thumb"/>
@@ -74,6 +75,7 @@
                         android:textAlignment="viewEnd"
                         style="@style/TextViewNormal"/>
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchEfecto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/sol_thumb"/>
@@ -85,12 +87,6 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
-                <Button
-                    android:id="@+id/btnTutorial"
-                    android:layout_width="500dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tutorial"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
                 <Button
                     android:id="@+id/btnCambiarIdioma"
                     android:layout_width="500dp"

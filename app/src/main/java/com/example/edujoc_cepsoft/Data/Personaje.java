@@ -1,15 +1,18 @@
 package com.example.edujoc_cepsoft.Data;
 
+import android.app.Person;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.Serializable;
 
 public class Personaje implements Serializable
 {
-    private final int VIDA_MAXIMA = 5; //La vida máxima que puede tener.
+    private int VIDA_MAXIMA = 5; //La vida máxima que puede tener, se podrá cambiar durante el transcurso del juego.
 
     private int id;
     private String nombre;
@@ -18,10 +21,9 @@ public class Personaje implements Serializable
     private String descripcion;
 
     private boolean seleccionado = false;
-    private int vidas = VIDA_MAXIMA; //La vida actual que tiene.
+    private int vida = VIDA_MAXIMA; //La vida actual que tiene.
 
-    public Personaje ()
-    {}
+    public Personaje() {}
 
     public Personaje(int id, String nombre, String idioma, String rutaImagen, String descripcion)
     {
@@ -34,7 +36,7 @@ public class Personaje implements Serializable
 
     public void quitarVida(int i)
     {
-        this.vidas -= i;
+        this.vida -= i;
     }
 
     //region Getters
@@ -58,12 +60,12 @@ public class Personaje implements Serializable
         return seleccionado;
     }
 
-    public int getVidas() {
-        return vidas;
+    public int getVida() {
+        return vida;
     }
 
-    public void setVidas(int vidas) {
-        this.vidas = vidas;
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
     public void setSeleccionado(boolean seleccionado) {
@@ -80,7 +82,7 @@ public class Personaje implements Serializable
      * @param context El activity de donde llama a este método.
      * @return La imagen del personaje.
      */
-    public Bitmap obtenerImagen(Context context)
+    public Bitmap obtenerImagen(@NotNull Context context)
     {
         //Obtener la ruta de la imagen del objeto personaje, replazamos el ./ por la ruta files de la app y convertimos todo en minúsculas.
         String rutaAbsolutaPersonaje = this.getRutaImagen().replace("./", context.getFilesDir() + File.separator).toLowerCase();
