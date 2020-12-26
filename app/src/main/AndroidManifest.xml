@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".introduction"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -24,6 +23,10 @@
         </activity>
         <activity
             android:name=".IdiomaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoAnimacionActivity" />
+        <activity
+            android:name=".IntroduccionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoAnimacionActivity" />
         <activity
@@ -51,5 +54,4 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoAnimacionActivity" />
     </application>
-
 </manifest>
