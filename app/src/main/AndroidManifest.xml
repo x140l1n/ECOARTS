@@ -21,10 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- exported true si volem executar una activity en concret
+        android:exported="true"
+        -->
         <activity
+
             android:name=".IdiomaActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoAnimacionActivity" />
+            android:theme="@style/NoAnimacionActivity"
+
+            />
+
         <activity
             android:name=".IntroduccionActivity"
             android:screenOrientation="portrait"
