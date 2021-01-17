@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IntroduccionActivity"
     android:background="@color/colorPrimario">
-    <TextView
+    <ImageView
+        android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/introduccion"
-        android:textAlignment="center"
-        style="@style/EditTextRosado"/>
-</LinearLayout>
+        android:src="@drawable/fondo_principal"
+        android:scaleType="fitXY"
+        tools:ignore="ContentDescription"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="@string/EncabezadoIntroduccion"
+            style="@style/TextViewEncabezado"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="30"
+            android:scrollbars="vertical"
+            android:text="@string/introduccion"
+            android:textAlignment="center"
+            style="@style/EditTextRosado"
+            android:autofillHints=""
+            android:importantForAutofill="no"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tierra_feliz"
+                android:layout_margin="@dimen/marginGrande"
+                tools:ignore="ContentDescription" />
+            <Button
+                android:id="@+id/btnIr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/BotonesBordesRedondeadosPrimarios"
+                android:text="@string/ir_al_men"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

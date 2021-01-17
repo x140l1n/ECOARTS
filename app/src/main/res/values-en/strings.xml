@@ -73,7 +73,16 @@
     </string>
     <string name="enhorabuena">Congratulations</string>
     <string name="introduccion">
-        La Terra està en perill! I és que a la Terra hi han crescut uns monstres creats per a l’espècie humana que amenacen en acabar amb el planeta tal i com el coneixem avui. Aquests monstres han estat creats involuntàriament per tots els homes i dones a partir dels nostres actes diaris i rutinaris.
-        Durant molt de temps no en vam ser conscients però cada dia hem fet créixer aquests monstres i ara gairebé ja estan fóra de control i poden acabar amb el planeta amb qüestió de pocs anys. Es coneixen amb el nom d’Inundació, Contaminació, Residus, Plàstics, Desforestació i Energia Bruta i són els monstres més perillosos que han hàbitat mai la Terra. El problema és que no tota la humanitat està unida en lluitar contra aquests monstres. Molts polítics i grans empresaris fan molts diners donant de menjar cada dia a aquestes perilloses bèsties a la vegada que intenten encantar la nostra ment amb els seus productes per evitar que hi fem alguna cosa. Però ja no queda més temps, i tu i només tu, amb la teva saviesa i els teus actes pots acabar amb ells i destruir-los per sempre i salvar així el Planeta perquè continuï sent un lloc habitable per a totes les persones i animals que encara sobreviuen.
+        The earth is in danger! The reason is that there have appeared some monsters made by the human species that threaten with the destruction of the planet that we know.
+        These monsters have been inadvertently created by all men and women from our daily acts.
+        For a long time, we were not aware of it but every day we have made these monsters grow and now they are almost out of control and can wipe out the planet in a matter of a few years.
+        They are known as Flood, Pollution, Waste, Plastic, Deforestation and Gross Energy and are the most dangerous monsters that have inhabited in our planet.
+        The main problem is that the whole humanity isn’t united in fighting these monsters. Many politicians and big businessmen make a lot of money by feeding these dangerous
+        beasts while trying to manipulate our minds to prevent us from doing anything about them. But there is not much time left. You and only you, with your wisdom and your acts
+        can destroy them forever and thus save the planet so that it continues to be habitable for all people and animals that are still alive.
     </string>
+    <string name="ver_introduccion">Show introduction</string>
+    <string name="volver_ajustes">Back to settings</string>
+    <string name="EncabezadoIntroduccion">Introduction</string>
+    <string name="ir_al_men">Go to menu</string>
 </resources>

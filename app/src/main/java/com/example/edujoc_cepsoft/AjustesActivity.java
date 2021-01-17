@@ -29,6 +29,7 @@ public class AjustesActivity extends MiActivityPersonalizado
         final TextView txtViewVersion = findViewById(R.id.txtViewVersion);
         txtViewVersion.append(" " + BuildConfig.VERSION_NAME);
 
+        Button btnIntroduccion = findViewById(R.id.btnIntroduccion);
         Button btnCambiarIdioma = findViewById(R.id.btnCambiarIdioma);
         Button btnContactar = findViewById(R.id.btnContactar);
         Button btnCreditos = findViewById(R.id.btnCreditos);
@@ -71,12 +72,29 @@ public class AjustesActivity extends MiActivityPersonalizado
             }
         });
 
+        btnIntroduccion.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
+                IntroduccionActivity.activity_anterior = "ajustes";
+
+                startActivity(new Intent(AjustesActivity.this, IntroduccionActivity.class));
+
+                finish();
+            }
+        });
+
         btnVolver.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
+                startActivity( new Intent(AjustesActivity.this, MenuActivity.class));
 
                 finish();
             }
@@ -89,7 +107,11 @@ public class AjustesActivity extends MiActivityPersonalizado
             {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
+                IdiomaActivity.activity_anterior = "ajustes";
+
                 startActivity(new Intent(AjustesActivity.this, IdiomaActivity.class));
+
+                finish();
             }
         });
 
@@ -117,6 +139,8 @@ public class AjustesActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(AjustesActivity.this, CreditosActivity.class));
+
+                finish();
             }
         });
     }

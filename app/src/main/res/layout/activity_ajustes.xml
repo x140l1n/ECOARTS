@@ -88,6 +88,12 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <Button
+                    android:id="@+id/btnIntroduccion"
+                    android:layout_width="500dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ver_introduccion"
+                    style="@style/BotonesBordesRedondeadosMediano"/>
+                <Button
                     android:id="@+id/btnCambiarIdioma"
                     android:layout_width="500dp"
                     android:layout_height="wrap_content"

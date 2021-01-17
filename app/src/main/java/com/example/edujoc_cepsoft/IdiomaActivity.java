@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
@@ -12,6 +13,8 @@ import com.example.edujoc_cepsoft.Helpers.LocaleHelper;
 
 public class IdiomaActivity extends MiActivityPersonalizado
 {
+    public static String activity_anterior = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -26,6 +29,22 @@ public class IdiomaActivity extends MiActivityPersonalizado
         final Button btnEs = findViewById(R.id.btnCastellano);
         final Button btnCa = findViewById(R.id.btnCatala);
         final Button btnEn = findViewById(R.id.btnEnglish);
+        ImageButton btnVolver = findViewById(R.id.btnVolver);
+
+        if (activity_anterior.equals("main")) btnVolver.setVisibility(View.GONE);
+
+        btnVolver.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
+
+                startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
+
+                finish();
+            }
+        });
 
         btnEs.setOnClickListener(new View.OnClickListener()
         {
@@ -35,7 +54,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "es");
-                startActivity(new Intent(IdiomaActivity.this, MenuActivity.class));
+
+                if (activity_anterior.equals("main"))
+                {
+                    IntroduccionActivity.activity_anterior = "idioma";
+
+                    startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
+                }
+                else
+                {
+                    startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
+                }
+
                 finish();
             }
         });
@@ -48,7 +78,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "ca");
-                startActivity(new Intent(IdiomaActivity.this, MenuActivity.class));
+
+                if (activity_anterior.equals("main"))
+                {
+                    IntroduccionActivity.activity_anterior = "idioma";
+
+                    startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
+                }
+                else
+                {
+                    startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
+                }
+
                 finish();
             }
         });
@@ -61,7 +102,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "en");
-                startActivity(new Intent(IdiomaActivity.this, MenuActivity.class));
+
+                if (activity_anterior.equals("main"))
+                {
+                    IntroduccionActivity.activity_anterior = "idioma";
+
+                    startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
+                }
+                else
+                {
+                    startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
+                }
+
                 finish();
             }
         });

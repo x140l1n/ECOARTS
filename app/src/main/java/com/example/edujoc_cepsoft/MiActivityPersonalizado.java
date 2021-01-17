@@ -20,6 +20,12 @@ public class MiActivityPersonalizado extends AppCompatActivity
     protected MediaPlayer musicaFondo = null;
     protected static boolean reproducirMusica = true;
 
+    @Override
+    public void onBackPressed()
+    {
+        //No hacer nada cuando el jugador hace click en el botón back.
+    }
+
     /**
      * Cuando el activity pasa al primer plano.
      */

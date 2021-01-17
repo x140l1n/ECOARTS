@@ -44,6 +44,8 @@ public class MenuActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(MenuActivity.this, SelectPersonajeActivity.class));
+
+                finish();
             }
         });
 
@@ -55,6 +57,8 @@ public class MenuActivity extends MiActivityPersonalizado
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(MenuActivity.this, AjustesActivity.class));
+
+                finish();
             }
         });
 

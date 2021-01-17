@@ -17,6 +17,9 @@ public class MainActivity extends MiActivityPersonalizado
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
+                IdiomaActivity.activity_anterior = "main";
+
                 startActivity(new Intent(MainActivity.this, IdiomaActivity.class));
                 finish();
             }

@@ -76,4 +76,8 @@
         La Terra està en perill! I és que a la Terra hi han crescut uns monstres creats per a l’espècie humana que amenacen en acabar amb el planeta tal i com el coneixem avui. Aquests monstres han estat creats involuntàriament per tots els homes i dones a partir dels nostres actes diaris i rutinaris.
         Durant molt de temps no en vam ser conscients però cada dia hem fet créixer aquests monstres i ara gairebé ja estan fóra de control i poden acabar amb el planeta amb qüestió de pocs anys. Es coneixen amb el nom d’Inundació, Contaminació, Residus, Plàstics, Desforestació i Energia Bruta i són els monstres més perillosos que han hàbitat mai la Terra. El problema és que no tota la humanitat està unida en lluitar contra aquests monstres. Molts polítics i grans empresaris fan molts diners donant de menjar cada dia a aquestes perilloses bèsties a la vegada que intenten encantar la nostra ment amb els seus productes per evitar que hi fem alguna cosa. Però ja no queda més temps, i tu i només tu, amb la teva saviesa i els teus actes pots acabar amb ells i destruir-los per sempre i salvar així el Planeta perquè continuï sent un lloc habitable per a totes les persones i animals que encara sobreviuen.
     </string>
+    <string name="ver_introduccion">Veure introducció</string>
+    <string name="volver_ajustes">Tornar ajustos</string>
+    <string name="EncabezadoIntroduccion">Introducció</string>
+    <string name="ir_al_men">Anar al menú</string>
 </resources>

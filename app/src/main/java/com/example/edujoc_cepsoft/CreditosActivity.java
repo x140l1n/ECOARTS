@@ -1,5 +1,6 @@
 package com.example.edujoc_cepsoft;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -26,6 +27,8 @@ public class CreditosActivity extends MiActivityPersonalizado
             public void onClick(View v)
             {
                 EffectSoundHelper.reproducirEfecto(CreditosActivity.this, R.raw.boton_click);
+
+                startActivity(new Intent(CreditosActivity.this, AjustesActivity.class));
 
                 finish();
             }

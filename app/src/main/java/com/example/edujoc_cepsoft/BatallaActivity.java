@@ -207,12 +207,6 @@ public class BatallaActivity extends MiActivityPersonalizado
         cargarPregunta();
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        //No hacer nada cuando el jugador hace click en el botón back.
-    }
-
     private void cargarPregunta()
     {
         Paris.style(btnRespuesta1).apply(R.style.BotonesBordesRedondeadosRespuesta);

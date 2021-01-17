@@ -81,8 +81,14 @@ public class MapaActivity extends MiActivityPersonalizado
         btnJugar            = viewPersonaje.findViewById(R.id.btnJugar);
         TextView nivelMapa  = findViewById(R.id.nivelMapa);
 
-        if (nivel.equals("facil")) nivelMapa.append(" " + getString(R.string.facil));
-        else nivelMapa.append(" " + getString(R.string.dificil));
+        if (nivel.equals("facil"))  nivelMapa.append(" " + getString(R.string.facil));
+        else
+        {
+            nivelMapa.append(" " + getString(R.string.dificil));
+
+            ImageView mapa = findViewById(R.id.mapa);
+            mapa.setImageResource(R.drawable.mapa_detalles_dificil);
+        }
 
         final TextView nombreJugador = viewPersonaje.findViewById(R.id.nombreJugador);
         ImageView personajeMapa = viewPersonaje.findViewById(R.id.personajeMapa);
@@ -271,12 +277,6 @@ public class MapaActivity extends MiActivityPersonalizado
     }
 
     @Override
-    public void onBackPressed()
-    {
-        //No hacer nada cuando el jugador hace click en el botón back.
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
@@ -333,6 +333,12 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 btnJugar.setVisibility(View.VISIBLE);
                 btnJugar.setEnabled(true);
+
+                if (numBatalla == 3 && nivel.equals("dificil"))
+                {
+                    personaje.setVida(personaje.getVIDA_MAXIMA());
+                    cargarVidas(personaje);
+                }
             }
 
             @Override
@@ -461,6 +467,8 @@ public class MapaActivity extends MiActivityPersonalizado
     private void cargarVidas(@NotNull Personaje personaje)
     {
         vidasPersonaje = findViewById(R.id.vidasPersonaje);
+
+        vidasPersonaje.removeAllViews();
 
         //Cargar vida actual del personaje.
         for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)

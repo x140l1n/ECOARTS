@@ -122,6 +122,8 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             {
                 EffectSoundHelper.reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
 
+                startActivity( new Intent(SelectPersonajeActivity.this, MenuActivity.class));
+
                 finish();
             }
         });
