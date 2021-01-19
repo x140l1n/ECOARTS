@@ -20,37 +20,40 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="@string/EncabezadoIntroduccion"
             style="@style/TextViewEncabezado"/>
+
         <TextView
+            android:id="@+id/txtViewIntroduccion"
+            style="@style/EditTextRosado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="30"
+            android:autofillHints=""
+            android:importantForAutofill="no"
+            android:maxLines="20"
             android:scrollbars="vertical"
             android:text="@string/introduccion"
-            android:textAlignment="center"
-            style="@style/EditTextRosado"
-            android:autofillHints=""
-            android:importantForAutofill="no"/>
+            android:textAlignment="center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7"
-            android:layout_alignParentBottom="true"
+            android:layout_weight="2"
             android:gravity="center">
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/tierra_feliz"
-                android:layout_margin="@dimen/marginGrande"
+                android:layout_margin="@dimen/marginMediano"
                 tools:ignore="ContentDescription" />
             <Button
                 android:id="@+id/btnIr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/BotonesBordesRedondeadosPrimarios"
+                android:layout_margin="@dimen/marginMediano"
                 android:text="@string/ir_al_men"/>
         </LinearLayout>
     </LinearLayout>

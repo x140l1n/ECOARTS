@@ -38,11 +38,11 @@
     <string name="volver_menu">Back to menu</string>
     <string name="victoria">Victory!</string>
     <string name="victoria2">Very good, keep it up!</string>
-    <string name="volver_mundo">Back to map</string>
+    <string name="volver_mapa">Back to map</string>
     <string name="abandonar_partida">Are you sure you want to leave the game?</string>
     <string name="batalla">Battle</string>
     <string name="debes_escribir_nombre">You must write a name</string>
-    <string name="victoria3">YOU SAVED THE WORLD!
+    <string name="victoria3">YOU SAVED THE WORLD!\n\n
         Thanks to your actions and sageness the world keeps being a nice place to live for all species.
     </string>
     <string name="comenzar_batalla">Start battle</string>
@@ -58,7 +58,7 @@
         You can check the information of each character by pressing the blue icon and if you want to select it, just press the green icon!\n\n
         Finally choose a dificulty:\n\n
         - Easy => Your hearts will recover after each battle.\n
-        - Difficult => You won\'t be able to recover hearts between battles, so be careful!\n
+        - Difficult => Your hearts only will recover after the third battle.!\n
     </string>
     <string name="tutorial_2">
         In total there are 6 worlds and in each one there\'s a different monster.\n\n
@@ -73,11 +73,13 @@
     </string>
     <string name="enhorabuena">Congratulations</string>
     <string name="introduccion">
-        The earth is in danger! The reason is that there have appeared some monsters made by the human species that threaten with the destruction of the planet that we know.
-        These monsters have been inadvertently created by all men and women from our daily acts.
-        For a long time, we were not aware of it but every day we have made these monsters grow and now they are almost out of control and can wipe out the planet in a matter of a few years.
-        They are known as Flood, Pollution, Waste, Plastic, Deforestation and Gross Energy and are the most dangerous monsters that have inhabited in our planet.
-        The main problem is that the whole humanity isn’t united in fighting these monsters. Many politicians and big businessmen make a lot of money by feeding these dangerous
+        The earth is in danger!\n
+        The reason is that there have appeared some monsters made by the human species that threaten with the destruction of the planet that we know.\n\n
+        These monsters have been inadvertently created by all men and women from our daily acts.\n
+        For a long time, we were not aware of it but every day we have made these monsters grow and now they are almost out of control and can wipe out the planet in a matter of a few years.\n\n
+        They are known as Flood, Pollution, Waste, Plastic, Deforestation and Gross Energy and are the most dangerous monsters that have inhabited in our planet.\n
+        The main problem is that the whole humanity isn’t united in fighting these monsters.\n\n
+        Many politicians and big businessmen make a lot of money by feeding these dangerous
         beasts while trying to manipulate our minds to prevent us from doing anything about them. But there is not much time left. You and only you, with your wisdom and your acts
         can destroy them forever and thus save the planet so that it continues to be habitable for all people and animals that are still alive.
     </string>
@@ -85,4 +87,5 @@
     <string name="volver_ajustes">Back to settings</string>
     <string name="EncabezadoIntroduccion">Introduction</string>
     <string name="ir_al_men">Go to menu</string>
+    <string name="recuperar_vidas">"Veo que te han quitado vidas estos miserables monstruos. . .\n\n!No te preocupes, acabas de recuperar las vidas que has perdido! "</string>
 </resources>

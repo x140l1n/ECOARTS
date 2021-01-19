@@ -7,13 +7,15 @@
     android:gravity="center"
     android:padding="@dimen/paddingGrande"
     android:background="@drawable/bordes_redondos_secundario">
+
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/tierra_feliz"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_margin="@dimen/marginPequeno"
-        android:scaleType="centerCrop"
-        tools:ignore="contentDescription"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/tierra_corona"
+        tools:ignore="contentDescription" />
+
     <TextView
         style="@style/TextViewEncabezado"
         android:layout_width="match_parent"
@@ -29,6 +31,6 @@
         android:id="@+id/btnVolverMapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/volver_mundo"
+        android:text="@string/volver_mapa"
         style="@style/BotonesBordesRedondeadosPrimarios"/>
 </LinearLayout>

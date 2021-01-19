@@ -37,11 +37,11 @@
     <string name="volver_menu">Volver al menú</string>
     <string name="victoria">¡Victoria!</string>
     <string name="victoria2">¡Muy bien, sigue así!</string>
-    <string name="volver_mundo">Volver al mapa</string>
+    <string name="volver_mapa">Volver al mapa</string>
     <string name="abandonar_partida">¿Seguro que quieres abandonar la partida?</string>
     <string name="batalla">Batalla</string>
     <string name="debes_escribir_nombre">Debes de escribir un nombre</string>
-    <string name="victoria3">¡HAS SALVADO AL MUNDO!
+    <string name="victoria3">¡HAS SALVADO AL MUNDO!\n\n
         Con tus actos y sabiduría el mundo sigue siendo un espacio agradable para vivir para todas las espécies.
     </string>
     <string name="comenzar_batalla">Comenzar batalla</string>
@@ -58,7 +58,7 @@
         para seleccionar pulse el icono verde.\n\n
         Por último escoja un nivel:\n\n
         - Fácil => recuperarás vidas en cada mundo.\n
-        - Difícil => no podrás recuperar vidas.\n
+        - Difícil => solo recuperarás vidas después de la tercera batalla.\n
     </string>
     <string name="tutorial_2">
         En total hay 6 mundos y en cada mundo hay un monstruo diferente.\n\n
@@ -73,17 +73,19 @@
     </string>
     <string name="enhorabuena">¡Enhorabuena</string>
     <string name="introduccion">
-        La Tierra está en peligro! Y es que en la Tierra han crecido unos monstruos creados por la especies humana que amenazan con acabar con el planeta tal y como lo conocemos hoy.
-        Estos monstruos han sido creados involuntariamente por todos los hombres y mujeres a partir de nuestros actos diarios y rutinarios.
-        Durante mucho tiempo no fuimos conscientes pero cada día hemos hecho crecer estos monstruos y ahora ya casi están fuera de control, pudiendo acabar con el planeta en cuestión de pocos años.
-        Se conocen con el nombre de Inundación, Contaminación, Residuos, Plásticos, Desforestación y Energía Sucia y son los monstruos más peligrosos que han habitado nunca la Tierra.
-        El problema es que no toda la humanidad está unida en luchar contra estos monstruos.
+        La Tierra está en peligro!\n
+        Y es que en la Tierra han crecido unos monstruos creados por la especies humana que amenazan con acabar con el planeta tal y como lo conocemos hoy.\n\n
+        Estos monstruos han sido creados involuntariamente por todos los hombres y mujeres a partir de nuestros actos diarios y rutinarios.\n
+        Durante mucho tiempo no fuimos conscientes pero cada día hemos hecho crecer estos monstruos y ahora ya casi están fuera de control, pudiendo acabar con el planeta en cuestión de pocos años.\n\n
+        Se conocen con el nombre de Inundación, Contaminación, Residuos, Plásticos, Desforestación y Energía Sucia y son los monstruos más peligrosos que han habitado nunca la Tierra.\n
+        El problema es que no toda la humanidad está unida en luchar contra estos monstruos.\n\n
         Muchos políticos y grandes empresarios hacen mucho dinero dando de comer cada día a estas peligrosas criaturas a la vez que intentan encantar nuestra mente con sus
         productos para evitar que hagamos alguna cosa. Pero ya no queda más tiempo, y tú y solo tú, con tu sabiduría y tus actos puedes acabar con ellos y destruirlos para siempre y salvar
-        al Planeta para que continúe siendo un lugar habitable para todas las personas y animales que aún sobreviven.
+        al planeta para que continúe siendo un lugar habitable para todas las personas y animales que aún sobreviven.
     </string>
     <string name="ver_introduccion">Ver introducción</string>
     <string name="volver_ajustes">Volver ajustes</string>
     <string name="EncabezadoIntroduccion">Introducción</string>
     <string name="ir_al_men">Ir al menú</string>
+    <string name="recuperar_vidas">"Veo que te han quitado vidas estos miserables monstruos. . .\n\n!No te preocupes, acabas de recuperar las vidas que has perdido!\n\n¡Ánimo, te falta poco para llegar a la meta!"</string>
 </resources>

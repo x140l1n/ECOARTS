@@ -147,7 +147,11 @@ public class MapaActivity extends MiActivityPersonalizado
                         dialogInfoEnemigo.dismiss();
 
                         if(numBatalla < 6) startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
-                        else startActivity(intent);
+                        else
+                        {
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 });
 
@@ -286,26 +290,96 @@ public class MapaActivity extends MiActivityPersonalizado
             case BatallaActivity.BATALLA_ACTIVITY:
                 if (resultCode == RESULT_OK)
                 {
-                    Personaje personaje = (Personaje) data.getSerializableExtra(BatallaActivity.PERSONAJE);
+                    personaje = (Personaje) data.getSerializableExtra(BatallaActivity.PERSONAJE);
 
                     preguntas = (ArrayList) data.getSerializableExtra(BatallaActivity.PREGUNTAS);
 
-                    if (nivel.equals("facil")) personaje.setVida(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
+                    if (nivel.equals("facil"))
+                    {
+                        personaje.setVida(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
 
-                    this.personaje = personaje;
+                        numBatalla++;
 
-                    if (this.personaje.getVIDA_MAXIMA() != this.personaje.getVida()) quitarVida(this.personaje);
+                        btnJugar.setEnabled(false);
 
-                    numBatalla++;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                realizarAnimacion();
+                            }
+                        }, 1000);
+                    }
+                    else
+                    {
+                        if (numBatalla == 3)
+                        {
+                            if (personaje.getVIDA_MAXIMA() != personaje.getVida())
+                            {
+                                new Handler().postDelayed(new Runnable()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        final Dialog dialogRecuperarVidas = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_recuperar_vidas);
+                                        Button btnVolverMapa = dialogRecuperarVidas.findViewById(R.id.btnVolverMapa);
 
-                    btnJugar.setEnabled(false);
+                                        btnVolverMapa.setOnClickListener(new View.OnClickListener()
+                                        {
+                                            @Override
+                                            public void onClick(View v)
+                                            {
+                                                dialogRecuperarVidas.dismiss();
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            realizarAnimacion();
+                                                personaje.setVida(personaje.getVIDA_MAXIMA());
+                                                cargarVidas(personaje);
+
+                                                numBatalla++;
+
+                                                btnJugar.setEnabled(false);
+
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        realizarAnimacion();
+                                                    }
+                                                }, 1000);
+                                            }
+                                        });
+
+                                        dialogRecuperarVidas.show();
+                                    }
+                                }, 1000);
+                            }
+                            else
+                            {
+                                numBatalla++;
+
+                                btnJugar.setEnabled(false);
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        realizarAnimacion();
+                                    }
+                                }, 1000);
+                            }
                         }
-                    }, 1000);
+                        else
+                        {
+                            if (personaje.getVIDA_MAXIMA() != personaje.getVida()) quitarVida(personaje);
+
+                            numBatalla++;
+
+                            btnJugar.setEnabled(false);
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    realizarAnimacion();
+                                }
+                            }, 1000);
+                        }
+                    }
                 }
 
                 break;
@@ -313,7 +387,7 @@ public class MapaActivity extends MiActivityPersonalizado
     }
 
     /**
-     * Realizar la primera animación dependiendo en el número de la batalla actual.
+     * Realizar las animaciones dependiendo en el número de la batalla actual.
      */
     private void realizarAnimacion()
     {
@@ -333,12 +407,6 @@ public class MapaActivity extends MiActivityPersonalizado
             {
                 btnJugar.setVisibility(View.VISIBLE);
                 btnJugar.setEnabled(true);
-
-                if (numBatalla == 3 && nivel.equals("dificil"))
-                {
-                    personaje.setVida(personaje.getVIDA_MAXIMA());
-                    cargarVidas(personaje);
-                }
             }
 
             @Override
@@ -410,6 +478,10 @@ public class MapaActivity extends MiActivityPersonalizado
         return enemigos;
     }
 
+    /**
+     * Cargar las preguntas desde el json. Dependiendo del lenguaje seleccionado, cargara el json de castellano, catalán o inglés.
+     * @return Un ArrayList de preguntas.
+     */
     private ArrayList<Pregunta> cargarPreguntas()
     {
         ArrayList<Pregunta> preguntas = null;
@@ -483,15 +555,12 @@ public class MapaActivity extends MiActivityPersonalizado
      * Ponemos las vidas que le quedan al personaje.
      * @param personaje El personaje que vamos a quitar vida, si no queremos quitar vida al personaje, pasamos null.
      */
-    private void quitarVida(Personaje personaje)
+    private void quitarVida(@NotNull Personaje personaje)
     {
-        if (personaje != null)
+        for (int i = personaje.getVIDA_MAXIMA() - 1; i > personaje.getVida() - 1; i--)
         {
-            for (int i = personaje.getVIDA_MAXIMA() - 1; i > personaje.getVida() - 1; i--)
-            {
-                ImageView vida = (ImageView) vidasPersonaje.getChildAt(i);
-                vida.setImageResource(R.drawable.corazon_vacio);
-            }
+            ImageView vida = (ImageView) vidasPersonaje.getChildAt(i);
+            vida.setImageResource(R.drawable.corazon_vacio);
         }
     }
 }

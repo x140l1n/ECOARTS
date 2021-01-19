@@ -38,11 +38,11 @@
     <string name="volver_menu">Tornar al menú</string>
     <string name="victoria">Victoria!</string>
     <string name="victoria2">Molt bé, segueix així!</string>
-    <string name="volver_mundo">Tornar al mapa</string>
+    <string name="volver_mapa">Tornar al mapa</string>
     <string name="abandonar_partida">Segur que vols abandonar la partida?</string>
     <string name="batalla">Batalla</string>
     <string name="debes_escribir_nombre">Has d\'escriure un nom</string>
-    <string name="victoria3">HAS SALVAT AL MÓN!
+    <string name="victoria3">HAS SALVAT AL MÓN!\n\n
         Amb els teus actes y saviesa el món segueix sent un espai agradable per a totes les espècies.
     </string>
     <string name="comenzar_batalla">Començar batalla</string>
@@ -58,7 +58,7 @@
         per seleccionar-lo prémer l\'icona verda.\n\n
         Per últim escull un nivell:\n\n
         - Fàcil => recuperaràs vides en cada món.\n
-        - Difícil => no podràs recuperar vides.\n
+        - Difícil => només recuperaràs vides després de la tercera batalla.\n
     </string>
     <string name="tutorial_2">
         En total hi ha 6 mons i en cada món hi ha un monstre diferent.\n\n
@@ -73,11 +73,19 @@
     </string>
     <string name="enhorabuena">Enhorabona</string>
     <string name="introduccion">
-        La Terra està en perill! I és que a la Terra hi han crescut uns monstres creats per a l’espècie humana que amenacen en acabar amb el planeta tal i com el coneixem avui. Aquests monstres han estat creats involuntàriament per tots els homes i dones a partir dels nostres actes diaris i rutinaris.
-        Durant molt de temps no en vam ser conscients però cada dia hem fet créixer aquests monstres i ara gairebé ja estan fóra de control i poden acabar amb el planeta amb qüestió de pocs anys. Es coneixen amb el nom d’Inundació, Contaminació, Residus, Plàstics, Desforestació i Energia Bruta i són els monstres més perillosos que han hàbitat mai la Terra. El problema és que no tota la humanitat està unida en lluitar contra aquests monstres. Molts polítics i grans empresaris fan molts diners donant de menjar cada dia a aquestes perilloses bèsties a la vegada que intenten encantar la nostra ment amb els seus productes per evitar que hi fem alguna cosa. Però ja no queda més temps, i tu i només tu, amb la teva saviesa i els teus actes pots acabar amb ells i destruir-los per sempre i salvar així el Planeta perquè continuï sent un lloc habitable per a totes les persones i animals que encara sobreviuen.
+        La Terra està en perill!\n
+        I és que a la Terra hi han crescut uns monstres creats per a l’espècie humana que amenacen en acabar amb el planeta tal i com el coneixem avui.\n\n
+        Aquests monstres han estat creats involuntàriament per tots els homes i dones a partir dels nostres actes diaris i rutinaris.\n
+        Durant molt de temps no en vam ser conscients però cada dia hem fet créixer aquests monstres i ara gairebé ja estan fóra de control i poden acabar amb el planeta amb qüestió de pocs anys.\n\n
+        Es coneixen amb el nom d’Inundació, Contaminació, Residus, Plàstics, Desforestació i Energia Bruta i són els monstres més perillosos que han hàbitat mai la Terra.\n
+        El problema és que no tota la humanitat està unida en lluitar contra aquests monstres.\n\n
+        Molts polítics i grans empresaris fan molts diners donant de menjar cada dia a aquestes perilloses bèsties a la vegada que intenten encantar
+        la nostra ment amb els seus productes per evitar que hi fem alguna cosa. Però ja no queda més temps, i tu i només tu, amb la teva saviesa i els
+        teus actes pots acabar amb ells i destruir-los per sempre i salvar així el Planeta perquè continuï sent un lloc habitable per a totes les persones i animals que encara sobreviuen.
     </string>
     <string name="ver_introduccion">Veure introducció</string>
     <string name="volver_ajustes">Tornar ajustos</string>
     <string name="EncabezadoIntroduccion">Introducció</string>
     <string name="ir_al_men">Anar al menú</string>
+    <string name="recuperar_vidas">"Veo que te han quitado vidas estos miserables monstruos. . .\n\n!No te preocupes, acabas de recuperar las vidas que has perdido! "</string>
 </resources>

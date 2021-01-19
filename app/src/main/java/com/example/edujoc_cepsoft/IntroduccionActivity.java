@@ -2,9 +2,11 @@ package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
@@ -23,6 +25,11 @@ public class IntroduccionActivity extends MiActivityPersonalizado
 
         id_musica = R.raw.menu;
         musicaFondo = null;
+
+        TextView txtViewIntroduccion = findViewById(R.id.txtViewIntroduccion);
+
+        //Esto es para poner el scroll bar.
+        txtViewIntroduccion.setMovementMethod(new ScrollingMovementMethod());
 
         Button btnIr = findViewById(R.id.btnIr);
 
