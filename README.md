@@ -6,8 +6,16 @@ El objetivo principal del juego es hacer que los niños puedan aprender sobre el
 
 Proyecto de Centre d'Estudis Politécnics.
 
+![Logo](https://raw.githubusercontent.com/x140l1n/ProyectoAndroidCEP_1/master/app/src/main/res/mipmap-xxxhdpi/app_icon.png)
+
 ## Autores
-*[Xiaolin Jin Lin] (https://github.com/x140l1n/)
+* [Xiaolin Jin Lin](https://github.com/x140l1n) 
+* [Oriol Miralles](https://github.com/OriolMiralles)
+* [Devin Schlippe](https://github.com/DevinSJ)
+## Lenguajes 
+* JAVA
+* JSON
+* XML
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
