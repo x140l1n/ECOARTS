@@ -6,7 +6,7 @@ El objetivo principal del juego es hacer que los niños puedan aprender sobre el
 
 Proyecto de Centre d'Estudis Politécnics.
 
-[Logo](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/mipmap-xxxhdpi/app_icon.png?raw=true)
+![Logo](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/mipmap-xxxhdpi/app_icon.png?raw=true)
 
 ## Autores
 * [Xiaolin Jin Lin](https://github.com/x140l1n) 
