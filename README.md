@@ -9,9 +9,9 @@ Tener una tablet de 10.1 pulgadas con sistema operativo Android.
 Versión de mínima de android: 4.4.1 KitKat
 
 ## Instalación
-Debemos de incluir los JSON en la carpeta del juego, las preguntas y personajes.
+Debemos de incluir los JSON preguntas y personajes en la carpeta del juego.
 
-Debemos ir al Explorador de archivos y seguir esta ruta: data/data/com.android.edujoc_cepsoft/files
+Debemos ir al Explorador de archivos y seguir esta ruta: data/data/com.android.edujoc_cepsoft/files/
 
 ¡ATENCIÓN!
 Para incluir los JSON debemos de instalar antes el juego al dispositivo.
