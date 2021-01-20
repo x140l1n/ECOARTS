@@ -5,6 +5,7 @@ El objetivo principal del juego es hacer que los niños puedan aprender sobre el
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
+
 Versión de mínima de android: 4.4.1 KitKat
 
 ## Instalación
