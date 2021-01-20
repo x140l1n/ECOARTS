@@ -9,4 +9,4 @@ Debemos de incluir los jsons en la carpeta del juego, las preguntas y personajes
 Debemos ir al Explorador de archivos y seguir esta ruta: data/data/com.android.edujoc_cepsoft/files
 
 ¡ATENCIÓN!
-Debemos de instalar antes el juego al dispoisitivo.
+Debemos de instalar antes el juego al dispositivo.
