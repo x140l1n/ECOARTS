@@ -10,7 +10,8 @@ Proyecto de Centre d'Estudis Politécnics.
 
 ## Autores
 * [Xiaolin Jin Lin](https://github.com/x140l1n) 
-
+* [Oriol Miralles](https://github.com/OriolMiralles)
+* [Devin Schlippe](https://github.com/DevinSJ)
 ## Lenguajes 
 * JAVA
 * JSON
