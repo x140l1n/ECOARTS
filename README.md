@@ -7,7 +7,7 @@ El objetivo principal del juego es hacer que los niños puedan aprender sobre el
 Proyecto de Centre d'Estudis Politécnics.
 
 ## Autores
-*[Xiaolin Jin Lin] (https://github.com/x140l1n/)
+* [Xiaolin Jin Lin] (https://github.com/x140l1n/)
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
