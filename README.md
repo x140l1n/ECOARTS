@@ -1,7 +1,13 @@
 # ECOARTS (Juego de preguntas sobre la ecología)
 
 Juego de aprendizaje para niños de android para tablet de 10.1 pulgadas.
+
 El objetivo principal del juego es hacer que los niños puedan aprender sobre el medio ambiente y la ecología de forma entretenida y divertida.
+
+Proyecto de Centre d'Estudis Politécnics.
+
+## Autores
+*[Xiaolin Jin Lin] (https://github.com/x140l1n/)
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
