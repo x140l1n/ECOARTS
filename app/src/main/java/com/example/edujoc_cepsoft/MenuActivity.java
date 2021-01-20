@@ -16,13 +16,11 @@ import com.example.edujoc_cepsoft.Helpers.GifHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuActivity extends MiActivityPersonalizado
-{
+public class MenuActivity extends MiActivityPersonalizado {
     private int pagina_tutorial = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -36,11 +34,9 @@ public class MenuActivity extends MiActivityPersonalizado
         Button btnSalir = findViewById(R.id.btnSalir);
         Button btnTutorial = findViewById(R.id.btnTutorial);
 
-        btnJugar.setOnClickListener(new View.OnClickListener()
-        {
+        btnJugar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(MenuActivity.this, SelectPersonajeActivity.class));
@@ -49,11 +45,9 @@ public class MenuActivity extends MiActivityPersonalizado
             }
         });
 
-        btnAjustes.setOnClickListener(new View.OnClickListener()
-        {
+        btnAjustes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(MenuActivity.this, AjustesActivity.class));
@@ -62,11 +56,9 @@ public class MenuActivity extends MiActivityPersonalizado
             }
         });
 
-        btnSalir.setOnClickListener(new View.OnClickListener()
-        {
+        btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 final Dialog dialogSalir = new MiDialogPersonalizado(MenuActivity.this, R.layout.dialog_salir);
@@ -74,22 +66,18 @@ public class MenuActivity extends MiActivityPersonalizado
                 ImageButton btnSalir = dialogSalir.findViewById(R.id.btnSalir);
                 ImageButton btnCancelar = dialogSalir.findViewById(R.id.btnCancelar);
 
-                btnCancelar.setOnClickListener(new View.OnClickListener()
-                {
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                         dialogSalir.dismiss();
                     }
                 });
 
-                btnSalir.setOnClickListener(new View.OnClickListener()
-                {
+                btnSalir.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                         dialogSalir.dismiss();
@@ -106,11 +94,9 @@ public class MenuActivity extends MiActivityPersonalizado
             }
         });
 
-        btnTutorial.setOnClickListener(new View.OnClickListener()
-        {
+        btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                 final Dialog dialog = new MiDialogPersonalizado(MenuActivity.this, R.layout.dialog_tutorial);
@@ -137,27 +123,22 @@ public class MenuActivity extends MiActivityPersonalizado
 
                 btnAnterior.setVisibility(View.INVISIBLE);
 
-                btnCancelar.setOnClickListener(new View.OnClickListener()
-                {
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                         dialog.dismiss();
                     }
                 });
 
-                btnAnterior.setOnClickListener(new View.OnClickListener()
-                {
+                btnAnterior.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                         //Comprobamos la anterior página no sea menor que 0.
-                        if (pagina_tutorial - 1 >= 0)
-                        {
+                        if (pagina_tutorial - 1 >= 0) {
                             pagina_tutorial--;
 
                             PaginaTutorial paginaTutorial = paginas.get(pagina_tutorial);
@@ -173,16 +154,13 @@ public class MenuActivity extends MiActivityPersonalizado
                     }
                 });
 
-                btnSiguiente.setOnClickListener(new View.OnClickListener()
-                {
+                btnSiguiente.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(MenuActivity.this, R.raw.boton_click);
 
                         //Comprobamos la siguiente página no sea mayor que el número de paginas.
-                        if (pagina_tutorial + 1 < paginas.size())
-                        {
+                        if (pagina_tutorial + 1 < paginas.size()) {
                             pagina_tutorial++;
 
                             PaginaTutorial paginaTutorial = paginas.get(pagina_tutorial);
@@ -190,7 +168,8 @@ public class MenuActivity extends MiActivityPersonalizado
                             imagenTutorial.setImageResource(paginaTutorial.getImagen());
                             textViewTutorial.setText(paginaTutorial.getTexto());
 
-                            if (pagina_tutorial == paginas.size() - 1) btnSiguiente.setVisibility(View.INVISIBLE);
+                            if (pagina_tutorial == paginas.size() - 1)
+                                btnSiguiente.setVisibility(View.INVISIBLE);
                             else btnSiguiente.setVisibility(View.VISIBLE);
 
                             btnAnterior.setVisibility(View.VISIBLE);

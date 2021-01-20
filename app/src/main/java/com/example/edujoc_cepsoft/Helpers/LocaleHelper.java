@@ -10,16 +10,15 @@ import java.util.Locale;
 /**
  * Clase para cambiar el idioma. Creamos como clase para que en cualquier activity podamos llamar a esta clase para cambiar el idioma.
  */
-public class LocaleHelper
-{
+public class LocaleHelper {
     /**
      * Cambiar el idioma de la app.
+     *
      * @param context El contexto del activity en que se cambia el idioma.
-     * @param lang El idioma a que queremos cambiar.
+     * @param lang    El idioma a que queremos cambiar.
      */
     @SuppressWarnings("deprecation") //Quitar la advertencia de usar métodos en desuso.
-    public static void setLocale(@NonNull Context context, String lang)
-    {
+    public static void setLocale(@NonNull Context context, String lang) {
         //Creamos un objeto de tipo Configuration pasando por parámetro la configuración que tiene el context.
         //Esta clase describe toda la información de configuración del dispositivo que puede afectar los recursos que recupera la aplicación.
         //Esto incluye tanto las opciones de configuración especificadas por el usuario (lista de configuraciones regionales y escala) como las

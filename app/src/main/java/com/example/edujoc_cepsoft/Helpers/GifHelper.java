@@ -11,16 +11,15 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Clase para cambiar cargar un gif. Creamos como clase para que en cualquier activity podamos llamar a esta clase para cargar un gif.
  */
-public class GifHelper
-{
+public class GifHelper {
     /**
-     * Cargar un gif como fondo del activity.
-     * @param context El contexto del activity en que se inserta el gif.
+     * Cargar un gif como fondo en el activity.
+     *
+     * @param context      El contexto del activity en que se inserta el gif.
      * @param drawableGif  El id del gif que vamos a cargar al image view.
      * @param imgViewFondo El imageview que va a recibir el gif.
      */
-    public static void loadGif(@NotNull Context context, int drawableGif, ImageView imgViewFondo)
-    {
+    public static void loadGif(@NotNull Context context, int drawableGif, ImageView imgViewFondo) {
         Glide.with(context).load(drawableGif).placeholder(R.drawable.fondo_principal).dontAnimate().into(imgViewFondo);
     }
 }

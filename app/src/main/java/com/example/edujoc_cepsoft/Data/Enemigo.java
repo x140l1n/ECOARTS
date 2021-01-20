@@ -2,16 +2,14 @@ package com.example.edujoc_cepsoft.Data;
 
 import java.io.Serializable;
 
-public class Enemigo implements Serializable
-{
-    private int vida_maxima; //La vida máxima que puede tener.
-    private String nombre;
-    private int imagen;
+public class Enemigo implements Serializable {
+    private final int vida_maxima; //La vida máxima que puede tener, cada enemigo tendrá como máximo x vidas.
+    private final String nombre;
+    private final int imagen;
+    private final int colorFondo;
     private int vida; //La vida actual que tiene.
-    private int colorFondo;
 
-    public Enemigo(int imagen, String nombre, int colorFondo, int vida_maxima)
-    {
+    public Enemigo(int imagen, String nombre, int colorFondo, int vida_maxima) {
         this.imagen = imagen;
         this.nombre = nombre;
         this.colorFondo = colorFondo;
@@ -19,19 +17,16 @@ public class Enemigo implements Serializable
         this.vida = vida_maxima;
     }
 
-    public void quitarVida(int i)
-    {
+    public void quitarVida(int i) {
         this.vida -= i;
     }
 
     //region Getters & Setters
-    public int getImagen()
-    {
+    public int getImagen() {
         return imagen;
     }
 
-    public int getVida()
-    {
+    public int getVida() {
         return vida;
     }
 

@@ -1,7 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -12,6 +10,10 @@
         <item name="editTextStyle">@style/EditTextFuente</item>
         <item name="android:textViewStyle">@style/TextViewFuente</item>
         <item name="buttonStyle">@style/BotonFuente</item>
+    </style>
+
+    <style name="NoAnimacionActivity" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="TextViewFuente" parent="android:Widget.TextView">
@@ -129,10 +131,6 @@
         <item name="android:textSize">@dimen/tamanyoMedianoTexto</item>
         <item name="android:layout_margin">@dimen/marginMediano</item>
         <item name="android:padding">@dimen/paddingPequeno</item>
-    </style>
-
-    <style name="NoAnimacionActivity" parent="AppTheme">
-        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="seekBar">

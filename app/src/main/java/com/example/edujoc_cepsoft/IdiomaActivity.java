@@ -11,13 +11,12 @@ import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 import com.example.edujoc_cepsoft.Helpers.LocaleHelper;
 
-public class IdiomaActivity extends MiActivityPersonalizado
-{
+public class IdiomaActivity extends MiActivityPersonalizado {
+    //Identificar cuál es el activity anterior, dependiendo de cuál es el activity anterior, el botón de idiomas nos mandará al activity introducción o al activity ajustes.
     public static String activity_anterior = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idioma);
 
@@ -33,11 +32,9 @@ public class IdiomaActivity extends MiActivityPersonalizado
 
         if (activity_anterior.equals("main")) btnVolver.setVisibility(View.GONE);
 
-        btnVolver.setOnClickListener(new View.OnClickListener()
-        {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
@@ -46,23 +43,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnEs.setOnClickListener(new View.OnClickListener()
-        {
+        btnEs.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "es");
 
-                if (activity_anterior.equals("main"))
-                {
+                if (activity_anterior.equals("main")) {
                     IntroduccionActivity.activity_anterior = "idioma";
 
                     startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
-                }
-                else
-                {
+                } else {
                     startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
                 }
 
@@ -70,23 +62,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnCa.setOnClickListener(new View.OnClickListener()
-        {
+        btnCa.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "ca");
 
-                if (activity_anterior.equals("main"))
-                {
+                if (activity_anterior.equals("main")) {
                     IntroduccionActivity.activity_anterior = "idioma";
 
                     startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
-                }
-                else
-                {
+                } else {
                     startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
                 }
 
@@ -94,23 +81,18 @@ public class IdiomaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnEn.setOnClickListener(new View.OnClickListener()
-        {
+        btnEn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(IdiomaActivity.this, R.raw.boton_click);
 
                 LocaleHelper.setLocale(IdiomaActivity.this, "en");
 
-                if (activity_anterior.equals("main"))
-                {
+                if (activity_anterior.equals("main")) {
                     IntroduccionActivity.activity_anterior = "idioma";
 
                     startActivity(new Intent(IdiomaActivity.this, IntroduccionActivity.class));
-                }
-                else
-                {
+                } else {
                     startActivity(new Intent(IdiomaActivity.this, AjustesActivity.class));
                 }
 

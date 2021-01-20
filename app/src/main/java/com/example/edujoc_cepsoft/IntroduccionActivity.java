@@ -11,13 +11,12 @@ import android.widget.TextView;
 import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
-public class IntroduccionActivity extends MiActivityPersonalizado
-{
+public class IntroduccionActivity extends MiActivityPersonalizado {
+    //Identificar cuál es el activity anterior, dependiendo de cuál es el activity anterior, el botón ir nos mandará al activity menú o ajustes.
     public static String activity_anterior = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduccion);
 
@@ -35,14 +34,13 @@ public class IntroduccionActivity extends MiActivityPersonalizado
 
         if (activity_anterior.equals("ajustes")) btnIr.setText(getString(R.string.volver_ajustes));
 
-        btnIr.setOnClickListener(new View.OnClickListener()
-        {
+        btnIr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(IntroduccionActivity.this, R.raw.boton_click);
 
-                if (activity_anterior.equals("idioma")) startActivity(new Intent(IntroduccionActivity.this, MenuActivity.class));
+                if (activity_anterior.equals("idioma"))
+                    startActivity(new Intent(IntroduccionActivity.this, MenuActivity.class));
                 else startActivity(new Intent(IntroduccionActivity.this, AjustesActivity.class));
 
                 finish();

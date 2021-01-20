@@ -9,11 +9,9 @@ import android.widget.ImageView;
 import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
-public class CreditosActivity extends MiActivityPersonalizado
-{
+public class CreditosActivity extends MiActivityPersonalizado {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creditos);
 
@@ -21,11 +19,9 @@ public class CreditosActivity extends MiActivityPersonalizado
 
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
 
-        btnVolver.setOnClickListener(new View.OnClickListener()
-        {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(CreditosActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(CreditosActivity.this, AjustesActivity.class));

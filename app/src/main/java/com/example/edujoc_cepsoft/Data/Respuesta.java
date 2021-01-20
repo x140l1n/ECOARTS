@@ -2,15 +2,11 @@ package com.example.edujoc_cepsoft.Data;
 
 import java.io.Serializable;
 
-public class Respuesta implements Serializable
-{
-    private String respuesta;
-    private boolean correcta;
+public class Respuesta implements Serializable {
+    private final String respuesta;
+    private final boolean correcta;
 
-    public Respuesta() {}
-
-    public Respuesta(String respuesta, boolean correcta)
-    {
+    public Respuesta(String respuesta, boolean correcta) {
         this.respuesta = respuesta;
         this.correcta = correcta;
     }

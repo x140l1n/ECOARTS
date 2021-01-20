@@ -1,7 +1,6 @@
 package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -30,11 +29,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class SelectPersonajeActivity extends MiActivityPersonalizado
-{
+public class SelectPersonajeActivity extends MiActivityPersonalizado {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_personaje);
 
@@ -44,7 +41,8 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
 
         final ArrayList<Personaje> personajes = cargarPersonajes();
 
-        if (personajes != null) gridViewPersonajes.setAdapter(new SelectPersonajeAdapter(this, personajes));
+        if (personajes != null)
+            gridViewPersonajes.setAdapter(new SelectPersonajeAdapter(this, personajes));
         else System.err.println("No se ha podido cargar los personajes.");
 
         final EditText editTextNombreJugador = findViewById(R.id.editTextNombreJugador);
@@ -52,25 +50,21 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
         final ImageButton btnVolver = findViewById(R.id.btnVolver);
         final RelativeLayout relativeLayoutSelectPersonaje = findViewById(R.id.relativeLayoutSelectPersonaje);
 
-        btnEmpezar.setOnClickListener(new View.OnClickListener()
-        {
+        btnEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
 
-                if (personajes.size() > 0 && !editTextNombreJugador.getText().toString().trim().isEmpty())
-                {
+                if (personajes.size() > 0 && !editTextNombreJugador.getText().toString().trim().isEmpty()) {
                     Personaje personajeSeleccionado;
                     int index = 0;
 
-                    do
-                    {
+                    do {
                         personajeSeleccionado = personajes.get(index);
 
                         index++;
                     }
-                    while(!personajeSeleccionado.isSeleccionado());
+                    while (!personajeSeleccionado.isSeleccionado());
 
                     Intent intent = new Intent(SelectPersonajeActivity.this, MapaActivity.class);
                     intent.putExtra(MapaActivity.PERSONAJE, personajeSeleccionado);
@@ -78,18 +72,15 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
 
                     RadioButton rbFacil = findViewById(R.id.radioButtonFacil);
 
-                    if(rbFacil.isChecked()) nivel = "facil";
-                    else  nivel = "dificil";
+                    if (rbFacil.isChecked()) nivel = "facil";
+                    else nivel = "dificil";
 
                     intent.putExtra(MapaActivity.NIVEL, nivel);
                     intent.putExtra(MapaActivity.NOMBRE_JUGADOR, editTextNombreJugador.getText().toString().trim());
                     startActivity(intent);
                     finish();
-                }
-                else
-                {
-                    if (editTextNombreJugador.getText().toString().trim().isEmpty())
-                    {
+                } else {
+                    if (editTextNombreJugador.getText().toString().trim().isEmpty()) {
                         Toast.makeText(SelectPersonajeActivity.this, R.string.debes_escribir_nombre, Toast.LENGTH_LONG).show();
                     }
                 }
@@ -97,13 +88,10 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
         });
 
         //Para ocultar la barra de navegación y el teclado cuando haces click en el layout.
-        relativeLayoutSelectPersonaje.setOnClickListener(new View.OnClickListener()
-        {
+        relativeLayoutSelectPersonaje.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (getCurrentFocus() != null && editTextNombreJugador.hasFocus())
-                {
+            public void onClick(View v) {
+                if (getCurrentFocus() != null && editTextNombreJugador.hasFocus()) {
                     //Ocultar el teclado.
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -115,14 +103,12 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
             }
         });
 
-        btnVolver.setOnClickListener(new View.OnClickListener()
-        {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(SelectPersonajeActivity.this, R.raw.boton_click);
 
-                startActivity( new Intent(SelectPersonajeActivity.this, MenuActivity.class));
+                startActivity(new Intent(SelectPersonajeActivity.this, MenuActivity.class));
 
                 finish();
             }
@@ -131,58 +117,56 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado
 
     /**
      * Cargar los personajes desde el fichero .json.
+     *
      * @return La lista de personajes, devuelve null si no se ha podido cargar.
      */
     @SuppressWarnings("deprecation") //Quitar la advertencia de usar métodos en desuso.
-    private ArrayList<Personaje> cargarPersonajes()
-    {
+    private ArrayList<Personaje> cargarPersonajes() {
         ArrayList<Personaje> personajes = null;
 
         Locale lang = this.getResources().getConfiguration().locale;
 
         String rutaFicheroJson = this.getFilesDir() + File.separator + "personajes" + File.separator;
 
-        switch (lang.getLanguage())
-        {
-            case "es": rutaFicheroJson += "personajes_es.json"; break;
-            case "ca": rutaFicheroJson += "personajes_ca.json"; break;
-            case "en": rutaFicheroJson += "personajes_en.json"; break;
-            default:   rutaFicheroJson  = null;                 break;
+        switch (lang.getLanguage()) {
+            case "es":
+                rutaFicheroJson += "personajes_es.json";
+                break;
+            case "ca":
+                rutaFicheroJson += "personajes_ca.json";
+                break;
+            case "en":
+                rutaFicheroJson += "personajes_en.json";
+                break;
+            default:
+                rutaFicheroJson = null;
+                break;
         }
 
-        if (rutaFicheroJson != null)
-        {
+        if (rutaFicheroJson != null) {
             BufferedReader br = null;
             String[] files = this.fileList();
-            for(String item : files){
+            for (String item : files) {
                 System.out.println("ficheros: " + item);
             }
-            try
-            {
+            try {
                 br = new BufferedReader(new FileReader(rutaFicheroJson));
 
                 personajes = new ArrayList<>(Arrays.asList(new Gson().fromJson(br, Personaje[].class)));
 
-                if (personajes.size() != 0) personajes.get(0).setSeleccionado(true); //Seleccionamos por defecto el primer personaje.
-            }
-            catch (FileNotFoundException ex)
-            {
+                if (personajes.size() != 0)
+                    personajes.get(0).setSeleccionado(true); //Seleccionamos por defecto el primer personaje.
+            } catch (FileNotFoundException ex) {
                 System.err.println("Fichero json no encontrado:\n" + ex.getMessage());
-            }
-            finally //Si ha saltado un error o no, cerraremos igualmente el BufferedReader.
+            } finally //Si ha saltado un error o no, cerraremos igualmente el BufferedReader.
             {
-                try
-                {
+                try {
                     if (br != null) br.close();
-                }
-                catch (IOException ex)
-                {
+                } catch (IOException ex) {
                     System.err.println("Error al cerrar el Buffered Reader:\n" + ex.getMessage());
                 }
             }
-        }
-        else
-        {
+        } else {
             System.err.println("No se ha podiddo obtener la ruta del fichero json. Idioma detectado: " + lang.getLanguage());
         }
 

@@ -27,8 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BatallaActivity extends MiActivityPersonalizado
-{
+public class BatallaActivity extends MiActivityPersonalizado {
     public final static int BATALLA_ACTIVITY = 1;
 
     private final long TIEMPO_MAXIMO = 30000; //Máximo 30 segundos.
@@ -65,8 +64,7 @@ public class BatallaActivity extends MiActivityPersonalizado
     private ImageView batallaImagenPersonaje, batallaImagenEnemigo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_batalla);
 
@@ -77,17 +75,17 @@ public class BatallaActivity extends MiActivityPersonalizado
 
         Intent intent = getIntent();
 
-        personaje           = (Personaje) intent.getSerializableExtra(PERSONAJE);
-        jugador             = intent.getStringExtra(JUGADOR);
-        enemigo             = (Enemigo) intent.getSerializableExtra(ENEMIGO);
-        numBatalla          = intent.getIntExtra(NUMERO_BATALLA, -1);
-        preguntas           = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
+        personaje = (Personaje) intent.getSerializableExtra(PERSONAJE);
+        jugador = intent.getStringExtra(JUGADOR);
+        enemigo = (Enemigo) intent.getSerializableExtra(ENEMIGO);
+        numBatalla = intent.getIntExtra(NUMERO_BATALLA, -1);
+        preguntas = (ArrayList<Pregunta>) intent.getExtras().getSerializable(PREGUNTAS);
 
-        barra_progreso      = findViewById(R.id.progress_bar);
-        textViewPregunta    = findViewById(R.id.textViewPregunta);
-        btnRespuesta1       = findViewById(R.id.btnRespuesta1);
-        btnRespuesta2       = findViewById(R.id.btnRespuesta2);
-        btnRespuesta3       = findViewById(R.id.btnRespuesta3);
+        barra_progreso = findViewById(R.id.progress_bar);
+        textViewPregunta = findViewById(R.id.textViewPregunta);
+        btnRespuesta1 = findViewById(R.id.btnRespuesta1);
+        btnRespuesta2 = findViewById(R.id.btnRespuesta2);
+        btnRespuesta3 = findViewById(R.id.btnRespuesta3);
 
         TextView batalla = findViewById(R.id.batalla);
 
@@ -107,15 +105,12 @@ public class BatallaActivity extends MiActivityPersonalizado
 
         cargarVidas(personaje, enemigo);
 
-        btnRespuesta1.setOnClickListener(new View.OnClickListener()
-        {
+        btnRespuesta1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
-                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
-                {
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled()) {
                     btnRespuesta1.setEnabled(false);
                     btnRespuesta2.setEnabled(false);
                     btnRespuesta3.setEnabled(false);
@@ -125,11 +120,9 @@ public class BatallaActivity extends MiActivityPersonalizado
                     procesarRespuesta(pregunta.getRespuestas().get(0));
 
                     //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                    new Handler().postDelayed(new Runnable()
-                    {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void run()
-                        {
+                        public void run() {
                             procesarResultado();
                         }
                     }, DELAY_SIGUIENTE_PREGUNTA);
@@ -139,15 +132,12 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnRespuesta2.setOnClickListener(new View.OnClickListener()
-        {
+        btnRespuesta2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
-                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
-                {
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled()) {
                     btnRespuesta1.setEnabled(false);
                     btnRespuesta2.setEnabled(false);
                     btnRespuesta3.setEnabled(false);
@@ -157,11 +147,9 @@ public class BatallaActivity extends MiActivityPersonalizado
                     procesarRespuesta(pregunta.getRespuestas().get(1));
 
                     //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                    new Handler().postDelayed(new Runnable()
-                    {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void run()
-                        {
+                        public void run() {
                             procesarResultado();
                         }
                     }, DELAY_SIGUIENTE_PREGUNTA);
@@ -171,15 +159,12 @@ public class BatallaActivity extends MiActivityPersonalizado
             }
         });
 
-        btnRespuesta3.setOnClickListener(new View.OnClickListener()
-        {
+        btnRespuesta3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
-                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled())
-                {
+                if (btnRespuesta1.isEnabled() && btnRespuesta2.isEnabled() && btnRespuesta3.isEnabled()) {
                     btnRespuesta1.setEnabled(false);
                     btnRespuesta2.setEnabled(false);
                     btnRespuesta3.setEnabled(false);
@@ -189,11 +174,9 @@ public class BatallaActivity extends MiActivityPersonalizado
                     procesarRespuesta(pregunta.getRespuestas().get(2));
 
                     //Crea un nuevo hilo y se ejecutará pasadas 2000 milisegundos (2 segundos).
-                    new Handler().postDelayed(new Runnable()
-                    {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void run()
-                        {
+                        public void run() {
                             procesarResultado();
                         }
                     }, DELAY_SIGUIENTE_PREGUNTA);
@@ -207,19 +190,16 @@ public class BatallaActivity extends MiActivityPersonalizado
         cargarPregunta();
     }
 
-    private void cargarPregunta()
-    {
+    private void cargarPregunta() {
         Paris.style(btnRespuesta1).apply(R.style.BotonesBordesRedondeadosRespuesta);
         Paris.style(btnRespuesta2).apply(R.style.BotonesBordesRedondeadosRespuesta);
         Paris.style(btnRespuesta3).apply(R.style.BotonesBordesRedondeadosRespuesta);
 
-        if (preguntas.size() > 0)
-        {
-            do
-            {
+        if (preguntas.size() > 0) {
+            do {
                 pregunta = seleccionarPreguntaAleatoria();
             }
-            while(pregunta.isMostrada()); //Escogemos una pregunta que no este mostrada.
+            while (pregunta.isMostrada()); //Escogemos una pregunta que no este mostrada.
 
             pregunta.setMostrada(true); //Ponemos la pregunta mostrada en true.
 
@@ -236,17 +216,14 @@ public class BatallaActivity extends MiActivityPersonalizado
      * Comprobar si el usuario ha respondido correctamente.
      * Pasamos null si no ha respondido ningúna pregunta, en esta caso cuenta como que ha respondido mal.
      * Quita la vida del personaje o del enemigo y luego muestra la respuesta correcta y las incorrectas.
+     *
      * @param respuesta La respuesta que ha seleccionado el jugador.
      */
-    private void procesarRespuesta(Respuesta respuesta)
-    {
-        if (respuesta != null)
-        {
+    private void procesarRespuesta(Respuesta respuesta) {
+        if (respuesta != null) {
             if (respuesta.isCorrecta()) quitarVida(null, enemigo);
             else quitarVida(personaje, null);
-        }
-        else
-        {
+        } else {
             quitarVida(personaje, null);
         }
 
@@ -257,47 +234,41 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     /**
      * Seleccionamos una pregunta aleatoria.
+     *
      * @return La pregunta escogida por el random.
      */
-    private Pregunta seleccionarPreguntaAleatoria()
-    {
+    private Pregunta seleccionarPreguntaAleatoria() {
         return this.preguntas.get(new Random().nextInt(preguntas.size()));
     }
 
     /**
      * Iniciar la cuenta regresiva del progress bar.
      */
-    private void iniciarContador()
-    {
-        contador = new CountDownTimer(TIEMPO_MAXIMO, 1000)
-        {
+    private void iniciarContador() {
+        contador = new CountDownTimer(TIEMPO_MAXIMO, 1000) {
             @Override
-            public void onTick(long millisUntilFinished)
-            {
+            public void onTick(long millisUntilFinished) {
                 barra_progreso.setProgress((int) (millisUntilFinished / 1000) + 1);
 
-                if (barra_progreso.getProgress() <= 10) barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_rojo));
-                else barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_verde));
+                if (barra_progreso.getProgress() <= 10)
+                    barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_rojo));
+                else
+                    barra_progreso.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_verde));
             }
 
             @Override
-            public void onFinish()
-            {
+            public void onFinish() {
                 btnRespuesta1.setEnabled(false);
                 btnRespuesta2.setEnabled(false);
                 btnRespuesta3.setEnabled(false);
 
-                if (!preguntaRespondida)
-                {
+                if (!preguntaRespondida) {
                     procesarRespuesta(null);
 
-                    if (personaje.getVida() != 0 && enemigo.getVida() != 0)
-                    {
-                        new Handler().postDelayed(new Runnable()
-                        {
+                    if (personaje.getVida() != 0 && enemigo.getVida() != 0) {
+                        new Handler().postDelayed(new Runnable() {
                             @Override
-                            public void run()
-                            {
+                            public void run() {
                                 procesarResultado();
                             }
                         }, DELAY_SIGUIENTE_PREGUNTA);
@@ -311,28 +282,24 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     /**
      * Cargar las vidas del personaje y del enemigo en el activity.
+     *
      * @param personaje El personaje que va a batallar.
-     * @param enemigo El enemigo que va a batallar.
+     * @param enemigo   El enemigo que va a batallar.
      */
-    private void cargarVidas(@NotNull Personaje personaje, Enemigo enemigo)
-    {
+    private void cargarVidas(@NotNull Personaje personaje, Enemigo enemigo) {
         vidasPersonaje = findViewById(R.id.vidasPersonaje);
         vidasEnemigo = findViewById(R.id.vidasEnemigo);
 
         //Cargar vida actual del personaje.
-        for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++)
-        {
-            if (personaje.getVIDA_MAXIMA() > personaje.getVida())
-            {
+        for (int i = 0; i < personaje.getVIDA_MAXIMA(); i++) {
+            if (personaje.getVIDA_MAXIMA() > personaje.getVida()) {
                 ImageView vida = new ImageView(this);
 
                 if (i < personaje.getVida()) vida.setImageResource(R.drawable.corazon);
                 else vida.setImageResource(R.drawable.corazon_vacio);
 
                 vidasPersonaje.addView(vida);
-            }
-            else
-            {
+            } else {
                 ImageView vida = new ImageView(this);
                 vida.setImageResource(R.drawable.corazon);
                 vidasPersonaje.addView(vida);
@@ -340,8 +307,7 @@ public class BatallaActivity extends MiActivityPersonalizado
         }
 
         //Cargar vida actual del enemigo.
-        for (int i = 0; i < enemigo.getVida_maxima(); i++)
-        {
+        for (int i = 0; i < enemigo.getVida_maxima(); i++) {
             ImageView vida = new ImageView(this);
             vida.setImageResource(R.drawable.corazon);
             vidasEnemigo.addView(vida);
@@ -350,22 +316,19 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     /**
      * Quitaremos una vida al personaje o al enemigo, y producirá un efecto de parpadeo a la imagen del personaje o enemigo.
+     *
      * @param personaje El personaje que vamos a quitar vida, si no queremos quitar vida al personaje, pasamos null.
-     * @param enemigo El enemigo que vamos a quitar vida, si no queremos quitar vida al enemigo, pasamos null.
+     * @param enemigo   El enemigo que vamos a quitar vida, si no queremos quitar vida al enemigo, pasamos null.
      */
-    private void quitarVida(Personaje personaje, Enemigo enemigo)
-    {
-        if (personaje != null)
-        {
+    private void quitarVida(Personaje personaje, Enemigo enemigo) {
+        if (personaje != null) {
             personaje.quitarVida(1);
 
             ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVida());
             vida.setImageResource(R.drawable.corazon_vacio);
 
             effectoBlink(batallaImagenPersonaje);
-        }
-        else if (enemigo != null)
-        {
+        } else if (enemigo != null) {
             enemigo.quitarVida(1);
 
             ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVida());
@@ -377,21 +340,17 @@ public class BatallaActivity extends MiActivityPersonalizado
 
     /**
      * Cambiar el color de los botones de respuestas para indicar cuál es la correcta (verde claro) y las incorrectas (rojo).
+     *
      * @param pregunta La pregunta actual.
      */
     @SuppressWarnings("deprecation") //Eliminar la advertencia de usar métodos en desuso.
-    private void mostrarCorrecta(@NotNull Pregunta pregunta)
-    {
-        for (int i = 0; i < pregunta.getRespuestas().size(); i++)
-        {
-            if(pregunta.getRespuestas().get(i).isCorrecta())
-            {
+    private void mostrarCorrecta(@NotNull Pregunta pregunta) {
+        for (int i = 0; i < pregunta.getRespuestas().size(); i++) {
+            if (pregunta.getRespuestas().get(i).isCorrecta()) {
                 int id = getResources().getIdentifier("btnRespuesta" + (i + 1), "id", getPackageName());
                 Button btn = findViewById(id);
                 Paris.style(btn).apply(R.style.BotonesBordesRedondeadosRespuestaCorrecta);
-            }
-            else
-            {
+            } else {
                 int id = getResources().getIdentifier("btnRespuesta" + (i + 1), "id", getPackageName());
                 Button btn = findViewById(id);
                 Paris.style(btn).apply(R.style.BotonesBordesRedondeadosRespuestaIncorrecta);
@@ -403,33 +362,26 @@ public class BatallaActivity extends MiActivityPersonalizado
      * Procesar el resultado de la partida. Si gana el jugador vuelve al mapa, si no gana vuelve al menú.
      * Si nadie ha perdido toda la vida, seguimos con las preguntas.
      */
-    private void procesarResultado()
-    {
+    private void procesarResultado() {
         btnRespuesta1.setEnabled(false);
         btnRespuesta2.setEnabled(false);
         btnRespuesta3.setEnabled(false);
 
-        if (personaje.getVida() != 0 && enemigo.getVida() != 0)
-        {
+        if (personaje.getVida() != 0 && enemigo.getVida() != 0) {
             cargarPregunta();
-        }
-        else
-        {
+        } else {
             if (musicaFondo != null) musicaFondo.stop();
 
-            if (personaje.getVida() == 0)
-            {
+            if (personaje.getVida() == 0) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.derrota);
 
                 final Dialog dialogDerrota = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_derrota);
 
                 Button btnVolverMenu = dialogDerrota.findViewById(R.id.btnVolverMenu);
 
-                btnVolverMenu.setOnClickListener(new View.OnClickListener()
-                {
+                btnVolverMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
@@ -440,9 +392,7 @@ public class BatallaActivity extends MiActivityPersonalizado
                 });
 
                 dialogDerrota.show();
-            }
-            else if(personaje.getVida() > 0 && numBatalla == 6)
-            {
+            } else if (personaje.getVida() > 0 && numBatalla == 6) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.victoria);
 
                 final Dialog dialogVictoriaFinal = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria_final);
@@ -454,11 +404,9 @@ public class BatallaActivity extends MiActivityPersonalizado
                 imagenPersonaje.setImageBitmap(personaje.obtenerImagen(BatallaActivity.this));
                 textViewEnhorabuena.append(" " + jugador + "!");
 
-                btnVolverMenu.setOnClickListener(new View.OnClickListener()
-                {
+                btnVolverMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
@@ -469,20 +417,16 @@ public class BatallaActivity extends MiActivityPersonalizado
                 });
 
                 dialogVictoriaFinal.show();
-            }
-            else
-            {
+            } else {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.victoria);
 
                 final Dialog dialogVictoria = new MiDialogPersonalizado(BatallaActivity.this, R.layout.dialog_victoria);
 
                 Button btnVolverMapa = dialogVictoria.findViewById(R.id.btnVolverMapa);
 
-                btnVolverMapa.setOnClickListener(new View.OnClickListener()
-                {
+                btnVolverMapa.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
                         Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
@@ -510,8 +454,7 @@ public class BatallaActivity extends MiActivityPersonalizado
     /**
      * Crear un efecto de parpadeo a una view.
      */
-    private void effectoBlink(View view)
-    {
+    private void effectoBlink(View view) {
         ObjectAnimator parpadeo = ObjectAnimator.ofInt(view, "visibility", View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
         parpadeo.setDuration(1500);
         parpadeo.setInterpolator(new LinearInterpolator());

@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 style="@style/BotonesBordesRedondeadosPrimarios"
                 android:layout_margin="@dimen/marginMediano"
-                android:text="@string/ir_al_men"/>
+                android:text="@string/ir_al_menu"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -34,7 +34,7 @@
         android:id="@+id/txtViewDescPersonaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="8"
+        android:maxLines="15"
         android:scrollbars="vertical"
         android:hint="@string/descripcion_activista"
         android:gravity="top"

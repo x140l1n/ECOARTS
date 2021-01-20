@@ -2,8 +2,8 @@ package com.example.edujoc_cepsoft.Data;
 
 public class PaginaTutorial
 {
-    private int imagen;
-    private String texto;
+    private final int imagen;
+    private final String texto;
 
     public PaginaTutorial(int imagen, String texto)
     {

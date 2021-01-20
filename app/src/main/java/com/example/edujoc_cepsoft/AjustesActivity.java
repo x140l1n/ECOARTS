@@ -15,11 +15,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.example.edujoc_cepsoft.Helpers.EffectSoundHelper;
 import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
-public class AjustesActivity extends MiActivityPersonalizado
-{
+public class AjustesActivity extends MiActivityPersonalizado {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
@@ -39,30 +37,24 @@ public class AjustesActivity extends MiActivityPersonalizado
 
         switchEfecto.setChecked(EffectSoundHelper.reproducirEfecto);
 
-        switchEfecto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        switchEfecto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 EffectSoundHelper.reproducirEfecto = isChecked;
             }
         });
 
         switchMusica.setChecked(reproducirMusica);
 
-        switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 reproducirMusica = isChecked;
 
                 if (!reproducirMusica) musicaFondo.setVolume(0f, 0f);
-                else
-                {
+                else {
                     if (musicaFondo != null) musicaFondo.setVolume(0.5f, 0.5f);
-                    else
-                    {
+                    else {
                         musicaFondo = MediaPlayer.create(AjustesActivity.this, id_musica);
                         musicaFondo.setVolume(0.5f, 0.5f);
                         musicaFondo.setLooping(true);
@@ -72,11 +64,9 @@ public class AjustesActivity extends MiActivityPersonalizado
             }
         });
 
-        btnIntroduccion.setOnClickListener(new View.OnClickListener()
-        {
+        btnIntroduccion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
                 IntroduccionActivity.activity_anterior = "ajustes";
@@ -87,24 +77,20 @@ public class AjustesActivity extends MiActivityPersonalizado
             }
         });
 
-        btnVolver.setOnClickListener(new View.OnClickListener()
-        {
+        btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
-                startActivity( new Intent(AjustesActivity.this, MenuActivity.class));
+                startActivity(new Intent(AjustesActivity.this, MenuActivity.class));
 
                 finish();
             }
         });
 
-        btnCambiarIdioma.setOnClickListener(new View.OnClickListener()
-        {
+        btnCambiarIdioma.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
                 IdiomaActivity.activity_anterior = "ajustes";
@@ -115,27 +101,23 @@ public class AjustesActivity extends MiActivityPersonalizado
             }
         });
 
-        btnContactar.setOnClickListener(new View.OnClickListener()
-        {
+        btnContactar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setType("plain/text");
-                email.putExtra(Intent.EXTRA_EMAIL, new String[] { "ecoartscep@gmail.com" });
+                email.putExtra(Intent.EXTRA_EMAIL, new String[]{"ecoartscep@gmail.com"});
                 email.putExtra(Intent.EXTRA_SUBJECT, "");
                 email.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(Intent.createChooser(email, ""));
             }
         });
 
-        btnCreditos.setOnClickListener(new View.OnClickListener()
-        {
+        btnCreditos.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
 
                 startActivity(new Intent(AjustesActivity.this, CreditosActivity.class));

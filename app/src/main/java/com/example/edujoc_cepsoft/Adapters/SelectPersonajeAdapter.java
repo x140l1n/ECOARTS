@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
 {
-    private Context context;
+    private final Context context;
 
     public SelectPersonajeAdapter(@NonNull Context context, List<Personaje> personajes)
     {
@@ -108,7 +108,7 @@ public class SelectPersonajeAdapter extends ArrayAdapter<Personaje>
 
     private void deseleccionarTodo()
     {
-        for(int i = 0; i < super.getCount(); i++)
+        for(int i = 0; i < getCount(); i++)
         {
             getItem(i).setSeleccionado(false);
         }

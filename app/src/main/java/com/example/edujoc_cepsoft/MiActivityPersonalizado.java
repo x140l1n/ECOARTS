@@ -1,10 +1,7 @@
 package com.example.edujoc_cepsoft;
 
-import android.content.res.Configuration;
 import android.media.MediaPlayer;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
@@ -12,8 +9,7 @@ import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
 /**
  * Clase Activity personalizada. Creamos la clase para que en todas las Activities que se extienda de esta clase se oculte la barra de navegación y reproducir efectos de sonido y música.
  */
-public class MiActivityPersonalizado extends AppCompatActivity
-{
+public class MiActivityPersonalizado extends AppCompatActivity {
     private static int posicion = 0;
 
     protected static int id_musica = 0;
@@ -21,21 +17,18 @@ public class MiActivityPersonalizado extends AppCompatActivity
     protected static boolean reproducirMusica = true;
 
     @Override
-    public void onBackPressed()
-    {
-        //No hacer nada cuando el jugador hace click en el botón back.
+    public void onBackPressed() {
+        //No hacer nada cuando el jugador hace click en el botón back del dispositivo.
     }
 
     /**
      * Cuando el activity pasa al primer plano.
      */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         SystemUIHelper.ocultarBarraNavegacion(this.getWindow());
 
-        if (id_musica != 0 && musicaFondo == null && reproducirMusica)
-        {
+        if (id_musica != 0 && musicaFondo == null && reproducirMusica) {
             musicaFondo = MediaPlayer.create(this, id_musica);
             musicaFondo.setVolume(0.5f, 0.5f);
             musicaFondo.setLooping(true);
@@ -47,11 +40,11 @@ public class MiActivityPersonalizado extends AppCompatActivity
 
     /**
      * Cuando la ventana del activity cambia el foco.
+     *
      * @param hasFocus Si la ventana tiene el foco.
      */
     @Override
-    public void onWindowFocusChanged(boolean hasFocus)
-    {
+    public void onWindowFocusChanged(boolean hasFocus) {
         SystemUIHelper.ocultarBarraNavegacion(this.getWindow());
 
         super.onWindowFocusChanged(hasFocus);
@@ -61,10 +54,8 @@ public class MiActivityPersonalizado extends AppCompatActivity
      * Cuando el activity se reinicia.
      */
     @Override
-    protected void onRestart()
-    {
-        if (musicaFondo != null && reproducirMusica)
-        {
+    protected void onRestart() {
+        if (musicaFondo != null && reproducirMusica) {
             musicaFondo.seekTo(posicion);
             musicaFondo.start();
         }
@@ -76,10 +67,8 @@ public class MiActivityPersonalizado extends AppCompatActivity
      * Cuando el activity se para.
      */
     @Override
-    protected void onStop()
-    {
-        if (musicaFondo != null)
-        {
+    protected void onStop() {
+        if (musicaFondo != null) {
             musicaFondo.stop();
             posicion = musicaFondo.getCurrentPosition();
         }
@@ -91,10 +80,8 @@ public class MiActivityPersonalizado extends AppCompatActivity
      * Cuando el activity se pausa.
      */
     @Override
-    protected void onPause()
-    {
-        if (musicaFondo != null && musicaFondo.isPlaying())
-        {
+    protected void onPause() {
+        if (musicaFondo != null && musicaFondo.isPlaying()) {
             musicaFondo.release();
             musicaFondo = null;
         }

@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class MainActivity extends MiActivityPersonalizado
-{
+public class MainActivity extends MiActivityPersonalizado {
     @Override
     @SuppressWarnings("deprecation") //Eliminar la advertencia de usar métodos en desuso.
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

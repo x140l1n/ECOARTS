@@ -86,6 +86,10 @@
     <string name="ver_introduccion">Show introduction</string>
     <string name="volver_ajustes">Back to settings</string>
     <string name="EncabezadoIntroduccion">Introduction</string>
-    <string name="ir_al_men">Go to menu</string>
-    <string name="recuperar_vidas">"Veo que te han quitado vidas estos miserables monstruos. . .\n\n!No te preocupes, acabas de recuperar las vidas que has perdido! "</string>
+    <string name="recuperar_vidas">
+        I see these miserables monsters have taken some of your lives...\n\n
+        Don\'t worry, you have just regained the lives you lost!\n\n
+        Cheers, you\'re close to reaching the finish line!
+    </string>
+    <string name="ir_al_menu">Go to menú</string>
 </resources>

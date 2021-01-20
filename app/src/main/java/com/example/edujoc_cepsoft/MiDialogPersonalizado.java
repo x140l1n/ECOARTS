@@ -1,13 +1,10 @@
 package com.example.edujoc_cepsoft;
 
-import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
@@ -16,10 +13,8 @@ import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
 /**
  * Clase Dialog personalizada. Creamos la clase para que en todas los Dialogs que se extienda de esta clase se oculte la barra de navegación y tenga un diseño predefinido.
  */
-public class MiDialogPersonalizado extends Dialog
-{
-    public MiDialogPersonalizado(@NonNull Context context, int id_layout)
-    {
+public class MiDialogPersonalizado extends Dialog {
+    public MiDialogPersonalizado(@NonNull Context context, int id_layout) {
         super(context);
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -32,8 +27,7 @@ public class MiDialogPersonalizado extends Dialog
      * Cuando el diálogo se muestra.
      */
     @Override
-    public void show()
-    {
+    public void show() {
         //Ocultar la barra de navegación.
         SystemUIHelper.ocultarBarraNavegacion(this.getWindow());
 

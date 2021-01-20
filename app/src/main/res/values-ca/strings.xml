@@ -86,6 +86,10 @@
     <string name="ver_introduccion">Veure introducció</string>
     <string name="volver_ajustes">Tornar ajustos</string>
     <string name="EncabezadoIntroduccion">Introducció</string>
-    <string name="ir_al_men">Anar al menú</string>
-    <string name="recuperar_vidas">"Veo que te han quitado vidas estos miserables monstruos. . .\n\n!No te preocupes, acabas de recuperar las vidas que has perdido! "</string>
+    <string name="recuperar_vidas">
+        Veig que t\'han tret vides aquests miserables monstres...\n\n
+        No et preocupis, acabes de recuperar les vides que has perdut!\n\n
+        Ànims, et falta poc per arribar a la meta!
+    </string>
+    <string name="ir_al_menu">Anar al menú</string>
 </resources>
