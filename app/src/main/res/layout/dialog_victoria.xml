@@ -1,12 +1,11 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_secundario"
     android:gravity="center"
-    android:padding="@dimen/paddingGrande"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:orientation="vertical"
+    android:padding="@dimen/paddingGrande">
 
     <ImageView
         android:layout_width="300dp"
@@ -20,17 +19,19 @@
         style="@style/TextViewEncabezado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/victoria"/>
+        android:text="@string/victoria" />
+
     <TextView
+        style="@style/TextViewNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/victoria2"
-        style="@style/TextViewNormal" />
+        android:text="@string/victoria2" />
+
     <Button
         android:id="@+id/btnVolverMapa"
+        style="@style/BotonesBordesRedondeadosPrimarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/volver_mapa"
-        style="@style/BotonesBordesRedondeadosPrimarios"/>
+        android:text="@string/volver_mapa" />
 </LinearLayout>

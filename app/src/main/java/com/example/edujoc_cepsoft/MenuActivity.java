@@ -82,9 +82,12 @@ public class MenuActivity extends MiActivityPersonalizado {
 
                         dialogSalir.dismiss();
 
-                        id_musica = 0;
-                        musicaFondo.stop();
-                        musicaFondo = null;
+                        if (musicaFondo != null)
+                        {
+                            id_musica = 0;
+                            musicaFondo.stop();
+                            musicaFondo = null;
+                        }
 
                         finishAffinity();
                     }

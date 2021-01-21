@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:background="@drawable/bordes_redondos_secundario"
+    android:orientation="vertical">
+
     <ImageButton
         android:id="@+id/btnCancelar"
         style="@style/ImageButtonSinFondo"
@@ -14,65 +14,74 @@
         android:layout_gravity="end"
         android:src="@drawable/cancelar"
         tools:ignore="contentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="@dimen/paddingPequeno"
             android:layout_margin="@dimen/marginMediano"
             android:background="@drawable/group_box"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/paddingPequeno">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
+                    style="@style/TextViewNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/musica"
-                    android:textAlignment="viewEnd"
-                    style="@style/TextViewNormal"/>
+                    android:textAlignment="viewEnd" />
+
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switchMusica"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:thumb="@drawable/sol_thumb"/>
+                    android:thumb="@drawable/sol_thumb" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
+                    style="@style/TextViewNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/efectos"
-                    android:textAlignment="viewEnd"
-                    style="@style/TextViewNormal"/>
+                    android:textAlignment="viewEnd" />
+
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switchEfecto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:thumb="@drawable/sol_thumb"/>
+                    android:thumb="@drawable/sol_thumb" />
             </LinearLayout>
         </LinearLayout>
-    <Button
-        android:id="@+id/btnAbandonarPartida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:drawableStart="@drawable/salir"
-        android:text="@string/Abandonar"
-        style="@style/BotonesBordesRedondeadosPrimarios"/>
+
+        <Button
+            android:id="@+id/btnAbandonarPartida"
+            style="@style/BotonesBordesRedondeadosPrimarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/salir"
+            android:text="@string/Abandonar" />
     </LinearLayout>
 </LinearLayout>

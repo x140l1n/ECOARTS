@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IntroduccionActivity"
-    android:background="@color/colorPrimario">
+    android:background="@color/colorPrimario"
+    tools:context=".IntroduccionActivity">
+
     <ImageView
         android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo_principal"
         android:scaleType="fitXY"
-        tools:ignore="ContentDescription"/>
+        android:src="@drawable/fondo_principal"
+        tools:ignore="ContentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
+            style="@style/TextViewEncabezado"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="@string/EncabezadoIntroduccion"
-            style="@style/TextViewEncabezado"/>
+            android:text="@string/EncabezadoIntroduccion" />
 
         <TextView
             android:id="@+id/txtViewIntroduccion"
@@ -41,20 +43,22 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
+                android:layout_margin="@dimen/marginMediano"
                 android:scaleType="centerCrop"
                 android:src="@drawable/tierra_feliz"
-                android:layout_margin="@dimen/marginMediano"
                 tools:ignore="ContentDescription" />
+
             <Button
                 android:id="@+id/btnIr"
+                style="@style/BotonesBordesRedondeadosPrimarios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosPrimarios"
                 android:layout_margin="@dimen/marginMediano"
-                android:text="@string/ir_al_menu"/>
+                android:text="@string/ir_al_menu" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="@drawable/bordes_redondos_rosado"
     android:gravity="center"
-    android:background="@drawable/bordes_redondos_rosado">
+    android:orientation="horizontal">
+
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/tierra_corazon"/>
+        android:src="@drawable/tierra_corazon"
+        android:layout_margin="@dimen/marginMediano"
+        tools:ignore="contentDescription" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
+            style="@style/TextViewNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/recuperar_vidas"
-            style="@style/TextViewNormal" />
+            android:text="@string/recuperar_vidas" />
+
         <Button
             android:id="@+id/btnVolverMapa"
+            style="@style/BotonesBordesRedondeadosPrimarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/volver_mapa"
-            style="@style/BotonesBordesRedondeadosPrimarios"/>
+            android:text="@string/volver_mapa" />
     </LinearLayout>
 </LinearLayout>

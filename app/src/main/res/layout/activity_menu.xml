@@ -1,72 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
+
     <ImageView
         android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo_principal"
         android:scaleType="fitXY"
+        android:src="@drawable/fondo_principal"
         tools:ignore="ContentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <ImageView
             android:layout_width="500dp"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:src="@drawable/ecoartslogo_sin_eslogan"
-            android:contentDescription="@string/logo_ecoarts" />
+            android:contentDescription="@string/logo_ecoarts"
+            android:src="@drawable/ecoartslogo_sin_eslogan" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btnJugar"
+                style="@style/BotonesBordesRedondeadosPrimarios"
                 android:layout_width="600dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/jugar"
-                android:text="@string/jugar"
-                style="@style/BotonesBordesRedondeadosPrimarios"/>
+                android:text="@string/jugar" />
+
             <LinearLayout
                 android:layout_width="600dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/btnAjustes"
+                    style="@style/BotonesBordesRedondeadosSecundarios"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ajustes"
-                    android:text="@string/ajustes"
-                    style="@style/BotonesBordesRedondeadosSecundarios"
-                    android:layout_marginLeft="0dp"/>
+                    android:text="@string/ajustes" />
+
                 <Button
                     android:id="@+id/btnTutorial"
+                    style="@style/BotonesBordesRedondeadosSecundarios"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/tutorial"
-                    android:text="@string/tutorial"
-                    style="@style/BotonesBordesRedondeadosSecundarios"
-                    android:layout_marginRight="0dp"/>
+                    android:text="@string/tutorial" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnSalir"
+                style="@style/BotonesBordesRedondeadosSecundarios"
                 android:layout_width="600dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/salir"
-                android:text="@string/salir"
-                style="@style/BotonesBordesRedondeadosSecundarios"/>
+                android:text="@string/salir" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

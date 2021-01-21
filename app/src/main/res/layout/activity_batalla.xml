@@ -1,144 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BatallaActivity">
+
     <ImageView
         android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo_principal"
         android:scaleType="fitXY"
-        tools:ignore="contentDescription"/>
+        android:src="@drawable/fondo_principal"
+        tools:ignore="contentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="@dimen/marginPequeno"
+            android:gravity="center"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <ProgressBar
                     android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="2"
                     android:layout_marginBottom="@dimen/marginPequeno"
-                    android:progressDrawable="@drawable/progress_bar_verde"
-                    style="?android:attr/progressBarStyleHorizontal" />
+                    android:layout_weight="2"
+                    android:progressDrawable="@drawable/progress_bar_verde" />
+
                 <TextView
                     android:id="@+id/batalla"
+                    style="@style/TextViewNormal"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
+                    android:layout_margin="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/batalla"
-                    android:layout_margin="0dp"
-                    style="@style/TextViewNormal"/>
+                    android:text="@string/batalla" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/textViewPregunta"
+                style="@style/EditTextRosado"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:maxLines="5"
                 android:layout_margin="0dp"
-                style="@style/EditTextRosado"/>
+                android:gravity="center"
+                android:maxLines="5"
+                android:textAlignment="center" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/vidasPersonaje"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_margin="@dimen/marginPequeno"
-                    android:gravity="center">
-                </LinearLayout>
+                    android:gravity="center"
+                    android:orientation="horizontal"></LinearLayout>
+
                 <ImageView
                     android:id="@+id/batallaImagenPersonaje"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:scaleType="centerInside"
-                    tools:ignore="contentDescription"/>
+                    tools:ignore="contentDescription" />
+
                 <TextView
                     android:id="@+id/batallaNombreJugador"
+                    style="@style/TextViewNormal"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bordes_redondos_rosado"
-                    android:gravity="center"
-                    style="@style/TextViewNormal"/>
+                    android:gravity="center" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/vidasEnemigo"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_margin="@dimen/marginPequeno"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                 </LinearLayout>
+
                 <ImageView
                     android:id="@+id/batallaImagenEnemigo"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:scaleType="centerInside"
                     tools:ignore="contentDescription" />
+
                 <TextView
                     android:id="@+id/batallaNombreEnemigo"
                     style="@style/TextViewNormal"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bordes_redondos_rosado"
-                    android:gravity="center"/>
+                    android:gravity="center" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btnRespuesta1"
+                style="@style/BotonesBordesRedondeadosRespuesta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"/>
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/btnRespuesta2"
+                style="@style/BotonesBordesRedondeadosRespuesta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"/>
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/btnRespuesta3"
+                style="@style/BotonesBordesRedondeadosRespuesta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/BotonesBordesRedondeadosRespuesta"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

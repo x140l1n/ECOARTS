@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bordes_redondos_rosado">
+    android:background="@drawable/bordes_redondos_rosado"
+    android:orientation="vertical">
+
     <ImageButton
         android:id="@+id/btnCancelar"
         style="@style/ImageButtonSinFondo"
@@ -14,12 +14,14 @@
         android:layout_gravity="end"
         android:src="@drawable/cancelar"
         tools:ignore="contentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/marginMediano"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imagenTutorial"
             android:layout_width="0dp"
@@ -27,7 +29,8 @@
             android:layout_weight="1"
             android:padding="@dimen/paddingPequeno"
             android:scaleType="centerInside"
-            tools:ignore="contentDescription"/>
+            tools:ignore="contentDescription" />
+
         <TextView
             android:id="@+id/textViewTutorial"
             style="@style/TextViewNormal"
@@ -39,11 +42,13 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/tamanyoPequenoMedianoTexto" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btnAnterior"
             style="@style/ImageButtonSinFondo"
@@ -52,6 +57,7 @@
             android:layout_gravity="end"
             android:src="@drawable/volver"
             tools:ignore="contentDescription" />
+
         <ImageButton
             android:id="@+id/btnSiguiente"
             style="@style/ImageButtonSinFondo"

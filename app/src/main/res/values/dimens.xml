@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Tamaño texto-->
-    <dimen name="tamanyoPequenoTexto">17sp</dimen>
+    <dimen name="tamanyoPequenoTexto">16sp</dimen>
     <dimen name="tamanyoPequenoMedianoTexto">20sp</dimen>
-    <dimen name="tamanyoMedianoTexto">25sp</dimen>
+    <dimen name="tamanyoMedianoTexto">24sp</dimen>
     <dimen name="tamanyoMedianoGrandeTexto">40sp</dimen>
-    <dimen name="tamanyoGrandeTexto">60sp</dimen>
+    <dimen name="tamanyoGrandeTexto">56sp</dimen>
 
     <dimen name="marginPequeno">15dp</dimen>
     <dimen name="marginMediano">25dp</dimen>

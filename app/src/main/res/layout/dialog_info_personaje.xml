@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:background="@drawable/bordes_redondos_secundario"
+    android:orientation="vertical">
+
     <ImageButton
         android:id="@+id/btnCancelar"
         style="@style/ImageButtonSinFondo"
@@ -13,7 +13,8 @@
         android:layout_height="100dp"
         android:layout_gravity="end"
         android:src="@drawable/cancelar"
-        tools:ignore="contentDescription"/>
+        tools:ignore="contentDescription" />
+
     <TextView
         style="@style/TextViewModal"
         android:layout_width="match_parent"
@@ -32,13 +33,13 @@
 
     <TextView
         android:id="@+id/txtViewDescPersonaje"
+        style="@style/EditTextRosado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="15"
-        android:scrollbars="vertical"
-        android:hint="@string/descripcion_activista"
-        android:gravity="top"
         android:autofillHints=""
+        android:gravity="top"
+        android:hint="@string/descripcion_activista"
         android:importantForAutofill="no"
-        style="@style/EditTextRosado" />
+        android:maxLines="15"
+        android:scrollbars="vertical" />
 </LinearLayout>

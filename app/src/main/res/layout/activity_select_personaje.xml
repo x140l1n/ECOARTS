@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/relativeLayoutSelectPersonaje"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutSelectPersonaje"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelectPersonajeActivity">
@@ -11,99 +10,107 @@
         android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo_principal"
         android:scaleType="fitXY"
+        android:src="@drawable/fondo_principal"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-            <LinearLayout
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnVolver"
+                style="@style/ImageButtonSinFondo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/volver"
+                tools:ignore="contentDescription" />
+
+            <TextView
+                style="@style/TextViewEncabezado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageButton
-                    android:id="@+id/btnVolver"
-                    style="@style/ImageButtonSinFondo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/volver"
-                    tools:ignore="contentDescription" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/selecPersonaje"
-                    style="@style/TextViewEncabezado"/>
+                android:text="@string/selecPersonaje" />
 
-                <EditText
-                    android:id="@+id/editTextNombreJugador"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nombreJugador"
-                    android:inputType="text"
-                    android:importantForAutofill="no"
-                    android:autofillHints=""
-                    android:maxLength="30"
-                    style="@style/EditTextRosado" />
-            </LinearLayout>
-
-            <GridView
-                android:id="@+id/gridViewPersonajes"
+            <EditText
+                android:id="@+id/editTextNombreJugador"
+                style="@style/EditTextRosado"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/marginPequeno"
-                android:layout_weight="2"
-                android:background="@drawable/bordes_redondos_rosado"
-                android:numColumns="2"
-                android:stretchMode="columnWidth"
-                android:horizontalSpacing="10dp"
-                android:verticalSpacing="10dp"
-                android:gravity="center"
-                android:padding="@dimen/paddingMediano" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-                <RadioGroup
-                    android:id="@+id/radioGroupNivel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/marginPequeno"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/bordes_redondos_rosado">
-                    <TextView
-                        style="@style/TextViewNormal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/nivel" />
-                    <RadioButton
-                        android:id="@+id/radioButtonFacil"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/facil"
-                        android:checked="true"
-                        style="@style/RadioButton"/>
-                    <RadioButton
-                        android:id="@+id/radioButtonDificil"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="@string/dificil"
-                        style="@style/RadioButton"/>
-                </RadioGroup>
-                <Button
-                    android:id="@+id/btnEmpezar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empezar"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="@string/nombreJugador"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="18" />
         </LinearLayout>
+
+        <GridView
+            android:id="@+id/gridViewPersonajes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/marginPequeno"
+            android:layout_weight="2"
+            android:background="@drawable/bordes_redondos_rosado"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:padding="@dimen/paddingMediano"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radioGroupNivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginPequeno"
+                android:background="@drawable/bordes_redondos_rosado"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextViewNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/nivel" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFacil"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:checked="true"
+                    android:text="@string/facil" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonDificil"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/dificil" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnEmpezar"
+                style="@style/BotonesBordesRedondeadosMediano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empezar" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

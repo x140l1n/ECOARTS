@@ -1,124 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AjustesActivity">
+
     <ImageView
         android:id="@+id/fondoGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo_principal"
         android:scaleType="fitXY"
-        tools:ignore="contentDescription"/>
+        android:src="@drawable/fondo_principal"
+        tools:ignore="contentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/btnVolver"
+            style="@style/ImageButtonSinFondo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/volver"
-            style="@style/ImageButtonSinFondo"
-            tools:ignore="contentDescription"/>
+            tools:ignore="contentDescription" />
+
         <TextView
+            style="@style/TextViewEncabezado"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:text="@string/ajustes"
-            style="@style/TextViewEncabezado"/>
+            android:text="@string/ajustes" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:padding="@dimen/paddingPequeno"
                 android:layout_margin="@dimen/marginPequeno"
                 android:background="@drawable/group_box"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/paddingPequeno">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
                     <TextView
+                        style="@style/TextViewNormal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/musica"
-                        android:textAlignment="viewEnd"
-                        style="@style/TextViewNormal"/>
+                        android:textAlignment="viewEnd" />
+
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchMusica"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/sol_thumb"/>
+                        android:thumb="@drawable/sol_thumb" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
                     <TextView
+                        style="@style/TextViewNormal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/efectos"
-                        android:textAlignment="viewEnd"
-                        style="@style/TextViewNormal"/>
+                        android:textAlignment="viewEnd" />
+
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchEfecto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/sol_thumb"/>
+                        android:thumb="@drawable/sol_thumb" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <Button
                     android:id="@+id/btnIntroduccion"
+                    style="@style/BotonesBordesRedondeadosMediano"
                     android:layout_width="500dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/ver_introduccion"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
+                    android:text="@string/ver_introduccion" />
+
                 <Button
                     android:id="@+id/btnCambiarIdioma"
+                    style="@style/BotonesBordesRedondeadosMediano"
                     android:layout_width="500dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/cambiar_idioma"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
+                    android:text="@string/cambiar_idioma" />
+
                 <Button
                     android:id="@+id/btnContactar"
+                    style="@style/BotonesBordesRedondeadosMediano"
                     android:layout_width="500dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/contactar"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
+                    android:text="@string/contactar" />
+
                 <Button
                     android:id="@+id/btnCreditos"
+                    style="@style/BotonesBordesRedondeadosMediano"
                     android:layout_width="500dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/creditos"
-                    style="@style/BotonesBordesRedondeadosMediano"/>
+                    android:text="@string/creditos" />
+
                 <TextView
                     android:id="@+id/txtViewVersion"
+                    style="@style/TextViewNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/marginArriba"
-                    android:textColor="@android:color/white"
-                    style="@style/TextViewNormal"
-                    android:text="@string/version"/>
+                    android:text="@string/version"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

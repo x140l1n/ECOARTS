@@ -1,41 +1,44 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_rosado"
     android:gravity="center"
-    android:padding="@dimen/paddingGrande"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:orientation="vertical"
+    android:padding="@dimen/paddingGrande">
+
     <ImageView
         android:layout_width="250dp"
         android:layout_height="100dp"
-        android:src="@drawable/corona"
         android:scaleType="fitXY"
-        tools:ignore="contentDescription"/>
+        android:src="@drawable/corona"
+        tools:ignore="contentDescription" />
+
     <ImageView
         android:id="@+id/imagenPersonaje"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="centerInside"
-        tools:ignore="contentDescription"/>
+        tools:ignore="contentDescription" />
+
     <TextView
         android:id="@+id/textViewEnhorabuena"
         style="@style/TextViewEncabezado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginPequeno"
-        android:text="@string/enhorabuena"/>
+        android:layout_margin="@dimen/marginPequeno" />
+
     <TextView
+        style="@style/TextViewNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/victoria3"
-        style="@style/TextViewNormal" />
+        android:text="@string/victoria3" />
+
     <Button
         android:id="@+id/btnVolverMenuDos"
+        style="@style/BotonesBordesRedondeadosPrimarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/volver_menu"
-        style="@style/BotonesBordesRedondeadosPrimarios"/>
+        android:text="@string/volver_menu" />
 </LinearLayout>

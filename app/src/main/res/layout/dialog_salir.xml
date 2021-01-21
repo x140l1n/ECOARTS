@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/bordes_redondos_secundario"
     android:gravity="center"
-    android:background="@drawable/bordes_redondos_secundario">
+    android:orientation="vertical">
+
     <TextView
         style="@style/TextViewModal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/confirmar_salir"
         android:textColor="@android:color/white" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btnSalir"
+            style="@style/ImageButtonSinFondo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/confirm2"
-            tools:ignore="contentDescription"
-            style="@style/ImageButtonSinFondo"/>
+            tools:ignore="contentDescription" />
+
         <ImageButton
             android:id="@+id/btnCancelar"
+            style="@style/ImageButtonSinFondo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/cancelar"
-            tools:ignore="contentDescription"
-            style="@style/ImageButtonSinFondo"/>
+            tools:ignore="contentDescription" />
     </LinearLayout>
 </LinearLayout>
