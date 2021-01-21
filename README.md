@@ -22,6 +22,8 @@ Tener una tablet de 10.1 pulgadas con sistema operativo Android.
 
 Versión de mínima de android: 4.4.1 KitKat
 
+Mínimo de RAM: 3 GB
+
 ## Instalación
 Debemos de incluir los JSON preguntas y personajes en la carpeta del juego.
 
