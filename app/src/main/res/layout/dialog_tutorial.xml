@@ -35,7 +35,7 @@
             android:id="@+id/textViewTutorial"
             style="@style/TextViewNormal"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="0dp"
             android:layout_weight="2"
             android:gravity="center"
