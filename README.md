@@ -14,9 +14,13 @@ Proyecto realizado en Centre d'Estudis Politécnics.
 * [Devin Schlippe](https://github.com/DevinSJ)
 
 ## Lenguajes y herramientas usados
-* JAVA
-* JSON
-* XML
+* Lenguajes
+** JAVA
+** JSON
+** XML
+* Herramientas
+** Android Studio 4.0.1 
+** Gradle 6.1.1
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
@@ -37,8 +41,8 @@ Para incluir los JSON debemos de instalar antes el juego al dispositivo.
 ![Pantalla introducción](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_introduccion.jpg)
 ![Pantalla menú](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_menu.jpg)
 ![Pantalla ajustes](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_ajustes.jpg)
-![Pantalla personajes](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla personajes.jpg)
+![Pantalla personajes](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_personajes.jpg)
 ![Pantalla mapa](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_mapa.jpg)
-![Pantalla batalla](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla batalla.jpg)
+![Pantalla batalla](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_batalla.jpg)
 
 
