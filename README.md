@@ -13,7 +13,7 @@ Proyecto realizado en Centre d'Estudis Politécnics.
 * [Oriol Miralles](https://github.com/OriolMiralles)
 * [Devin Schlippe](https://github.com/DevinSJ)
 
-## Lenguajes 
+## Lenguajes y herramientas usados
 * JAVA
 * JSON
 * XML
@@ -30,3 +30,15 @@ Debemos ir al Explorador de archivos y seguir esta ruta: data/data/com.android.e
 
 ¡ATENCIÓN!
 Para incluir los JSON debemos de instalar antes el juego al dispositivo.
+
+## Screenshots
+
+![Pantalla idioma](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_idioma.jpg)
+![Pantalla introducción](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_introduccion.jpg)
+![Pantalla menú](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_menu.jpg)
+![Pantalla ajustes](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_ajustes.jpg)
+![Pantalla personajes](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla personajes.jpg)
+![Pantalla mapa](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla_mapa.jpg)
+![Pantalla batalla](https://github.com/x140l1n/ProyectoAndroidCEP_1/blob/master/app/src/main/res/drawable/pantalla batalla.jpg)
+
+
