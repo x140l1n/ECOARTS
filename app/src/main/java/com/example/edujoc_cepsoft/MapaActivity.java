@@ -63,8 +63,18 @@ public class MapaActivity extends MiActivityPersonalizado {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        //Iniciamos la música del mapa.
         id_musica = R.raw.mapa;
-        musicaFondo = null;
+
+        if (id_musica != 0) {
+            musicaFondo = MediaPlayer.create(this, id_musica);
+
+            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
+            else musicaFondo.setVolume(0f, 0f);
+
+            musicaFondo.setLooping(true);
+            musicaFondo.start();
+        }
 
         Intent intent = getIntent();
 
@@ -182,23 +192,15 @@ public class MapaActivity extends MiActivityPersonalizado {
                     }
                 });
 
-                switchMusica.setChecked(reproducirMusica);
+                switchMusica.setChecked(sonarMusica);
 
                 switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        reproducirMusica = isChecked;
+                        sonarMusica = isChecked;
 
-                        if (!reproducirMusica) musicaFondo.setVolume(0f, 0f);
-                        else {
-                            if (musicaFondo != null) musicaFondo.setVolume(0.5f, 0.5f);
-                            else {
-                                musicaFondo = MediaPlayer.create(MapaActivity.this, id_musica);
-                                musicaFondo.setVolume(0.5f, 0.5f);
-                                musicaFondo.setLooping(true);
-                                musicaFondo.start();
-                            }
-                        }
+                        if (!sonarMusica) musicaFondo.setVolume(0f, 0f);
+                        else musicaFondo.setVolume(0.5f, 0.5f);
                     }
                 });
 
@@ -216,6 +218,8 @@ public class MapaActivity extends MiActivityPersonalizado {
                             @Override
                             public void onClick(View v) {
                                 EffectSoundHelper.reproducirEfecto(MapaActivity.this, R.raw.boton_click);
+
+                                MenuActivity.activity_anterior = "mapa";
 
                                 startActivity(new Intent(MapaActivity.this, MenuActivity.class));
 
@@ -340,6 +344,18 @@ public class MapaActivity extends MiActivityPersonalizado {
                     }
                 }
             }
+        }
+
+        id_musica = R.raw.mapa;
+
+        if (id_musica != 0) {
+            musicaFondo = MediaPlayer.create(this, id_musica);
+
+            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
+            else musicaFondo.setVolume(0f, 0f);
+
+            musicaFondo.setLooping(true);
+            musicaFondo.start();
         }
     }
 

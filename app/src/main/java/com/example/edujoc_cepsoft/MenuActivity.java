@@ -2,6 +2,7 @@ package com.example.edujoc_cepsoft;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import java.util.List;
 public class MenuActivity extends MiActivityPersonalizado {
     private int pagina_tutorial = 0;
 
+    public static String activity_anterior = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +29,23 @@ public class MenuActivity extends MiActivityPersonalizado {
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        id_musica = R.raw.menu;
-        musicaFondo = null;
+        if (activity_anterior.equals("mapa") || activity_anterior.equals("batalla"))
+        {
+            //Iniciamos la música del menú.
+            id_musica = R.raw.menu;
+
+            if (id_musica != 0) {
+                musicaFondo = MediaPlayer.create(this, id_musica);
+
+                if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
+                else musicaFondo.setVolume(0f, 0f);
+
+                musicaFondo.setLooping(true);
+                musicaFondo.start();
+            }
+        }
+
+        activity_anterior = "";
 
         Button btnJugar = findViewById(R.id.btnJugar);
         Button btnAjustes = findViewById(R.id.btnAjustes);
@@ -82,8 +100,7 @@ public class MenuActivity extends MiActivityPersonalizado {
 
                         dialogSalir.dismiss();
 
-                        if (musicaFondo != null)
-                        {
+                        if (musicaFondo != null) {
                             id_musica = 0;
                             musicaFondo.stop();
                             musicaFondo = null;

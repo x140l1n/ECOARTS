@@ -22,9 +22,6 @@ public class IntroduccionActivity extends MiActivityPersonalizado {
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        id_musica = R.raw.menu;
-        musicaFondo = null;
-
         TextView txtViewIntroduccion = findViewById(R.id.txtViewIntroduccion);
 
         //Esto es para poner el scroll bar.

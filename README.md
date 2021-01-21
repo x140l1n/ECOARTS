@@ -4,7 +4,7 @@ Juego de aprendizaje para niños de android para tablet de 10.1 pulgadas.
 
 El objetivo principal del juego es hacer que los niños puedan aprender sobre el medio ambiente y la ecología de forma entretenida y divertida.
 
-Proyecto de Centre d'Estudis Politécnics.
+Proyecto realizado en Centre d'Estudis Politécnics.
 
 ![Logo](https://raw.githubusercontent.com/x140l1n/ProyectoAndroidCEP_1/master/app/src/main/res/mipmap-xxxhdpi/app_icon.png)
 

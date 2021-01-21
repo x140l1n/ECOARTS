@@ -1,6 +1,7 @@
 package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,10 +21,20 @@ public class IdiomaActivity extends MiActivityPersonalizado {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idioma);
 
-        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
-
+        //Iniciamos la música del menú.
         id_musica = R.raw.menu;
-        musicaFondo = null;
+
+        if (id_musica != 0 && activity_anterior.equals("main")) {
+            musicaFondo = MediaPlayer.create(this, id_musica);
+
+            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
+            else musicaFondo.setVolume(0f, 0f);
+
+            musicaFondo.setLooping(true);
+            musicaFondo.start();
+        }
+
+        GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
         final Button btnEs = findViewById(R.id.btnCastellano);
         final Button btnCa = findViewById(R.id.btnCatala);

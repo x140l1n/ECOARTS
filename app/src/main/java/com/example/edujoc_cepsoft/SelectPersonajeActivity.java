@@ -41,8 +41,7 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado {
 
         final ArrayList<Personaje> personajes = cargarPersonajes();
 
-        if (personajes != null)
-            gridViewPersonajes.setAdapter(new SelectPersonajeAdapter(this, personajes));
+        if (personajes != null) gridViewPersonajes.setAdapter(new SelectPersonajeAdapter(this, personajes));
         else System.err.println("No se ha podido cargar los personajes.");
 
         final EditText editTextNombreJugador = findViewById(R.id.editTextNombreJugador);

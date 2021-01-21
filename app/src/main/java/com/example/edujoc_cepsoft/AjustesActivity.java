@@ -1,7 +1,6 @@
 package com.example.edujoc_cepsoft;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ import com.example.edujoc_cepsoft.Helpers.GifHelper;
 
 public class AjustesActivity extends MiActivityPersonalizado {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
@@ -44,23 +43,15 @@ public class AjustesActivity extends MiActivityPersonalizado {
             }
         });
 
-        switchMusica.setChecked(reproducirMusica);
+        switchMusica.setChecked(sonarMusica);
 
         switchMusica.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                reproducirMusica = isChecked;
+                sonarMusica = isChecked;
 
-                if (!reproducirMusica) musicaFondo.setVolume(0f, 0f);
-                else {
-                    if (musicaFondo != null) musicaFondo.setVolume(0.5f, 0.5f);
-                    else {
-                        musicaFondo = MediaPlayer.create(AjustesActivity.this, id_musica);
-                        musicaFondo.setVolume(0.5f, 0.5f);
-                        musicaFondo.setLooping(true);
-                        musicaFondo.start();
-                    }
-                }
+                if (!sonarMusica) musicaFondo.setVolume(0f, 0f);
+                else musicaFondo.setVolume(0.5f, 0.5f);
             }
         });
 
@@ -81,6 +72,8 @@ public class AjustesActivity extends MiActivityPersonalizado {
             @Override
             public void onClick(View v) {
                 EffectSoundHelper.reproducirEfecto(AjustesActivity.this, R.raw.boton_click);
+
+                MenuActivity.activity_anterior = "ajustes";
 
                 startActivity(new Intent(AjustesActivity.this, MenuActivity.class));
 

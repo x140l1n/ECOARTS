@@ -20,6 +20,13 @@ public class EffectSoundHelper {
             MediaPlayer efecto = MediaPlayer.create(context, id_efecto);
             efecto.setVolume(1f, 1f);
             efecto.start();
+
+            efecto.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+
+                };
+            });
         }
     }
 }

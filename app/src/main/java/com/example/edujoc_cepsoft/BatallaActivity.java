@@ -3,6 +3,7 @@ package com.example.edujoc_cepsoft;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -68,10 +69,29 @@ public class BatallaActivity extends MiActivityPersonalizado {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_batalla);
 
+        //Iniciamos la música del mapa.
+        id_musica = R.raw.batalla;
+
+        if (id_musica != 0) {
+            musicaFondo = MediaPlayer.create(this, id_musica);
+
+            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
+            else musicaFondo.setVolume(0f, 0f);
+
+            musicaFondo.setLooping(true);
+            musicaFondo.start();
+
+            musicaFondo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+
+                };
+            });
+        }
+
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
         id_musica = R.raw.batalla;
-        musicaFondo = null;
 
         Intent intent = getIntent();
 
@@ -384,6 +404,8 @@ public class BatallaActivity extends MiActivityPersonalizado {
                     public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
+                        MenuActivity.activity_anterior = "mapa";
+
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogDerrota.dismiss();
 
@@ -408,6 +430,8 @@ public class BatallaActivity extends MiActivityPersonalizado {
                     @Override
                     public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
+
+                        MenuActivity.activity_anterior = "mapa";
 
                         startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogVictoriaFinal.dismiss();
@@ -434,9 +458,6 @@ public class BatallaActivity extends MiActivityPersonalizado {
                         intent.putExtra(PREGUNTAS, preguntas);
                         setResult(RESULT_OK, intent);
                         dialogVictoria.dismiss();
-
-                        id_musica = R.raw.mapa;
-                        musicaFondo = null;
 
                         finish();
                     }

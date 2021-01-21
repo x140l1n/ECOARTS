@@ -26,7 +26,8 @@
         style="@style/TextViewEncabezado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginPequeno" />
+        android:layout_margin="@dimen/marginPequeno"
+        android:text="@string/enhorabuena"/>
 
     <TextView
         style="@style/TextViewNormal"
