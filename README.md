@@ -8,6 +8,8 @@ Proyecto realizado en Centre d'Estudis Politécnics.
 
 ![Logo](https://raw.githubusercontent.com/x140l1n/ProyectoAndroidCEP_1/master/app/src/main/res/mipmap-xxxhdpi/app_icon.png)
 
+VERSIÓN 1.0
+
 ## Autores
 * [Xiaolin Jin Lin](https://github.com/x140l1n) 
 * [Oriol Miralles](https://github.com/OriolMiralles)
