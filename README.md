@@ -15,12 +15,13 @@ Proyecto realizado en Centre d'Estudis Politécnics.
 
 ## Lenguajes y herramientas usados
 * Lenguajes
-** JAVA
-** JSON
-** XML
+  * JAVA
+  * JSON
+  * XML
+
 * Herramientas
-** Android Studio 4.0.1 
-** Gradle 6.1.1
+  * Android Studio 4.0.1 
+  * Gradle 6.1.1
 
 ## Requisitos previos
 Tener una tablet de 10.1 pulgadas con sistema operativo Android.
