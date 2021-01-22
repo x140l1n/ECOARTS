@@ -74,19 +74,18 @@ public class BatallaActivity extends MiActivityPersonalizado {
 
         if (id_musica != 0) {
             musicaFondo = MediaPlayer.create(this, id_musica);
-
-            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
-            else musicaFondo.setVolume(0f, 0f);
-
             musicaFondo.setLooping(true);
-            musicaFondo.start();
 
-            musicaFondo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    mp.release();
-
-                };
-            });
+            if (sonarMusica)
+            {
+                if (!musicaFondo.isPlaying())
+                    musicaFondo.start();
+            }
+            else
+            {
+                if (musicaFondo.isPlaying())
+                    musicaFondo.pause();
+            }
         }
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
@@ -341,14 +340,14 @@ public class BatallaActivity extends MiActivityPersonalizado {
      * @param enemigo   El enemigo que vamos a quitar vida, si no queremos quitar vida al enemigo, pasamos null.
      */
     private void quitarVida(Personaje personaje, Enemigo enemigo) {
-        if (personaje != null) {
+        if (personaje != null && personaje.getVida() != 0) {
             personaje.quitarVida(1);
 
             ImageView vida = (ImageView) vidasPersonaje.getChildAt(personaje.getVida());
             vida.setImageResource(R.drawable.corazon_vacio);
 
             effectoBlink(batallaImagenPersonaje);
-        } else if (enemigo != null) {
+        } else if (enemigo != null && enemigo.getVida() != 0) {
             enemigo.quitarVida(1);
 
             ImageView vida = (ImageView) vidasEnemigo.getChildAt(enemigo.getVida());
@@ -389,8 +388,12 @@ public class BatallaActivity extends MiActivityPersonalizado {
 
         if (personaje.getVida() != 0 && enemigo.getVida() != 0) {
             cargarPregunta();
+
+            btnRespuesta1.setEnabled(true);
+            btnRespuesta2.setEnabled(true);
+            btnRespuesta3.setEnabled(true);
         } else {
-            if (musicaFondo != null) musicaFondo.stop();
+            if (musicaFondo.isPlaying()) musicaFondo.stop();
 
             if (personaje.getVida() == 0) {
                 EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.derrota);
@@ -404,10 +407,9 @@ public class BatallaActivity extends MiActivityPersonalizado {
                     public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
-                        MenuActivity.activity_anterior = "mapa";
-
-                        startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogDerrota.dismiss();
+
+                        setResult(RESULT_CANCELED, new Intent(BatallaActivity.this, MapaActivity.class));
 
                         finish();
                     }
@@ -431,10 +433,9 @@ public class BatallaActivity extends MiActivityPersonalizado {
                     public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
-                        MenuActivity.activity_anterior = "mapa";
-
-                        startActivity(new Intent(BatallaActivity.this, MenuActivity.class));
                         dialogVictoriaFinal.dismiss();
+
+                        setResult(RESULT_OK, new Intent(BatallaActivity.this, MapaActivity.class));
 
                         finish();
                     }
@@ -453,11 +454,12 @@ public class BatallaActivity extends MiActivityPersonalizado {
                     public void onClick(View v) {
                         EffectSoundHelper.reproducirEfecto(BatallaActivity.this, R.raw.boton_click);
 
+                        dialogVictoria.dismiss();
+
                         Intent intent = new Intent(BatallaActivity.this, MapaActivity.class);
                         intent.putExtra(PERSONAJE, personaje);
                         intent.putExtra(PREGUNTAS, preguntas);
                         setResult(RESULT_OK, intent);
-                        dialogVictoria.dismiss();
 
                         finish();
                     }
@@ -466,10 +468,6 @@ public class BatallaActivity extends MiActivityPersonalizado {
                 dialogVictoria.show();
             }
         }
-
-        btnRespuesta1.setEnabled(true);
-        btnRespuesta2.setEnabled(true);
-        btnRespuesta3.setEnabled(true);
     }
 
     /**

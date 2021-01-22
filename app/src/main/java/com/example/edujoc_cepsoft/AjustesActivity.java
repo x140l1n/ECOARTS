@@ -50,8 +50,16 @@ public class AjustesActivity extends MiActivityPersonalizado {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 sonarMusica = isChecked;
 
-                if (!sonarMusica) musicaFondo.setVolume(0f, 0f);
-                else musicaFondo.setVolume(0.5f, 0.5f);
+                if (sonarMusica)
+                {
+                    if (!musicaFondo.isPlaying())
+                        musicaFondo.start();
+                }
+                else
+                {
+                    if (musicaFondo.isPlaying())
+                        musicaFondo.pause();
+                }
             }
         });
 

@@ -29,19 +29,23 @@ public class MenuActivity extends MiActivityPersonalizado {
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));
 
-        if (activity_anterior.equals("mapa") || activity_anterior.equals("batalla"))
-        {
-            //Iniciamos la música del menú.
-            id_musica = R.raw.menu;
+        //Iniciamos la música del menú.
+        id_musica = R.raw.menu;
 
-            if (id_musica != 0) {
-                musicaFondo = MediaPlayer.create(this, id_musica);
+        if (id_musica != 0 && (activity_anterior.equals("mapa") || activity_anterior.equals("batalla"))) {
+            musicaFondo = MediaPlayer.create(this, id_musica);
 
-                if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
-                else musicaFondo.setVolume(0f, 0f);
+            musicaFondo.setLooping(true);
 
-                musicaFondo.setLooping(true);
-                musicaFondo.start();
+            if (sonarMusica)
+            {
+                if (!musicaFondo.isPlaying())
+                    musicaFondo.start();
+            }
+            else
+            {
+                if (musicaFondo.isPlaying())
+                    musicaFondo.pause();
             }
         }
 
@@ -100,13 +104,14 @@ public class MenuActivity extends MiActivityPersonalizado {
 
                         dialogSalir.dismiss();
 
-                        if (musicaFondo != null) {
-                            id_musica = 0;
+                        if (musicaFondo.isPlaying())
                             musicaFondo.stop();
-                            musicaFondo = null;
-                        }
 
-                        finishAffinity();
+                        id_musica = 0;
+                        musicaFondo = null;
+                        sonarMusica = true;
+
+                        finish();
                     }
                 });
 

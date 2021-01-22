@@ -68,12 +68,15 @@ public class MapaActivity extends MiActivityPersonalizado {
 
         if (id_musica != 0) {
             musicaFondo = MediaPlayer.create(this, id_musica);
-
-            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
-            else musicaFondo.setVolume(0f, 0f);
-
             musicaFondo.setLooping(true);
-            musicaFondo.start();
+
+            if (sonarMusica) {
+                if (!musicaFondo.isPlaying())
+                    musicaFondo.start();
+            } else {
+                if (musicaFondo.isPlaying())
+                    musicaFondo.pause();
+            }
         }
 
         Intent intent = getIntent();
@@ -149,12 +152,7 @@ public class MapaActivity extends MiActivityPersonalizado {
 
                         dialogInfoEnemigo.dismiss();
 
-                        if (numBatalla < 6)
-                            startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
-                        else {
-                            startActivity(intent);
-                            finish();
-                        }
+                        startActivityForResult(intent, BatallaActivity.BATALLA_ACTIVITY);
                     }
                 });
 
@@ -199,8 +197,13 @@ public class MapaActivity extends MiActivityPersonalizado {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         sonarMusica = isChecked;
 
-                        if (!sonarMusica) musicaFondo.setVolume(0f, 0f);
-                        else musicaFondo.setVolume(0.5f, 0.5f);
+                        if (sonarMusica) {
+                            if (!musicaFondo.isPlaying())
+                                musicaFondo.start();
+                        } else {
+                            if (musicaFondo.isPlaying())
+                                musicaFondo.pause();
+                        }
                     }
                 });
 
@@ -265,71 +268,13 @@ public class MapaActivity extends MiActivityPersonalizado {
 
         if (requestCode == BatallaActivity.BATALLA_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-                personaje = (Personaje) data.getSerializableExtra(BatallaActivity.PERSONAJE);
+                if (numBatalla < 6) {
+                    personaje = (Personaje) data.getSerializableExtra(BatallaActivity.PERSONAJE);
 
-                preguntas = (ArrayList) data.getSerializableExtra(BatallaActivity.PREGUNTAS);
+                    preguntas = (ArrayList) data.getSerializableExtra(BatallaActivity.PREGUNTAS);
 
-                if (nivel.equals("facil")) {
-                    personaje.setVida(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
-
-                    numBatalla++;
-
-                    btnJugar.setEnabled(false);
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            realizarAnimacion();
-                        }
-                    }, 1000);
-                } else {
-                    if (numBatalla == 3) {
-                        if (personaje.getVIDA_MAXIMA() != personaje.getVida()) {
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final Dialog dialogRecuperarVidas = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_recuperar_vidas);
-                                    Button btnVolverMapa = dialogRecuperarVidas.findViewById(R.id.btnVolverMapa);
-
-                                    btnVolverMapa.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            dialogRecuperarVidas.dismiss();
-
-                                            personaje.setVida(personaje.getVIDA_MAXIMA());
-                                            cargarVidas(personaje);
-
-                                            numBatalla++;
-
-                                            btnJugar.setEnabled(false);
-
-                                            new Handler().postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    realizarAnimacion();
-                                                }
-                                            }, 1000);
-                                        }
-                                    });
-
-                                    dialogRecuperarVidas.show();
-                                }
-                            }, 1000);
-                        } else {
-                            numBatalla++;
-
-                            btnJugar.setEnabled(false);
-
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    realizarAnimacion();
-                                }
-                            }, 1000);
-                        }
-                    } else {
-                        if (personaje.getVIDA_MAXIMA() != personaje.getVida())
-                            quitarVida(personaje);
+                    if (nivel.equals("facil")) {
+                        personaje.setVida(personaje.getVIDA_MAXIMA()); //Restablecer las vidas.
 
                         numBatalla++;
 
@@ -341,21 +286,96 @@ public class MapaActivity extends MiActivityPersonalizado {
                                 realizarAnimacion();
                             }
                         }, 1000);
+                    } else {
+                        if (numBatalla == 3) {
+                            if (personaje.getVIDA_MAXIMA() != personaje.getVida()) {
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        final Dialog dialogRecuperarVidas = new MiDialogPersonalizado(MapaActivity.this, R.layout.dialog_recuperar_vidas);
+                                        Button btnVolverMapa = dialogRecuperarVidas.findViewById(R.id.btnVolverMapa);
+
+                                        btnVolverMapa.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialogRecuperarVidas.dismiss();
+
+                                                personaje.setVida(personaje.getVIDA_MAXIMA());
+                                                cargarVidas(personaje);
+
+                                                numBatalla++;
+
+                                                btnJugar.setEnabled(false);
+
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        realizarAnimacion();
+                                                    }
+                                                }, 1000);
+                                            }
+                                        });
+
+                                        dialogRecuperarVidas.show();
+                                    }
+                                }, 1000);
+                            } else {
+                                numBatalla++;
+
+                                btnJugar.setEnabled(false);
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        realizarAnimacion();
+                                    }
+                                }, 1000);
+                            }
+                        } else {
+                            if (personaje.getVIDA_MAXIMA() != personaje.getVida())
+                                quitarVida(personaje);
+
+                            numBatalla++;
+
+                            btnJugar.setEnabled(false);
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    realizarAnimacion();
+                                }
+                            }, 1000);
+                        }
                     }
+
+                    id_musica = R.raw.mapa;
+
+                    if (id_musica != 0) {
+                        musicaFondo = MediaPlayer.create(this, id_musica);
+                        musicaFondo.setLooping(true);
+
+                        if (sonarMusica) {
+                            if (!musicaFondo.isPlaying())
+                                musicaFondo.start();
+                        } else {
+                            if (musicaFondo.isPlaying())
+                                musicaFondo.pause();
+                        }
+                    }
+                } else {
+                    MenuActivity.activity_anterior = "mapa";
+
+                    startActivity(new Intent(MapaActivity.this, MenuActivity.class));
+
+                    finish();
                 }
+            } else if (resultCode == RESULT_CANCELED) {
+                MenuActivity.activity_anterior = "mapa";
+
+                startActivity(new Intent(MapaActivity.this, MenuActivity.class));
+
+                finish();
             }
-        }
-
-        id_musica = R.raw.mapa;
-
-        if (id_musica != 0) {
-            musicaFondo = MediaPlayer.create(this, id_musica);
-
-            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
-            else musicaFondo.setVolume(0f, 0f);
-
-            musicaFondo.setLooping(true);
-            musicaFondo.start();
         }
     }
 
@@ -447,7 +467,7 @@ public class MapaActivity extends MiActivityPersonalizado {
     }
 
     /**
-     * Cargar las preguntas desde el json. Dependiendo del lenguaje seleccionado, cargara el json de castellano, catalán o inglés.
+     * Cargar las preguntas desde el json. Dependiendo del lenguaje seleccionado, cargará el json de castellano, catalán o inglés.
      *
      * @return Un ArrayList de preguntas.
      */

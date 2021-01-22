@@ -26,12 +26,18 @@ public class IdiomaActivity extends MiActivityPersonalizado {
 
         if (id_musica != 0 && activity_anterior.equals("main")) {
             musicaFondo = MediaPlayer.create(this, id_musica);
-
-            if (sonarMusica) musicaFondo.setVolume(0.5f, 0.5f);
-            else musicaFondo.setVolume(0f, 0f);
-
             musicaFondo.setLooping(true);
-            musicaFondo.start();
+
+            if (sonarMusica)
+            {
+                if (!musicaFondo.isPlaying())
+                    musicaFondo.start();
+            }
+            else
+            {
+                if (musicaFondo.isPlaying())
+                    musicaFondo.pause();
+            }
         }
 
         GifHelper.loadGif(this, R.drawable.fondo_principal_animado, (ImageView) findViewById(R.id.fondoGif));

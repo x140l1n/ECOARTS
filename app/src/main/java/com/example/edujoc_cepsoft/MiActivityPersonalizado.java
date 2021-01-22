@@ -10,8 +10,6 @@ import com.example.edujoc_cepsoft.Helpers.SystemUIHelper;
  * Clase Activity personalizada. Creamos la clase para que en todas las Activities que se extienda de esta clase se oculte la barra de navegación y reproducir efectos de sonido y música.
  */
 public class MiActivityPersonalizado extends AppCompatActivity {
-    private static int posicionMusica = 0;
-
     protected static int id_musica = 0;
     protected static MediaPlayer musicaFondo = null;
     protected static boolean sonarMusica = true;
@@ -25,20 +23,7 @@ public class MiActivityPersonalizado extends AppCompatActivity {
 
         super.onResume();
 
-        if (musicaFondo != null && !musicaFondo.isPlaying()) {
-            musicaFondo.start();
-        }
-    }
-
-    /**
-     * Cuando el activity se reinicia.
-     */
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        if (musicaFondo != null && !musicaFondo.isPlaying()) {
-            musicaFondo.seekTo(posicionMusica);
+        if (musicaFondo != null && !musicaFondo.isPlaying() && sonarMusica) {
             musicaFondo.start();
         }
     }
@@ -52,7 +37,6 @@ public class MiActivityPersonalizado extends AppCompatActivity {
 
         if (musicaFondo != null && musicaFondo.isPlaying()) {
             musicaFondo.pause();
-            posicionMusica = musicaFondo.getCurrentPosition();
         }
     }
 
