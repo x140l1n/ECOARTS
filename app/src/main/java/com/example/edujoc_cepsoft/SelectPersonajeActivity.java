@@ -144,10 +144,6 @@ public class SelectPersonajeActivity extends MiActivityPersonalizado {
 
         if (rutaFicheroJson != null) {
             BufferedReader br = null;
-            String[] files = this.fileList();
-            for (String item : files) {
-                System.out.println("ficheros: " + item);
-            }
             try {
                 br = new BufferedReader(new FileReader(rutaFicheroJson));
 
